@@ -1,7 +1,12 @@
 import React from "react";
+import Header from "../layout/Header";
 
 const Inicio = () => {
-  return <div>Inicio</div>;
+  return (
+    <div>
+      <Header />
+    </div>
+  );
 };
 
 export default Inicio;
