@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700;800;900&display=swap');
+
+
+.product-details{
+    float: left;
+}
+
+.product-details img{
+    height: 247px;
+    margin-left: 60px;
+    padding: 30px;
+}
+
+.product-details h1{
+    font-family: 'Poppins', sans-serif;
+    font-style: bold;
+    margin-left: 40px;
+}
+
+.product-details p{
+    margin-top: 20px;
+    font-family: 'lato', sans-serif;
+    width: 500px;
+}
+
+.image{
+    height: 570px;
+    width: 500px;
+    border-radius: 33px;
+    float: right;
+}
