@@ -1,0 +1,50 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+.form-contenedor {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+input:-internal-autofill-selected {
+  background-color: white;
+}
+.grupo-input {
+  width: 250px;
+  margin: 1rem 0;
+  border-bottom: 1px solid gray;
+  input {
+    width: calc(100% - 30px);
+    padding-left: 0.4rem;
+    border: none;
+    outline: none;
+  }
+  i {
+    margin: 0 0.5rem;
+    color: gray;
+  }
+  input:focus {
+    border: none;
+    outline: none;
+  }
+}
+
+.boton {
+  width: 250px;
+  height: 40px;
+  margin: 0.2rem 0;
+  border: none;
+  background-color: $color-principal;
+  border-radius: 15px;
+  color: $color-quinto;
+  transition: 0.5s all;
+  &:hover {
+    background-color: #273eb1;
+  }
+}
