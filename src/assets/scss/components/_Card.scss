@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400&display=swap');
+
+*{
+    box-sizing: border-box;
+}
+
+.wrapper_ {
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+    display: block;
+    overflow: hidden;
+}
+
+.wrapper_ > img{
+    height: 800px;
+    border-radius: 60px;
+    display: block;
+}
+
+//CAJAS DE TEXTO
+
+.right_ {
+    width: 800px;
+    height: 350px;
+    border-radius: 60px;
+    border: 3px solid #1F3291;
+    padding: 0 3%;
+    padding-top: 3rem;
+}
+
+.left_ {
+    width: 800px;
+    height: 350px;
+    border-radius: 60px;
+    border-color: black;
+    border: 3px solid #1F3291;
+    padding: 0 3%;
+    padding-top: 3rem;
+}
+
+// ICONOS
+.left_::before{
+    content:'';
+    background: url(../../icons/intro1.svg) center center no-repeat;
+    display: block;
+    height: 7rem;
+    margin: 0 auto;
+}
+
+.right_::before{
+    content:'';
+    background: url(../../icons/intro2.svg) center center no-repeat;
+    display: block;
+    height: 7rem;
+    margin: 0 auto;
+}
+
+.desc_{
+    margin-top: 40px;
+}

@@ -15,25 +15,28 @@ body{
 }
 
 .accordion{
-    max-width: 800px;
-    margin-left: 500px;
+    max-width: 1200px;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 
 .accordion .contentBx{
     position: relative;
+    padding: 10px;
     margin: 10px 20px;
+    background: #fff;
+    color: #1F3291;
+    border-color: black;
+    border: 1px solid black;
 }
 
 .accordion .contentBx .label {
+    width: 100%;
+    margin-bottom: 0;
     position: relative;
-    padding: 10px;
-    background: #fff;
-    color: #1F3291;
-    font-style: bold;
     cursor: pointer;
-    border-color: black;
-    border: 1px solid black;
 }
 
 .accordion .contentBx .label::before{
@@ -51,14 +54,20 @@ body{
 
 .accordion .contentBx .content{
     position: relative;
-    background: #E1F3FF;
+    background: #fff;
     height: 0;
     overflow: hidden;
     transition: 0.5s;
     overflow-y: auto;
+
+    p{margin: 0;}
 }
 
 .accordion .contentBx.active .content{
-    height: 150px;
+    height: max-content;
     padding: 10px;
+}
+
+.separador {
+    display: inline;
 }

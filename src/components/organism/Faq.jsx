@@ -1,19 +1,82 @@
-import { Accordion } from "../atom/Accordion";
 import styles from "../../assets/scss/components/_faq.scss";
 
 export function Faq(){
     return(
         <div className="accordion">
-            <Accordion title="¿Qué significa EVA?" description="Emotional virtual assistant."/>
-            <Accordion title="¿Cómo nace EVA?" description="Debido a los problemas emocionales por el que gran número de personas pasan y como esto afecta en su estilo de vida, y nosotros queriendo cambiar dicha problemática." />
-            <Accordion title="¿Por qué EVA?" description="Con EVA queremos lograr mostrar el significado en el nombre y con estas siglas se logró, un asistente emocional virtual." />
-            <Accordion title="¿Cuál es el público objetivo?" description="Toda persona que quiera mejorar emocionalmente o necesite alguna ayuda emocional." />
-            <Accordion title="¿Cuáles son los objetivos de EVA?" description="Convertirnos en la aplicación web más concurrida por jóvenes y adultos para servir de ayuda emocional en menos de 1 año. Además de incentivar sobre el concepto de salud mental." />
-            <Accordion title="¿Cuáles son los servicios de EVA?" description="Dar soporte emocional por el chat. Brindar estadística de tus estados de ánimos. Mostrar un calendario de emociones. Recomendarte cosas que puedes potenciar. Ser parte de una comunidad con el mismo objetivo." />
-            <Accordion title="¿EVA reemplaza a un psicólogo?" description="No, lo que buscamos con EVA es querer complementar y auxiliar, más no ser un reemplazo de un psicólogo." />
-            <Accordion title="¿EVA es gratis? " description="Si, todos los servicios que tenga EVA son completamente gratis, solo necesitar registrar y ya podrás interactuar con las herramientas que brindamos." />
-            <Accordion title="¿EVA da tratamientos?" description="No, siempre recomendaremos ir con un psicólogo, EVA solo buscar orientar y motivar a personas a mejorar la inteligencia emocional." />
-            <Accordion title="¿EVA es un Bot que me da respuestas programadas?" description="No, pensando en ello decidimos usar machine learning que lo que hace es hacer que el Bot se adapte a partir de la información brindada por los usuarios." />
+            <div className="contentBx" onClick={(e)=> e.target.classList.toggle('active')}>
+                <label className="label">¿Qué significa EVA?</label>
+                <div className="content">
+                    <p>Emotional virtual assistant.</p>
+                </div>
+            </div>
+
+            <div className="contentBx" onClick={(e)=> e.target.classList.toggle('active')}>
+                <label className="label">¿Cómo nace EVA?</label>
+                <div className="content">
+                    <p>Debido a los problemas emocionales por el que gran número de personas pasan y como esto afecta en su estilo de vida, y nosotros queriendo cambiar dicha problemática.</p>
+                </div>
+            </div>
+
+            <div className="contentBx" onClick={(e)=> e.target.classList.toggle('active')}>
+                <div className="label">¿Por qué EVA?</div>
+                <div className="content">
+                    <p>Con EVA queremos lograr mostrar el significado en el nombre y con estas siglas se logró, un asistente emocional virtual.</p>
+                </div>
+            </div>
+            <div className="contentBx" onClick={(e)=> e.target.classList.toggle('active')}>
+                <div className="label">¿Cuál es el público objetivo?</div>
+                <div className="content">
+                    <p>Toda persona que quiera mejorar emocionalmente o necesite alguna ayuda emocional</p>
+                </div>
+            </div>
+
+            <div className="contentBx" onClick={(e)=> e.target.classList.toggle('active')}>
+                <div className="label">¿Cuáles son los objetivos de EVA?</div>
+                <div className="content">
+                    <p>Convertirnos en la aplicación web más concurrida por jóvenes y adultos para servir de ayuda emocional en menos de 1 año. Incentivar sobre el concepto de salud mental.</p>
+                </div>
+            </div>
+
+            <div className="contentBx" onClick={(e)=> e.target.classList.toggle('active')}>
+                <div className="label">¿Cuáles son los servicios de EVA?</div>
+                <div className="content">
+                    <ul>
+                        <li><p>- Dar soporte emocional por el chat.</p></li>
+                        <li><p>- Brindar estadística de tus estados de ánimos.</p></li>
+                        <li><p>- Mostrar un calendario de emociones.</p></li>
+                        <li><p>- Recomendarte cosas que puedes potenciar.</p></li>
+                        <li><p>- Ser parte de una comunidad con el mismo objetivo.</p></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div className="contentBx" onClick={(e)=> e.target.classList.toggle('active')}>
+                <div className="label">¿EVA reemplaza a un psicólogo?</div>
+                <div className="content">
+                    <p>No, lo que buscamos con EVA es querer complementar y auxiliar, más no ser un reemplazo de un psicólogo.</p>
+                </div>
+            </div>
+
+            <div className="contentBx" onClick={(e)=> e.target.classList.toggle('active')}>
+                <div className="label">¿EVA es gratis? </div>
+                <div className="content">
+                    <p>Si, todos los servicios que tenga EVA son completamente gratis, solo necesitar registrar y ya podrás interactuar con las herramientas que brindamos.</p>
+                </div>
+            </div>
+
+            <div className="contentBx" onClick={(e)=> e.target.classList.toggle('active')}>
+                <div className="label">¿EVA da tratamientos?</div>
+                <div className="content">
+                    <p>No, siempre recomendaremos ir con un psicólogo, EVA solo buscar orientar y motivar a personas a mejorar la inteligencia emocional.</p>
+                </div>
+            </div>
+
+            <div className="contentBx" onClick={(e)=> e.target.classList.toggle('active')}>
+                <div className="label">¿EVA es un Bot que me da respuestas programadas?</div>
+                <div className="content">
+                    <p>No, pensando en ello decidimos usar machine learning que lo que hace es hacer que el Bot se adapte a partir de la información brindada por los usuarios.</p>
+                </div>
+            </div>
         </div>
     );
 }
