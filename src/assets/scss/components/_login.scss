@@ -1,4 +1,4 @@
-.login {
+.auth {
   width: 100%;
   min-width: 370px;
   max-width: 1440px;
@@ -6,42 +6,18 @@
   margin: auto;
   display: grid;
   justify-content: center;
-  .login__item:first-child {
-    display: none;
-  }
-  .login__item {
+  .auth__item {
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    .login__item-img {
+    .auth__item-img {
       width: 70%;
     }
     .titulo {
       margin-bottom: 2rem;
       font-weight: 600;
-    }
-  }
-  .api-contenedor {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 0.5rem;
-    .api__item {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      margin: 0 0.2rem;
-      box-shadow: 1px 1px 2px gray;
-      cursor: pointer;
-      text-align: center;
-      img {
-        width: 35px;
-        height: 35px;
-        font-size: 10px;
-      }
     }
   }
   .link-password {
@@ -58,10 +34,59 @@
       color: $color-principal;
     }
   }
+}
+.login {
+  background-image: url("./../../images/bg_auth.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  .api-contenedor {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.5rem;
+    .api__item {
+      width: 35px;
+      height: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      margin: 0 0.2rem;
+      box-shadow: 1px 1px 2px gray;
+      cursor: pointer;
+      text-align: center;
+      img {
+        width: 25px;
+        height: 25px;
+        font-size: 10px;
+      }
+      &:first-child {
+        background-color: $color-google;
+      }
+      &:last-child {
+        background-color: $color-facebook;
+      }
+    }
+
+    @media screen and (min-width: 870px) {
+      grid-template-columns: 1fr 1fr;
+      .auth__item:first-child {
+        display: flex;
+      }
+    }
+  }
+}
+
+.registro {
+  .auth__item:last-child {
+    background-color: red;
+    display: none;
+  }
 
   @media screen and (min-width: 870px) {
     grid-template-columns: 1fr 1fr;
-    .login__item:first-child {
+    .auth__item:last-child {
       display: flex;
     }
   }

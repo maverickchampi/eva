@@ -1,12 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import IconoFb from "./../assets/icons/fb_logo.svg";
-import IconoGoogle from "./../assets/icons/google_logo.png";
 import ImagenLogin from "./../assets/images/ig_login.svg";
 
-const Login = () => {
+const Registro = () => {
   return (
-    <div className="login auth">
+    <div className="registro auth">
       <div className="auth__item">
         <img src={ImagenLogin} alt="" className="auth__item-img" />
       </div>
@@ -33,21 +31,13 @@ const Login = () => {
         </form>
         <p className="link-registro">
           ¿No tienes una cuenta?
-          <Link to="/registro" className="link__item">
+          <Link to="#" className="link__item">
             Registrar
           </Link>
         </p>
-        <div className="api-contenedor">
-          <div className="api__item">
-            <img src={IconoGoogle} alt="icono de google" />
-          </div>
-          <div className="api__item">
-            <img src={IconoFb} alt="icono de facebook" />
-          </div>
-        </div>
       </div>
     </div>
   );
 };
 
-export default Login;
+export default Registro;
