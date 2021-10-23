@@ -1,7 +1,6 @@
 .auth {
   width: 100%;
   min-width: 370px;
-  max-width: 1440px;
   min-height: 100vh;
   margin: auto;
   display: grid;
@@ -9,6 +8,7 @@
   .auth__item {
     height: 100%;
     display: flex;
+    padding: 1rem 0;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -38,7 +38,12 @@
 .login {
   background-image: url("./../../images/bg_auth.png");
   background-repeat: no-repeat;
+  background-position-x: left;
+  background-position-y: bottom;
   background-size: contain;
+  .auth__item:first-child {
+    display: none;
+  }
   .api-contenedor {
     width: 100%;
     display: flex;
@@ -68,22 +73,42 @@
         background-color: $color-facebook;
       }
     }
-
-    @media screen and (min-width: 870px) {
-      grid-template-columns: 1fr 1fr;
-      .auth__item:first-child {
-        display: flex;
-      }
+  }
+  @media screen and (min-width: 870px) {
+    grid-template-columns: 1fr 1fr;
+    .auth__item:first-child {
+      display: flex;
     }
   }
 }
 
 .registro {
+  position: relative;
+
+  &::before{
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
+    background-image: url("./../../images/bg_auth.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-x: left;
+    background-position-y: bottom;
+    transform: rotateY(180deg);
+  }
   .auth__item:last-child {
-    background-color: red;
     display: none;
   }
-
+  .form-contenedor{
+    width: 350px;
+    .grupo-input{
+      width: 100%;
+      margin: 1rem 0.5rem;
+    }
+  }
   @media screen and (min-width: 870px) {
     grid-template-columns: 1fr 1fr;
     .auth__item:last-child {

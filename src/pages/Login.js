@@ -15,7 +15,7 @@ const Login = () => {
         <form className="form-contenedor">
           <div className="grupo-input">
             <i className="fas fa-user"></i>
-            <input type="text" name="correo" id="correo" value="madeliyricra" />
+            <input type="text" name="correo" id="correo" placeholder="correo" />
           </div>
           <div className="grupo-input">
             <i className="fas fa-lock"></i>
@@ -23,7 +23,7 @@ const Login = () => {
               type="password"
               name="contrasenia"
               id="contrasenia"
-              value="12345687"
+              placeholder="contraseña"
             />
           </div>
           <Link to="#" className="link-password">
