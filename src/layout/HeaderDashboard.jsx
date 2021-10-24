@@ -5,7 +5,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 
 const HeaderDashboard = ({ usuario }) => {
   return (
-    <div className="headerDashboard-contenedor">
+    <header className="headerDashboard-contenedor">
       <div className="headerDashboard">
         <div className="logo">
           <Link to="/">
@@ -13,7 +13,11 @@ const HeaderDashboard = ({ usuario }) => {
           </Link>
         </div>
         <div className="informacion">
-          <NavDropdown title={usuario || ""} id="navbarScrollingDropdown">
+          <NavDropdown
+            title={usuario || ""}
+            id="navbarScrollingDropdown"
+            className="nav"
+          >
             <NavDropdown.Item href="">
               <Link to="/dashboard">Dashboard</Link>
             </NavDropdown.Item>
@@ -25,7 +29,7 @@ const HeaderDashboard = ({ usuario }) => {
           </NavDropdown>
         </div>
       </div>
-    </div>
+    </header>
   );
 };
 export default HeaderDashboard;

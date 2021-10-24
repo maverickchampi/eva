@@ -1,0 +1,105 @@
+.perfil{
+    height: 100vh;
+    background: $color-quinto;
+    .perfil-contenedor{
+        position: relative;
+        width: 100%;
+        max-width: 1000px;
+        height: calc(100vh - 50px);
+        max-height: 600px;
+        margin: auto;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        .perfil__item{
+            height: 100%;
+            position: static;
+            display: flex;
+            flex-direction: column;
+            .card{
+                margin: 0.5rem 0;
+                width: 100%;
+                border: none;
+                border-radius: 10px;
+                background-color: #ffffff82;
+            }
+            .card-informacion{
+                height: 100%;
+                .form-informacion{
+                    width: 80%;
+                    margin: auto;
+                    .titulo{
+                        font-weight: 600;
+                        margin-bottom: 1.5rem;
+                    }
+                    .boton-contenedor{
+                        margin-top: 1rem;
+                        width: 100%;
+                        text-align: right;
+                        button{
+                            width: 150px;
+                            height: 35px;
+                            border: 5px;
+                            font-size: 13px;
+                            text-align: center;
+                        }
+                    }
+                    .form-grupo{
+                        height: 40px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        p{
+                            margin: 0;
+                            width: 100%;
+                            font-size: 13px;
+                        }
+                        input, select{
+                            width: 200px;
+                            font-size: 13px;
+                            padding: 0 0.5rem;
+                            outline: none;
+                            border: none;
+                            border-bottom: 1px solid $color-input;
+                            background: transparent;
+                            &:focus{
+                                outline: none;
+                                border: none;
+                                border-bottom: 1px solid $color-input;
+                            }
+                        }
+                        input[type="date"]{
+                            width: 250px;
+                        }
+                        select{
+                            width: 250px;
+                        }
+                    }
+                }
+            }
+            .card-foto{
+                position: relative;
+                height: 40%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                .foto-preview{
+                    width: 180px;
+                    height: 180px;
+                    object-fit: cover;
+                    border-radius: 5px;
+                }
+                .foto-boton{
+                    position: absolute;
+                    width: 50px;
+                    height: 40px;
+                }
+            }
+            .card-permiso{
+                height: 60%;
+            }
+        }
+    }
+}

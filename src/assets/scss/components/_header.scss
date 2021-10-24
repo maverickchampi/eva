@@ -69,19 +69,31 @@ header {
 .headerDashboard-contenedor{
   width: 100%;
   height: 50px;
-  background-color: $color-cuarto;
+  background-color: $color-header;
   .headerDashboard{
     max-width: 1440px;
     height: 50px;
     margin: auto;
     padding: 0 1rem;
-    background-color: $color-cuarto;
+    background-color: $color-header;
     display: flex;
     align-items: center;
     justify-content: space-between;
     .logo{
       img{
         height: 30px;
+      }
+    }
+    .informacion{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 150px;
+      height: 30px;
+      background-color: aliceblue;
+      font-size: 13px;
+      .nav{
+
       }
     }
   }
