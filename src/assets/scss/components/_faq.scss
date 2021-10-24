@@ -4,8 +4,12 @@
   // max-width: 800px;
   // margin-left: 500px;
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 100%;
   margin: 20px 0;
+
+  @media screen and (min-width: 769px) {
+    grid-template-columns: 50% 50%;
+  }
 }
 
 .accordion .contentBx {

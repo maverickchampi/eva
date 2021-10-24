@@ -4,9 +4,9 @@ export function Card_left() {
   return (
     <div id="objetivos">
       <div className="wrapper_">
-        <img src={photo} alt="" />
+        <img src={photo} alt="" className="o-1" />
 
-        <div className="col_">
+        <div className="col_ o-2">
           <div className="left_">
             <p className="desc_">
               EVA (Emotional Virtual Assistant) es un proyecto creado con la

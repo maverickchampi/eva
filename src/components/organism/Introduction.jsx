@@ -10,12 +10,11 @@ export function Introduction() {
           <img src={icon} alt="company_Eva" />
           <p>¿QUIENES SOMOS?</p>
           <h1 className="description">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged.
+            Somos un grupo de chicos que busca crear una herramienta capaz de
+            ayudar a las demás personas que buscan aumentar su inteligencia
+            emocional. Nuestro bot es nuestro granito de arena en la sociedad,
+            ya que para seguir creciendo la salud mental es un factor
+            fundamental.
           </h1>
         </div>
         <div className="right">

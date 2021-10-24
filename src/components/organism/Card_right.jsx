@@ -26,7 +26,7 @@ export function Card_right() {
           </div>
         </div>
 
-        <img src={photo} alt="" />
+        <img src={photo} alt="" className="o-top" />
       </div>
     </div>
   );
