@@ -18,6 +18,8 @@ header {
   clear: both;
   content: "";
   display: table;
+  max-width: 1440px;
+  margin: 0 auto;
 }
 
 .menu {
@@ -66,7 +68,7 @@ header {
 }
 
 /*---------------header de daschboard---------------*/
-.headerDashboard-contenedor{
+.headerDashboard-contenedor {
   width: 100%;
   height: 50px;
   background-color: $color-header;
@@ -79,8 +81,8 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    .logo{
-      img{
+    .logo {
+      img {
         height: 30px;
       }
     }
@@ -97,7 +99,4 @@ header {
       }
     }
   }
-  
 }
-
-

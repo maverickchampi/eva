@@ -1,9 +1,17 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import logoEva from "./../assets/images/eva_logo.png";
 import NavDropdown from "react-bootstrap/NavDropdown";
 
 const HeaderDashboard = ({ usuario }) => {
+  let history = useHistory();
+
+  const signOut = () => {
+    sessionStorage.removeItem(btoa("user"));
+    history.push("/login");
+  };
+
   return (
     <header className="headerDashboard-contenedor">
       <div className="headerDashboard">
@@ -25,7 +33,7 @@ const HeaderDashboard = ({ usuario }) => {
               <Link to="/perfil">Perfil</Link>
             </NavDropdown.Item>
             <NavDropdown.Divider />
-            <NavDropdown.Item href="#action5">Cerrar sesión</NavDropdown.Item>
+            <NavDropdown.Item onClick={signOut}>Cerrar sesión</NavDropdown.Item>
           </NavDropdown>
         </div>
       </div>
