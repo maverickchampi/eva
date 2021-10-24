@@ -11,13 +11,13 @@ const Header = () => {
         <nav>
           <ul>
             <li>
-              <a href="#">¿QUE ES EVA?</a>
+              <a href="#nosotros">Nosotros</a>
             </li>
             <li>
-              <a href="#">OBJETIVOS</a>
+              <a href="#objetivos">Objetivos</a>
             </li>
             <li>
-              <a href="#">FAQ</a>
+              <a href="#faq">Faq</a>
             </li>
             {user() ? (
               <>
@@ -31,12 +31,12 @@ const Header = () => {
               <>
                 <li>
                   <button className="btnn">
-                    <Link to="/login">INICIAR SESIÓN</Link>
+                    <Link to="/login">Iniciar sesión</Link>
                   </button>
                 </li>
                 <li>
                   <button className="btn-outline">
-                    <Link to="/registro">REGÍSTRESE</Link>
+                    <Link to="/registro">Regístrese</Link>
                   </button>
                 </li>
               </>

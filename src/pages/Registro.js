@@ -14,7 +14,7 @@ const Registro = () => {
     contrasenia: null,
     estado: 1,
     alias: "",
-    sexo: null,
+    sexo: "S",
     calendarioAnimo: [],
     calendarioEmociones: [],
   });

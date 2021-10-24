@@ -27,10 +27,14 @@ const HeaderDashboard = ({ usuario }) => {
             className="nav"
           >
             <NavDropdown.Item href="">
-              <Link to="/dashboard">Dashboard</Link>
+              <Link to="/dashboard" className="dashboard-link">
+                Dashboard
+              </Link>
             </NavDropdown.Item>
             <NavDropdown.Item href="">
-              <Link to="/perfil">Perfil</Link>
+              <Link to="/perfil" className="dashboard-link">
+                Perfil
+              </Link>
             </NavDropdown.Item>
             <NavDropdown.Divider />
             <NavDropdown.Item onClick={signOut}>Cerrar sesión</NavDropdown.Item>
