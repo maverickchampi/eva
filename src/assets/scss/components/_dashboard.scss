@@ -1,0 +1,50 @@
+.dashboard{
+    height: 100vh;
+    background: $color-quinto;
+    .dashboard-contenedor{
+        position: relative;
+        width: 100%;
+        max-width: 1300px;
+        margin: auto;
+        height: calc(100vh - 50px);
+        max-height: 900px;
+        display: grid; 
+        padding: 1rem;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 1rem;
+        .dashboard__item{
+            position: static;
+            display: flex;
+            flex-direction: column;
+            .card{
+                margin: 0.5rem 0;
+                width: 100%;
+                border: none;
+                border-radius: 10px;
+                background-color: #FDFDFD;
+            }
+        }
+
+        @media screen and (min-width: 900px) {
+            grid-template-columns: repeat(3, 1fr);    
+            .card-resumen{
+                height: 30%;
+            }
+            .card-estadistica{
+                height: 40%;
+            }
+            .card-emocion{
+                height: 30%;
+            }
+            .card-publicacion{
+                height: 100%;
+            }
+            .card-calendario{
+                height: 50%;
+            }
+            .card-recomendacion{
+                height: 50%;
+            } 
+        }
+    }
+}
