@@ -1,0 +1,118 @@
+.auth {
+  width: 100%;
+  min-width: 370px;
+  min-height: 100vh;
+  margin: auto;
+  display: grid;
+  justify-content: center;
+  .auth__item {
+    height: 100%;
+    display: flex;
+    padding: 1rem 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .auth__item-img {
+      width: 70%;
+    }
+    .titulo {
+      margin-bottom: 2rem;
+      font-weight: 600;
+    }
+  }
+  .link-password {
+    width: 100%;
+    font-size: 13px;
+    text-align: right;
+    margin: 0 0 0.7rem 0;
+    color: $color-principal;
+  }
+  .link-registro {
+    font-size: 14px;
+    .link__item {
+      margin-left: 0.5rem;
+      color: $color-principal;
+    }
+  }
+}
+.login {
+  background-image: url("./../../images/bg_auth.png");
+  background-repeat: no-repeat;
+  background-position-x: left;
+  background-position-y: bottom;
+  background-size: contain;
+  .auth__item:first-child {
+    display: none;
+  }
+  .api-contenedor {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.5rem;
+    .api__item {
+      width: 35px;
+      height: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      margin: 0 0.2rem;
+      box-shadow: 1px 1px 2px gray;
+      cursor: pointer;
+      text-align: center;
+      img {
+        width: 25px;
+        height: 25px;
+        font-size: 10px;
+      }
+      &:first-child {
+        background-color: $color-google;
+      }
+      &:last-child {
+        background-color: $color-facebook;
+      }
+    }
+  }
+  @media screen and (min-width: 870px) {
+    grid-template-columns: 1fr 1fr;
+    .auth__item:first-child {
+      display: flex;
+    }
+  }
+}
+
+.registro {
+  position: relative;
+
+  &::before{
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
+    background-image: url("./../../images/bg_auth.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-x: left;
+    background-position-y: bottom;
+    transform: rotateY(180deg);
+  }
+  .auth__item:last-child {
+    display: none;
+  }
+  .form-contenedor{
+    width: 350px;
+    .grupo-input{
+      width: 100%;
+      margin: 1rem 0.5rem;
+    }
+  }
+  @media screen and (min-width: 870px) {
+    grid-template-columns: 1fr 1fr;
+    .auth__item:last-child {
+      display: flex;
+    }
+  }
+}

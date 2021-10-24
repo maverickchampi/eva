@@ -1,12 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400&display=swap");
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Lato', sans-serif;
+.accordion {
+  max-width: 800px;
+  margin-left: 500px;
 }
 
+<<<<<<< HEAD
 body{
     display: flex;
     justify-content: center;
@@ -37,21 +36,38 @@ body{
     margin-bottom: 0;
     position: relative;
     cursor: pointer;
+=======
+.accordion .contentBx {
+  position: relative;
+  margin: 10px 20px;
 }
 
-.accordion .contentBx .label::before{
-    content: '+';
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
-    font-size: 1.5em;
+.accordion .contentBx .label {
+  position: relative;
+  padding: 10px;
+  background: #fff;
+  color: #1f3291;
+  font-style: bold;
+  cursor: pointer;
+  border-color: black;
+  border: 1px solid black;
+>>>>>>> 627ed1e72bb308b585f089b2a6af79bc281ab61d
 }
 
-.accordion .contentBx.active .label::before{
-    content: '-';
+.accordion .contentBx .label::before {
+  content: "+";
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  font-size: 1.5em;
 }
 
+.accordion .contentBx.active .label::before {
+  content: "-";
+}
+
+<<<<<<< HEAD
 .accordion .contentBx .content{
     position: relative;
     background: #fff;
@@ -71,3 +87,18 @@ body{
 .separador {
     display: inline;
 }
+=======
+.accordion .contentBx .content {
+  position: relative;
+  background: #e1f3ff;
+  height: 0;
+  overflow: hidden;
+  transition: 0.5s;
+  overflow-y: auto;
+}
+
+.accordion .contentBx.active .content {
+  height: 150px;
+  padding: 10px;
+}
+>>>>>>> 627ed1e72bb308b585f089b2a6af79bc281ab61d

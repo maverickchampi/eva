@@ -1,5 +1,10 @@
-@import "./global";
+
+@import "~bootstrap/scss/bootstrap";
+
 @import "./variables";
+@import "./global";
 
 @import "./components/header";
 @import "./components/footer";
+@import "./components/auth";
+@import "./components/dashboard";
