@@ -9,7 +9,7 @@ import Header from "../layout/Header";
 
 const Inicio = () => {
   return (
-    <div>
+    <div className="inicio">
       <Header />
       <Carousel />
       <div className="inicio__content">

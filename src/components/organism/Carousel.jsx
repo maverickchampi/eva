@@ -7,13 +7,13 @@ export function Carousel(){
       <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
   <div className="carousel-inner">
     <div className="carousel-item active">
-      <img src={imga} className="d-block w-100" alt="LA PRIMERA INTELIGENCIA ARTIFICIAL ENTRENADA POR PROFESIONALES EN PERÚ" />
+      <img src={imga} className="d-block" alt="LA PRIMERA INTELIGENCIA ARTIFICIAL ENTRENADA POR PROFESIONALES EN PERÚ" />
     </div>
     <div className="carousel-item">
-      <img src={imgb} className="d-block w-100" alt="PORQUE QUEREMOS MEJORAR TU CALIDAD DE VIDA" />
+      <img src={imgb} className="d-block" alt="PORQUE QUEREMOS MEJORAR TU CALIDAD DE VIDA" />
     </div>
     <div className="carousel-item">
-      <img src={imgc} className="d-block w-100" alt="Y ESTAR CONTIGO CUANDO NOS NECESITES" />
+      <img src={imgc} className="d-block" alt="Y ESTAR CONTIGO CUANDO NOS NECESITES" />
     </div>
   </div>
   <a className="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
