@@ -1,5 +1,18 @@
 .inicio{
-    .carousel-inner{
+    .carousel{
+        max-height: 800px;
         height: calc(100vh - 50px);
+        .carousel-inner{
+            height: 100%;
+            .carousel-item{
+               height: 100%;
+            }
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
     }
+
 }

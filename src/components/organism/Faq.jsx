@@ -1,4 +1,3 @@
-import styles from "../../assets/scss/components/_faq.scss";
 
 export function Faq() {
   return (
