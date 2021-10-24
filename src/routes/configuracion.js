@@ -5,6 +5,9 @@ import Registro from "../pages/Registro";
 import Dashboard from "../pages/Dashboard";
 import Perfil from "../pages/Perfil";
 
+import { Redirect } from "react-router-dom";
+import { user } from "../constants/metodos";
+
 export const routes = [
   {
     path: "/",
@@ -14,17 +17,17 @@ export const routes = [
   {
     path: "/login",
     exact: true,
-    render: () => <Login />,
+    render: () => (user() ? <Redirect to="/dashboard" /> : <Login />),
   },
   {
     path: "/registro",
     exact: true,
-    render: () => <Registro />,
+    render: () => (user() ? <Redirect to="/dashboard" /> : <Registro />),
   },
   {
     path: "/dashboard",
     exact: true,
-    render: () => <Dashboard />,
+    render: () => (user() ? <Dashboard /> : <Redirect to="/login" />),
   },
   {
     path: "/perfil",

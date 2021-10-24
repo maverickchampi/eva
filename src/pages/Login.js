@@ -1,10 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import IconoFb from "./../assets/icons/fb_logo.svg";
 import IconoGoogle from "./../assets/icons/google_logo.png";
 import ImagenLogin from "./../assets/images/ig_login.svg";
+import swal from "sweetalert";
+import { postLogin } from "../services/login";
 
 const Login = () => {
+  let history = useHistory();
+  const [login, setLogin] = useState({ correo: null, contrasenia: null });
+
+  const submitLogin = (e) => {
+    e.preventDefault();
+
+    postLogin(JSON.stringify(login))
+      .then((response) => {
+        if (response.mensaje !== "Credenciales no válidas") {
+          console.log(response.correo);
+          sessionStorage.setItem(
+            btoa("user"),
+            btoa(JSON.stringify(response.correo))
+          );
+          history.push("/dashboard");
+        } else {
+          swal(
+            "Opps!",
+            "Credenciales inválidas, intentelo nuevamente",
+            "error"
+          );
+        }
+      })
+      .catch((error) =>
+        swal("Opps!", "Error al ingresar, intentelo nuevamente", "error")
+      );
+  };
+
   return (
     <div className="login auth">
       <div className="auth__item">
@@ -12,18 +43,29 @@ const Login = () => {
       </div>
       <div className="auth__item">
         <h2 className="titulo">Iniciar Sesión</h2>
-        <form className="form-contenedor">
+        <form className="form-contenedor" onSubmit={submitLogin}>
           <div className="grupo-input">
             <i className="fas fa-user"></i>
-            <input type="text" name="correo" id="correo" placeholder="correo" />
+            <input
+              type="email"
+              name="correo"
+              id="correo"
+              placeholder="correo"
+              required
+              onChange={(e) => setLogin({ ...login, correo: e.target.value })}
+            />
           </div>
           <div className="grupo-input">
             <i className="fas fa-lock"></i>
             <input
               type="password"
               name="contrasenia"
+              onChange={(e) =>
+                setLogin({ ...login, contrasenia: e.target.value })
+              }
               id="contrasenia"
               placeholder="contraseña"
+              required
             />
           </div>
           <Link to="#" className="link-password">

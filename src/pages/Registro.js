@@ -1,13 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import swal from "sweetalert";
+import { postRegister } from "../services/login";
 import ImagenRegistro from "./../assets/images/ig_registro.svg";
 
 const Registro = () => {
+  const [user, setUser] = useState({
+    nombre: null,
+    apaterno: null,
+    amaterno: null,
+    fechaNacimiento: null,
+    correo: null,
+    contrasenia: null,
+    estado: 1,
+    alias: "",
+    sexo: null,
+    calendarioAnimo: [],
+    calendarioEmociones: [],
+  });
+
+  const register = (e) => {
+    e.preventDefault();
+
+    postRegister(JSON.stringify(user))
+      .then((response) => {
+        swal("Éxito", "Registro completado", "success");
+        document.getElementById("form-registro").reset();
+      })
+      .catch((error) =>
+        swal("Opps!", "Error al registrar, intentelo nuevamente", "error")
+      );
+  };
+
   return (
     <div className="registro auth">
       <div className="auth__item">
         <h2 className="titulo">Registro</h2>
-        <form className="form-contenedor" method="post" action="">
+        <form
+          id="form-registro"
+          className="form-contenedor"
+          onSubmit={register}
+        >
           <div className="form__item">
             <div className="grupo-input">
               <i className="fas fa-signature"></i>
@@ -16,41 +49,50 @@ const Registro = () => {
                 name="nombre"
                 id="nombre"
                 placeholder="nombre"
-                requerid="true"
-                autocomplete="nope"
+                required
+                minLength="2"
+                maxLength="30"
+                onChange={(e) => setUser({ ...user, nombre: e.target.value })}
               />
             </div>
             <div className="grupo-input">
               <i className="fas fa-signature"></i>
               <input
                 type="text"
-                name="apellido"
-                id="apellido"
-                placeholder="apellido"
-                requerid="true"
-                autocomplete="nope"
+                name="apaterno"
+                id="apaterno"
+                placeholder="apaterno"
+                minLength="2"
+                maxLength="30"
+                onChange={(e) => setUser({ ...user, apaterno: e.target.value })}
+                required
               />
             </div>
           </div>
           <div className="form__item">
             <div className="grupo-input">
-              <i className="fas fa-calendar-day"></i>
+              <i className="fas fa-signature"></i>
               <input
-                type="date"
-                name="fecha_nacimiento"
-                id="fecha_nacimiento"
-                requerid="true"
+                type="text"
+                name="amaterno"
+                id="amaterno"
+                minLength="2"
+                maxLength="30"
+                onChange={(e) => setUser({ ...user, amaterno: e.target.value })}
+                placeholder="amaterno"
+                required
               />
             </div>
             <div className="grupo-input">
-              <i className="fas fa-id-card"></i>
+              <i className="fas fa-calendar-day"></i>
               <input
-                type="text"
-                name="dni"
-                id="dni"
-                placeholder="dni"
-                requerid="true"
-                autocomplete="nope"
+                type="date"
+                name="fechaNacimiento"
+                id="fechaNacimiento"
+                onChange={(e) =>
+                  setUser({ ...user, fechaNacimiento: e.target.value })
+                }
+                required
               />
             </div>
           </div>
@@ -61,9 +103,9 @@ const Registro = () => {
                 type="email"
                 name="correo"
                 id="correo"
+                onChange={(e) => setUser({ ...user, correo: e.target.value })}
                 placeholder="correo"
-                requerid="true"
-                autocomplete="nope"
+                required
               />
             </div>
           </div>
@@ -73,9 +115,14 @@ const Registro = () => {
               <input
                 type="password"
                 name="contrasenia"
+                minLength="4"
+                maxLength="12"
+                onChange={(e) =>
+                  setUser({ ...user, contrasenia: e.target.value })
+                }
                 id="contrasenia"
                 placeholder="contraseña"
-                requerid="true"
+                required
               />
             </div>
           </div>
