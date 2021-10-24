@@ -4,7 +4,7 @@ import photo from "../../assets/images/cardR.png";
 export function Card_right() {
     return (
         <div>
-            <div className="wrapper_">
+            <div className="wrapper_"> 
             
 
                 <div className="col_">
