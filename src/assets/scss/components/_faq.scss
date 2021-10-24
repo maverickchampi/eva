@@ -5,38 +5,6 @@
   margin-left: 500px;
 }
 
-<<<<<<< HEAD
-body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
-
-.accordion{
-    max-width: 1200px;
-    margin: auto;
-    margin-top: 50px;
-    margin-bottom: 50px;
-}
-
-
-.accordion .contentBx{
-    position: relative;
-    padding: 10px;
-    margin: 10px 20px;
-    background: #fff;
-    color: #1F3291;
-    border-color: black;
-    border: 1px solid black;
-}
-
-.accordion .contentBx .label {
-    width: 100%;
-    margin-bottom: 0;
-    position: relative;
-    cursor: pointer;
-=======
 .accordion .contentBx {
   position: relative;
   margin: 10px 20px;
@@ -51,7 +19,6 @@ body{
   cursor: pointer;
   border-color: black;
   border: 1px solid black;
->>>>>>> 627ed1e72bb308b585f089b2a6af79bc281ab61d
 }
 
 .accordion .contentBx .label::before {
@@ -67,27 +34,6 @@ body{
   content: "-";
 }
 
-<<<<<<< HEAD
-.accordion .contentBx .content{
-    position: relative;
-    background: #fff;
-    height: 0;
-    overflow: hidden;
-    transition: 0.5s;
-    overflow-y: auto;
-
-    p{margin: 0;}
-}
-
-.accordion .contentBx.active .content{
-    height: max-content;
-    padding: 10px;
-}
-
-.separador {
-    display: inline;
-}
-=======
 .accordion .contentBx .content {
   position: relative;
   background: #e1f3ff;
@@ -101,4 +47,3 @@ body{
   height: 150px;
   padding: 10px;
 }
->>>>>>> 627ed1e72bb308b585f089b2a6af79bc281ab61d

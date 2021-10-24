@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logoEva from "./../assets/images/eva_logo.png";
+import { user } from "../constants/metodos";
 
 const Header = () => {
   return (
@@ -18,16 +19,28 @@ const Header = () => {
             <li>
               <a href="#">FAQ</a>
             </li>
-            <li>
-              <button className="btnn">
-                <Link to="/login">INICIAR SESIÓN</Link>
-              </button>
-            </li>
-            <li>
-              <button className="btn-outline">
-                <Link to="/registro">REGÍSTRESE</Link>
-              </button>
-            </li>
+            {user() ? (
+              <>
+                <li>
+                  <button className="btnn">
+                    <Link to="/dashboard">Mi dashboard</Link>
+                  </button>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <button className="btnn">
+                    <Link to="/login">INICIAR SESIÓN</Link>
+                  </button>
+                </li>
+                <li>
+                  <button className="btn-outline">
+                    <Link to="/registro">REGÍSTRESE</Link>
+                  </button>
+                </li>
+              </>
+            )}
           </ul>
         </nav>
       </div>

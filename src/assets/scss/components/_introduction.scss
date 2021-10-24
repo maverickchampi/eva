@@ -1,47 +1,51 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@700;800;900&display=swap");
 
-
-.intro{
-    position: relative;
-    margin-top: 100px;
-    margin-bottom: 100px;
-    display: flex;
-    justify-content: space-between;
+.intro {
+  position: relative;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  display: flex;
+  justify-content: space-between;
 }
 
-.left{
-    margin-top: 100px;
-    position: relative;
+.left {
+  //   margin-top: 100px;
+  position: relative;
 }
 
-.left img{
-    margin-left: 400px;
-    width: 247px;
-    height: 247px;
+.left img {
+  //   margin-left: 400px;
+  //   width: 247px;
+  //   height: 247px;
 }
 
-.left p{
-    width: 400px;
-    margin-top: 20px;
-    text-align: center;
-    margin-left: 330px;
-    font-size: 40px;
-    font-style: bold;
-    text-align: center;
-    font-family: 'Poppins', sans-serif;
+.left p {
+  //   width: 400px;
+  margin-top: 20px;
+  text-align: center;
+  //   margin-left: 330px;
+  font-size: 40px;
+  font-style: bold;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
 }
 
-.left .description{
-    width: 400px;
-    font-size: 20px;
-    font-family: 'Lato', sans-serif;
-    text-align: center;
-    margin-left: 330px;
+.left .description {
+  //   width: 400px;
+  font-size: 20px;
+  font-family: "Lato", sans-serif;
+  text-align: center;
+  //   margin-left: 330px;
 }
 
-.right img{
-    margin-right: 200px;
-    width: 678px;
-    border-radius: 30px;
+.right img {
+  //   margin-right: 200px;
+  //   width: 678px;
+  border-radius: 30px;
+}
+
+.inicio__content {
+  max-width: 1440px;
+  margin: 0 auto;
 }

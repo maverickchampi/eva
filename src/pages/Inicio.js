@@ -11,11 +11,13 @@ const Inicio = () => {
   return (
     <div>
       <Header />
-      <Carousel />      
-      <Introduction />
-      <Card_left />
-      <Card_right />
-      <Faq />
+      <Carousel />
+      <div className="inicio__content">
+        <Introduction />
+        <Card_left />
+        <Card_right />
+        <Faq />
+      </div>
       <Footer />
     </div>
   );
