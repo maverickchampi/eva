@@ -4,7 +4,7 @@ import styles from "../../assets/scss/components/_introduction.scss";
 
 export function Introduction() {
   return (
-    <div>
+    <div id="nosotros">
       <div className="intro">
         <div className="left">
           <img src={icon} alt="company_Eva" />

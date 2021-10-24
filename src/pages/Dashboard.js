@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import HeaderDashboard from "../layout/HeaderDashboard";
 import emojiResumen from "./../assets/icons/emoji-resumen.png";
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
 
 const Dashboard = () => {
+  const [user, setUser] = useState(
+    JSON.parse(atob(sessionStorage.getItem(btoa("user")))) || {}
+  );
+
   return (
     <div className="dashboard">
-      <HeaderDashboard  usuario="Madeliy Ricra"/>
+      <HeaderDashboard usuario={`${user?.nombre} ${user?.apaterno}`} />
       <div className="dashboard-contenedor">
         <div className="dashboard__item">
           <div className=" card card-resumen">

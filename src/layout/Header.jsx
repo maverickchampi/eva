@@ -11,13 +11,13 @@ const Header = () => {
         <nav>
           <ul>
             <li>
-              <a href="#">¿QUE ES EVA?</a>
+              <a href="#nosotros">NOSOTROS</a>
             </li>
             <li>
-              <a href="#">OBJETIVOS</a>
+              <a href="#objetivos">OBJETIVOS</a>
             </li>
             <li>
-              <a href="#">FAQ</a>
+              <a href="#faq">FAQ</a>
             </li>
             {user() ? (
               <>

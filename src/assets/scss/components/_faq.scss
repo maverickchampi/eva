@@ -1,13 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400&display=swap");
 
 .accordion {
-  max-width: 800px;
-  margin-left: 500px;
+  // max-width: 800px;
+  // margin-left: 500px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  margin: 20px 0;
 }
 
 .accordion .contentBx {
   position: relative;
   margin: 10px 20px;
+  border-color: black;
+  border: 1px solid black;
+  cursor: pointer;
 }
 
 .accordion .contentBx .label {
@@ -17,11 +23,9 @@
   color: #1f3291;
   font-style: bold;
   cursor: pointer;
-  border-color: black;
-  border: 1px solid black;
 }
 
-.accordion .contentBx .label::before {
+.accordion .contentBx::before {
   content: "+";
   position: absolute;
   top: 50%;
@@ -30,8 +34,9 @@
   font-size: 1.5em;
 }
 
-.accordion .contentBx.active .label::before {
+.accordion .contentBx.active::before {
   content: "-";
+  top: 25px;
 }
 
 .accordion .contentBx .content {
@@ -44,6 +49,6 @@
 }
 
 .accordion .contentBx.active .content {
-  height: 150px;
+  height: max-content;
   padding: 10px;
 }
