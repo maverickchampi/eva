@@ -90,13 +90,32 @@ header {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 150px;
+      width: 160px;
       height: 30px;
       background-color: aliceblue;
       font-size: 13px;
+      color: black;
+      border-radius: 8px;
+      a{
+        text-decoration: none;
+        color: black;
+      }
       .nav{
 
       }
+    }
+    .dropdown-menu{
+      background-color: aliceblue;
+      font-size: 13px;
+      color: black;
+      transform: translate(-16px, 32px) !important;
+    }
+    .nav-link{
+      color: black;
+    }
+    .dropdown-toggle::after{
+      margin-left: 0.5rem;
+      color: black;
     }
   }
 }

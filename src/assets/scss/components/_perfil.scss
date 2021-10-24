@@ -23,7 +23,8 @@
                 width: 100%;
                 border: none;
                 border-radius: 10px;
-                background-color: #ffffff82;
+                box-shadow: 1px 1px 2px rgb(199, 197, 197);
+                background-color: #ffffffe3;
             }
             .card-informacion{
                 height: 100%;
@@ -85,16 +86,46 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                .foto-contenedor{
+                    text-align: center;
+                    .foto-input{
+                        width: 0.1px;
+                        height: 0.1px;
+                        opacity: 0;
+                        overflow: hidden;
+                        position: absolute;
+                        z-index: -1;
+                    }
+                    .foto-input + label{
+                        position: absolute;
+                        bottom: 5px;
+                        right: 90px;
+                        cursor: pointer;
+                    }
+                    .foto-input + label figure {
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 50%;
+                        background-color: $color-secundario;
+                        display: block;
+                        padding: 10px;
+                        margin: 0 auto 10px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                    .foto-input + label svg {
+                        width: 100%;
+                        height: 100%;
+                        fill: #fff;
+                    }
+                }
                 .foto-preview{
                     width: 180px;
                     height: 180px;
                     object-fit: cover;
-                    border-radius: 5px;
-                }
-                .foto-boton{
-                    position: absolute;
-                    width: 50px;
-                    height: 40px;
+                    border-radius: 50%;
+                    border: 1px solid black;
                 }
             }
             .card-permiso{

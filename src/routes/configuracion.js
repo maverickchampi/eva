@@ -32,7 +32,8 @@ export const routes = [
   {
     path: "/perfil",
     exact: true,
-    render: () => (user() ? <Perfil /> : <Redirect to="/login" />),
+    render: () => <Perfil />,
+    // render: () => (user() ? <Perfil /> : <Redirect to="/login" />),
   },
   { path: "", exact: false, render: () => <Error404 /> },
 ];
