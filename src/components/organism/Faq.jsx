@@ -76,19 +76,19 @@ export function Faq() {
           <div className="content">
             <ul>
               <li>
-                <p>- Dar soporte emocional por el chat.</p>
+                <p>Dar soporte emocional por el chat.</p>
               </li>
               <li>
-                <p>- Brindar estadística de tus estados de ánimos.</p>
+                <p>Brindar estadística de tus estados de ánimos.</p>
               </li>
               <li>
-                <p>- Mostrar un calendario de emociones.</p>
+                <p>Mostrar un calendario de emociones.</p>
               </li>
               <li>
-                <p>- Recomendarte cosas que puedes potenciar.</p>
+                <p>Recomendarte cosas que puedes potenciar.</p>
               </li>
               <li>
-                <p>- Ser parte de una comunidad con el mismo objetivo.</p>
+                <p>Ser parte de una comunidad con el mismo objetivo.</p>
               </li>
             </ul>
           </div>
