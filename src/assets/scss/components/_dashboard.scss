@@ -22,6 +22,69 @@
         border: none;
         border-radius: 10px;
         background-color: #fdfdfd;
+        .titulo {
+          width: 100%;
+          height: 30px;
+          padding: 1.5rem;
+          display: flex;
+          align-items: center;
+          font-size: 1rem;
+          i {
+            margin-right: 1rem;
+          }
+          h5 {
+            font-size: 1rem;
+            margin: 0;
+            padding: 0;
+          }
+        }
+      }
+      .card-publicacion {
+        .publicacion-nueva {
+          width: 90%;
+          height: max-content;
+          margin: 0.5rem auto 0 auto;
+          padding: 1rem;
+          background-color: #c5eef8;
+          border-radius: 0.5rem;
+          margin-top: 1rem;
+          margin-bottom: 1rem;
+          h5 {
+            font-size: 1rem;
+          }
+          form {
+            text-align: right;
+            textarea {
+              width: 100%;
+              height: 60px;
+              padding: 0.5rem;
+              outline: none;
+              border: none;
+              resize: none;
+            }
+            button {
+              margin: 0.2rem 0;
+              padding: 0.4rem 1rem;
+              font-size: 14px;
+              border: none;
+              background-color: $color-principal;
+              border-radius: 10px;
+              color: $color-quinto;
+              transition: 0.5s all;
+              &:hover {
+                background-color: #273eb1;
+              }
+            }
+          }
+        }
+        .nav-tabs {
+          width: 90%;
+          margin: auto;
+        }
+        .tab-content {
+          width: 90%;
+          margin: auto;
+        }
       }
     }
 

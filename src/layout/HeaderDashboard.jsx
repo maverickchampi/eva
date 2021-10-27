@@ -13,7 +13,7 @@ const HeaderDashboard = ({ usuario }) => {
   };
 
   return (
-    <header className="headerDashboard-contenedor">
+    <div className="headerDashboard-contenedor">
       <div className="headerDashboard">
         <div className="logo">
           <Link to="/">
@@ -41,7 +41,7 @@ const HeaderDashboard = ({ usuario }) => {
           </NavDropdown>
         </div>
       </div>
-    </header>
+    </div>
   );
 };
 export default HeaderDashboard;

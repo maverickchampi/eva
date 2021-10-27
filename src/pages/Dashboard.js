@@ -27,11 +27,13 @@ const Dashboard = () => {
           </div>
           <div className=" card card-estadistica">
             <div className="titulo">
+              <i class="fas fa-chart-bar"></i>
               <h5>Estadística</h5>
             </div>
           </div>
           <div className=" card card-emocion">
             <div className="titulo">
+              <i class="fas fa-question-circle"></i>
               <h5>¿Cómo te sientes hoy?</h5>
             </div>
           </div>
@@ -65,6 +67,7 @@ const Dashboard = () => {
           <div className=" card card-calendario"></div>
           <div className=" card card-recomendacion">
             <div className="titulo">
+              <i class="fas fa-paste"></i>
               <h5>Recomendaciones</h5>
             </div>
           </div>

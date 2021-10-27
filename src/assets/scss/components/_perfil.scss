@@ -1,136 +1,138 @@
-.perfil{
-    height: 100vh;
-    background: $color-quinto;
-    .perfil-contenedor{
-        position: relative;
+.perfil {
+  height: 100vh;
+  background: $color-quinto;
+  .perfil-contenedor {
+    position: relative;
+    width: 100%;
+    max-width: 1300px;
+    height: calc(100vh - 50px);
+    max-height: 900px;
+    padding: 1rem;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    .perfil__item {
+      height: 100%;
+      position: static;
+      display: flex;
+      flex-direction: column;
+      .card {
+        margin: 0.5rem 0;
         width: 100%;
-        max-width: 1000px;
-        height: calc(100vh - 50px);
-        max-height: 600px;
-        margin: auto;
-        display: grid;
-        grid-template-columns: 2fr 1fr;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 1px 1px 2px rgb(199, 197, 197);
+        background-color: #ffffffe3;
+      }
+      .card-informacion {
+        height: 100%;
+        .form-informacion {
+          width: 80%;
+          margin: auto;
+          .titulo {
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+          }
+          .boton-contenedor {
+            margin-top: 1rem;
+            width: 100%;
+            text-align: right;
+            button {
+              width: 150px;
+              height: 35px;
+              border: 5px;
+              font-size: 13px;
+              text-align: center;
+            }
+          }
+          .form-grupo {
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            p {
+              margin: 0;
+              width: 100%;
+              font-size: 13px;
+            }
+            input,
+            select {
+              width: 200px;
+              font-size: 13px;
+              padding: 0 0.5rem;
+              outline: none;
+              border: none;
+              border-bottom: 1px solid $color-input;
+              background: transparent;
+              &:focus {
+                outline: none;
+                border: none;
+                border-bottom: 1px solid $color-input;
+              }
+            }
+            input[type="date"] {
+              width: 250px;
+            }
+            select {
+              width: 250px;
+            }
+          }
+        }
+      }
+      .card-foto {
+        position: relative;
+        height: 40%;
+        display: flex;
         align-items: center;
         justify-content: center;
-        gap: 1rem;
-        .perfil__item{
-            height: 100%;
-            position: static;
+        .foto-contenedor {
+          text-align: center;
+          .foto-input {
+            width: 0.1px;
+            height: 0.1px;
+            opacity: 0;
+            overflow: hidden;
+            position: absolute;
+            z-index: -1;
+          }
+          .foto-input + label {
+            position: absolute;
+            bottom: 5px;
+            right: 90px;
+            cursor: pointer;
+          }
+          .foto-input + label figure {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: $color-secundario;
+            display: block;
+            padding: 10px;
+            margin: 0 auto 10px;
             display: flex;
-            flex-direction: column;
-            .card{
-                margin: 0.5rem 0;
-                width: 100%;
-                border: none;
-                border-radius: 10px;
-                box-shadow: 1px 1px 2px rgb(199, 197, 197);
-                background-color: #ffffffe3;
-            }
-            .card-informacion{
-                height: 100%;
-                .form-informacion{
-                    width: 80%;
-                    margin: auto;
-                    .titulo{
-                        font-weight: 600;
-                        margin-bottom: 1.5rem;
-                    }
-                    .boton-contenedor{
-                        margin-top: 1rem;
-                        width: 100%;
-                        text-align: right;
-                        button{
-                            width: 150px;
-                            height: 35px;
-                            border: 5px;
-                            font-size: 13px;
-                            text-align: center;
-                        }
-                    }
-                    .form-grupo{
-                        height: 40px;
-                        display: flex;
-                        align-items: center;
-                        justify-content: space-between;
-                        p{
-                            margin: 0;
-                            width: 100%;
-                            font-size: 13px;
-                        }
-                        input, select{
-                            width: 200px;
-                            font-size: 13px;
-                            padding: 0 0.5rem;
-                            outline: none;
-                            border: none;
-                            border-bottom: 1px solid $color-input;
-                            background: transparent;
-                            &:focus{
-                                outline: none;
-                                border: none;
-                                border-bottom: 1px solid $color-input;
-                            }
-                        }
-                        input[type="date"]{
-                            width: 250px;
-                        }
-                        select{
-                            width: 250px;
-                        }
-                    }
-                }
-            }
-            .card-foto{
-                position: relative;
-                height: 40%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                .foto-contenedor{
-                    text-align: center;
-                    .foto-input{
-                        width: 0.1px;
-                        height: 0.1px;
-                        opacity: 0;
-                        overflow: hidden;
-                        position: absolute;
-                        z-index: -1;
-                    }
-                    .foto-input + label{
-                        position: absolute;
-                        bottom: 5px;
-                        right: 90px;
-                        cursor: pointer;
-                    }
-                    .foto-input + label figure {
-                        width: 40px;
-                        height: 40px;
-                        border-radius: 50%;
-                        background-color: $color-secundario;
-                        display: block;
-                        padding: 10px;
-                        margin: 0 auto 10px;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                    }
-                    .foto-input + label svg {
-                        width: 100%;
-                        height: 100%;
-                        fill: #fff;
-                    }
-                }
-                .foto-preview{
-                    width: 180px;
-                    height: 180px;
-                    object-fit: cover;
-                    border-radius: 50%;
-                    border: 1px solid black;
-                }
-            }
-            .card-permiso{
-                height: 60%;
-            }
+            align-items: center;
+            justify-content: center;
+          }
+          .foto-input + label svg {
+            width: 100%;
+            height: 100%;
+            fill: #fff;
+          }
         }
+        .foto-preview {
+          width: 180px;
+          height: 180px;
+          object-fit: cover;
+          border-radius: 50%;
+          border: 1px solid black;
+        }
+      }
+      .card-permiso {
+        height: 60%;
+      }
     }
+  }
 }
