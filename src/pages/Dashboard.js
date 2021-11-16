@@ -3,6 +3,7 @@ import HeaderDashboard from "../layout/HeaderDashboard";
 import emojiResumen from "./../assets/icons/emoji-resumen.png";
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
+import { Chat } from "../components/atom/Chat";
 
 const Dashboard = () => {
   const [user, setUser] = useState(
@@ -73,6 +74,7 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+      <Chat />
     </div>
   );
 };
