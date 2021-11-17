@@ -63,7 +63,7 @@ const Dashboard = () => {
               <i class="fas fa-chart-bar"></i>
               <h5>Estadística</h5>
             </div>
-            <div className="card-content">
+            <div className="card-content graf">
               <div style={{ width: "80%", margin: "auto" }}>
                 <Line data={data} options={options} />
               </div>
