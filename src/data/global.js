@@ -1,18 +1,3 @@
-export const url = "http://localhost:8090/eva";
-export const MES_NOMBRE = [
-  "Enero",
-  "Febrero",
-  "Marzo",
-  "Abril",
-  "Mayo",
-  "Junio",
-  "Julio",
-  "Agosto",
-  "Septiembre",
-  "Octubre",
-  "Noviembre",
-  "Diciembre",
-];
 export const ESTADOS_ANIMOS = [
   {
     id: 1,

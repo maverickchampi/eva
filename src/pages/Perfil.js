@@ -150,7 +150,7 @@ const Perfil = () => {
         </div>
         <div className="perfil__item">
           <div className="card card-foto">
-            <img className="foto-preview" src={file.filepreview} />
+            <img src={user?.foto} alt={user?.nombre} className="foto-preview" />
             <div className="foto-contenedor">
               <input
                 type="file"

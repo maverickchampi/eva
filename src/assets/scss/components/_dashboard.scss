@@ -1,6 +1,6 @@
 .dashboard {
   height: 100vh;
-  background: $color-quinto;
+  // background: $color-quinto;
   .dashboard-contenedor {
     position: relative;
     width: 100%;
@@ -19,10 +19,14 @@
       .card {
         margin: 0.5rem 0;
         width: 100%;
-        border: none;
+        border: 1px solid #6c757d17;
         border-radius: 10px;
-        background-color: #fdfdfd;
+        background-color: #f7f7f7;
         .titulo {
+          background: #697ff1;
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
+          color: #fff;
           width: 100%;
           height: 30px;
           padding: 1.5rem;
@@ -38,8 +42,58 @@
             padding: 0;
           }
         }
+        .card-content {
+          ul {
+            width: 100%;
+            padding: 0 1rem;
+            margin: 0;
+            height: 150px;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            .card-estado {
+              filter: grayscale(100%);
+              transition: 0.5s all ease-in-out;
+              &:hover {
+                filter: none;
+              }
+              &.on {
+                filter: none;
+              }
+            }
+            li {
+              cursor: pointer;
+              text-decoration: none;
+              list-style: none;
+              img {
+                width: 60px;
+              }
+            }
+          }
+        }
+      }
+      .card-resumen {
+        height: 200px;
+        display: flex;
+        justify-content: center;
+      }
+      .card-estadistica {
+        height: 250px;
+      }
+      .card-emocion {
+        height: 200px;
+      }
+      .card-calendario {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 325px;
+      }
+      .card-recomendacion {
+        height: 325px;
       }
       .card-publicacion {
+        //smax-height: 1000px;
         .publicacion-nueva {
           width: 90%;
           height: max-content;
@@ -114,4 +168,44 @@
 .dashboard-link {
   display: block;
   width: 100%;
+}
+
+.content-box {
+  display: grid;
+  padding: 16px;
+  grid-template-columns: auto 1fr;
+  gap: 16px;
+  text-align: center;
+  align-items: center;
+
+  p {
+    margin: 0;
+  }
+}
+
+.content-box-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 16px;
+
+  select {
+    cursor: pointer;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.graf {
+  height: 100%;
+  display: flex;
+}
+.video {
+  width: 50px;
+  position: absolute;
+  border-radius: 50%;
+  margin-top: 60px;
+  margin-left: -28px;
 }
