@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import HeaderDashboard from "../layout/HeaderDashboard";
 import emojiResumen from "./../assets/icons/emoji-resumen.png";
 import Tabs from "react-bootstrap/Tabs";
@@ -8,6 +8,8 @@ import { ESTADOS_ANIMOS } from "./../data/global";
 import { Line } from "react-chartjs-2";
 
 const Dashboard = () => {
+  const [animo, setAnimo] = useState([0, 0, 0, 0, 0, 0]);
+
   const data = {
     labels: [
       "Julio",
@@ -20,7 +22,7 @@ const Dashboard = () => {
     datasets: [
       {
         label: "promedio estado ánimo",
-        data: [1, 3, 2, 1, 2, 2],
+        data: animo,
         fill: false,
         backgroundColor: "rgb(255, 99, 132)",
         borderColor: "rgba(255, 99, 132, 0.2)",
@@ -38,6 +40,77 @@ const Dashboard = () => {
     JSON.parse(atob(sessionStorage.getItem(btoa("user")))) || {}
   );
 
+  useEffect(() => {
+    let cantidad = [
+      { valor: 0, cantidad: 0 },
+      { valor: 0, cantidad: 0 },
+      { valor: 0, cantidad: 0 },
+      { valor: 0, cantidad: 0 },
+      { valor: 0, cantidad: 0 },
+      { valor: 0, cantidad: 0 },
+    ];
+
+    if (user.calendarioAnimo.length > 0) {
+      user.calendarioAnimo.forEach((element) => {
+        if (element.animo !== 0) {
+          switch (new Date(element.fecha).getMonth()) {
+            case 6:
+              cantidad[0].valor += element.animo;
+              cantidad[0].cantidad += 1;
+              break;
+            case 7:
+              cantidad[1].valor += element.animo;
+              cantidad[1].cantidad += 1;
+              break;
+            case 8:
+              cantidad[2].valor += element.animo;
+              cantidad[2].cantidad += 1;
+              break;
+            case 9:
+              cantidad[3].valor += element.animo;
+              cantidad[3].cantidad += 1;
+              break;
+            case 10:
+              cantidad[4].valor += element.animo;
+              cantidad[4].cantidad += 1;
+              break;
+            case 11:
+              cantidad[5].valor += element.animo;
+              cantidad[5].cantidad += 1;
+              break;
+          }
+        }
+      });
+
+      console.log(cantidad);
+
+      setAnimo([
+        cantidad[0].cantidad > 0
+          ? (cantidad[0].valor / cantidad[0].cantidad).toFixed(0)
+          : 0,
+        cantidad[1].cantidad > 0
+          ? (cantidad[1].valor / cantidad[1].cantidad).toFixed(0)
+          : 0,
+        cantidad[2].cantidad > 0
+          ? (cantidad[2].valor / cantidad[2].cantidad).toFixed(0)
+          : 0,
+        cantidad[3].cantidad > 0
+          ? (cantidad[3].valor / cantidad[3].cantidad).toFixed(0)
+          : 0,
+        cantidad[4].cantidad > 0
+          ? (cantidad[4].valor / cantidad[4].cantidad).toFixed(0)
+          : 0,
+        cantidad[5].cantidad > 0
+          ? (cantidad[5].valor / cantidad[5].cantidad).toFixed(0)
+          : null,
+      ]);
+
+      setTimeout(() => {
+        console.log(animo);
+      }, 0);
+    }
+  }, []);
+
   return (
     <div className="dashboard">
       <HeaderDashboard usuario={`${user?.nombre} ${user?.apaterno}`} />
@@ -52,15 +125,19 @@ const Dashboard = () => {
                 <p>En los ultimos dias John ha estado muy feliz ¡Sigue asi!</p>
               </div>
             </div>
-            <div>
-              <p>Has estado muy bien</p>
-              <p>Ánimos tu puedes</p>
-              <p>Hay personas que te quieren</p>
+            <div className="content-box-2">
+              <p>¿Cómo estás hoy?</p>
+              <select>
+                <option value="0">Seleccione</option>
+                <option value="3">Bien</option>
+                <option value="2">Normal</option>
+                <option value="1">Mal</option>
+              </select>
             </div>
           </div>
           <div className=" card card-estadistica">
             <div className="titulo">
-              <i class="fas fa-chart-bar"></i>
+              <i className="fas fa-chart-bar"></i>
               <h5>Estadística</h5>
             </div>
             <div className="card-content graf">

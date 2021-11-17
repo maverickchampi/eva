@@ -63,6 +63,8 @@
       }
       .card-resumen {
         height: 200px;
+        display: flex;
+        justify-content: center;
       }
       .card-estadistica {
         height: 250px;
@@ -164,6 +166,22 @@
     margin: 0;
   }
 }
+
+.content-box-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 16px;
+
+  select {
+    cursor: pointer;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
 .graf {
   height: 100%;
   display: flex;
