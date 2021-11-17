@@ -77,8 +77,9 @@ const Login = () => {
           );
           history.push("/dashboard");
         } else {
-          postRegister(JSON.stringify(user))
+          postRegister(JSON.stringify(usuario))
           .then((response) => {
+            console.log(response);
             postLogin(JSON.stringify({correo: usuario.correo, contrasenia: usuario.contrasenia}))
             .then((response) => {
               if (response.mensaje !== "Credenciales no válidas") {
