@@ -130,3 +130,16 @@
   display: block;
   width: 100%;
 }
+
+.content-box {
+  display: grid;
+  padding: 16px;
+  grid-template-columns: auto 1fr;
+  gap: 16px;
+  text-align: center;
+  align-items: center;
+
+  p {
+    margin: 0;
+  }
+}

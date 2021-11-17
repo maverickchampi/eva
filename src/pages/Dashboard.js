@@ -5,8 +5,35 @@ import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
 import { Chat } from "../components/atom/Chat";
 import { ESTADOS_ANIMOS } from "./../data/global";
+import { Line } from "react-chartjs-2";
 
 const Dashboard = () => {
+  const data = {
+    labels: [
+      "Julio",
+      "Agosto",
+      "Septiembre",
+      "Octubre",
+      "Noviembre",
+      "Diciembre",
+    ],
+    datasets: [
+      {
+        label: "promedio estado ánimo",
+        data: [1, 3, 2, 1, 2, 2],
+        fill: false,
+        backgroundColor: "rgb(255, 99, 132)",
+        borderColor: "rgba(255, 99, 132, 0.2)",
+      },
+    ],
+  };
+  const options = {
+    scales: {
+      y: {
+        beginAtZero: true,
+      },
+    },
+  };
   const [user, setUser] = useState(
     JSON.parse(atob(sessionStorage.getItem(btoa("user")))) || {}
   );
@@ -17,7 +44,7 @@ const Dashboard = () => {
       <div className="dashboard-contenedor">
         <div className="dashboard__item">
           <div className=" card card-resumen">
-            <div>
+            <div className="content-box">
               <div>
                 <img src={emojiResumen} />
               </div>
@@ -25,12 +52,21 @@ const Dashboard = () => {
                 <p>En los ultimos dias John ha estado muy feliz ¡Sigue asi!</p>
               </div>
             </div>
-            <div>mas contexto</div>
+            <div>
+              <p>Has estado muy bien</p>
+              <p>Ánimos tu puedes</p>
+              <p>Hay personas que te quieren</p>
+            </div>
           </div>
           <div className=" card card-estadistica">
             <div className="titulo">
               <i class="fas fa-chart-bar"></i>
               <h5>Estadística</h5>
+            </div>
+            <div className="card-content">
+              <div style={{ width: "80%", margin: "auto" }}>
+                <Line data={data} options={options} />
+              </div>
             </div>
           </div>
           <div className="card card-emocion">
