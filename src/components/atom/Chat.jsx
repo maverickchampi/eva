@@ -19,14 +19,18 @@ export function Chat() {
 
       const element = document.getElementById("chat");
 
-      if (element.children.length > 0) {
-        for (let i = 0; i < element.children.length; i++) {
-          element.removeChild(element.children[i]);
+      if (element !== null) {
+        if (element.children.length > 0) {
+          for (let i = 0; i < element.children.length; i++) {
+            element.removeChild(element.children[i]);
+          }
         }
       }
 
-      document.getElementById("chat").appendChild(t);
-    });
+      if (document.getElementById("chat") !== null) {
+        document.getElementById("chat").appendChild(t);
+      }
+    }, 0);
   }, []);
 
   return <div id="chat"></div>;
