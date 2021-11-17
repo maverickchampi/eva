@@ -4,7 +4,7 @@ import emojiResumen from "./../assets/icons/emoji-resumen.png";
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
 import { Chat } from "../components/atom/Chat";
-import { ESTADOS_ANIMOS } from "./../data/global";
+import { ESTADOS_ANIMOS } from "../constants/variables";
 
 const Dashboard = () => {
   const [user, setUser] = useState(

@@ -19,7 +19,7 @@
       .card {
         margin: 0.5rem 0;
         width: 100%;
-        border: none;
+        border: 1px solid #6c757d17;
         border-radius: 10px;
         background-color: #f7f7f7;
         .titulo {
@@ -44,17 +44,38 @@
         }
         .card-content {
           ul {
+            width: 100%;
+            padding: 0 1rem;
+            margin: 0;
+            height: 150px;
             display: flex;
+            justify-content: space-evenly;
+            align-items: center;
             li {
               text-decoration: none;
+              list-style: none;
               img {
-                width: 65px;
+                width: 60px;
               }
             }
           }
         }
       }
+      .card-resumen {
+        height: 200px;
+      }
+      .card-estadistica {
+        height: 250px;
+      }
+      .card-emocion {
+        height: 200px;
+      }
+      .card-calendario,
+      .card-recomendacion {
+        height: 325px;
+      }
       .card-publicacion {
+        //smax-height: 1000px;
         .publicacion-nueva {
           width: 90%;
           height: max-content;
