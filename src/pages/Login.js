@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import IconoFb from "./../assets/icons/fb_logo.svg";
@@ -10,6 +10,20 @@ import { postLogin } from "../services/login";
 const Login = () => {
   let history = useHistory();
   const [login, setLogin] = useState({ correo: null, contrasenia: null });
+
+  useEffect(() => {
+    if (document.getElementsByClassName("WACLauncher__Button").length !== 0) {
+      for (
+        let i = 0;
+        i < document.getElementsByClassName("WACLauncher__Button").length;
+        i++
+      ) {
+        document
+          .getElementsByClassName("WACLauncher__Button")
+          [i].classList.add("d-none");
+      }
+    }
+  }, []);
 
   const submitLogin = (e) => {
     e.preventDefault();

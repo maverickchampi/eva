@@ -1,6 +1,6 @@
 .dashboard {
   height: 100vh;
-  background: $color-quinto;
+  // background: $color-quinto;
   .dashboard-contenedor {
     position: relative;
     width: 100%;
@@ -21,8 +21,12 @@
         width: 100%;
         border: none;
         border-radius: 10px;
-        background-color: #fdfdfd;
+        background-color: #f7f7f7;
         .titulo {
+          background: #697ff1;
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
+          color: #fff;
           width: 100%;
           height: 30px;
           padding: 1.5rem;
@@ -36,6 +40,17 @@
             font-size: 1rem;
             margin: 0;
             padding: 0;
+          }
+        }
+        .card-content {
+          ul {
+            display: flex;
+            li {
+              text-decoration: none;
+              img {
+                width: 65px;
+              }
+            }
           }
         }
       }

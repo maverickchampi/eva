@@ -4,6 +4,7 @@ import emojiResumen from "./../assets/icons/emoji-resumen.png";
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
 import { Chat } from "../components/atom/Chat";
+import { ESTADOS_ANIMOS } from "./../data/global";
 
 const Dashboard = () => {
   const [user, setUser] = useState(
@@ -32,10 +33,21 @@ const Dashboard = () => {
               <h5>Estadística</h5>
             </div>
           </div>
-          <div className=" card card-emocion">
+          <div className="card card-emocion">
             <div className="titulo">
               <i class="fas fa-question-circle"></i>
               <h5>¿Cómo te sientes hoy?</h5>
+            </div>
+            <div className="card-content">
+              <ul>
+                {ESTADOS_ANIMOS.map((item, key) => {
+                  return (
+                    <li key={key}>
+                      <img src={item.src} alt={item.name} />
+                    </li>
+                  );
+                })}
+              </ul>
             </div>
           </div>
         </div>

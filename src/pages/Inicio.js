@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Card_left } from "../components/organism/Card_left";
 import { Card_right } from "../components/organism/Card_right";
 import { Carousel } from "../components/organism/Carousel";
@@ -8,6 +8,20 @@ import Footer from "../layout/Footer";
 import Header from "../layout/Header";
 
 const Inicio = () => {
+  useEffect(() => {
+    if (document.getElementsByClassName("WACLauncher__Button").length !== 0) {
+      for (
+        let i = 0;
+        i < document.getElementsByClassName("WACLauncher__Button").length;
+        i++
+      ) {
+        document
+          .getElementsByClassName("WACLauncher__Button")
+          [i].classList.add("d-none");
+      }
+    }
+  }, []);
+
   return (
     <div className="inicio">
       <Header />
