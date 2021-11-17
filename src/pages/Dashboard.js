@@ -6,6 +6,7 @@ import Tab from "react-bootstrap/Tab";
 import { Chat } from "../components/atom/Chat";
 import { ESTADOS_ANIMOS } from "./../data/global";
 import { Line } from "react-chartjs-2";
+import Calendario from "../components/molecule/Calendario";
 
 const Dashboard = () => {
   const [animo, setAnimo] = useState([0, 0, 0, 0, 0, 0]);
@@ -39,6 +40,10 @@ const Dashboard = () => {
   const [user, setUser] = useState(
     JSON.parse(atob(sessionStorage.getItem(btoa("user")))) || {}
   );
+  useEffect(() => {
+    let estado = document.querySelectorAll(".card-estado");
+    estado[0].classList.add("on");
+  }, []);
 
   useEffect(() => {
     let cantidad = [
@@ -155,7 +160,7 @@ const Dashboard = () => {
               <ul>
                 {ESTADOS_ANIMOS.map((item, key) => {
                   return (
-                    <li key={key}>
+                    <li key={key} className="card-estado">
                       <img src={item.src} alt={item.name} />
                     </li>
                   );
@@ -190,7 +195,9 @@ const Dashboard = () => {
           </div>
         </div>
         <div className="dashboard__item">
-          <div className=" card card-calendario"></div>
+          <div className=" card card-calendario">
+            <Calendario />
+          </div>
           <div className=" card card-recomendacion">
             <div className="titulo">
               <i class="fas fa-paste"></i>
