@@ -46,10 +46,15 @@ const Dashboard = () => {
   const [user, setUser] = useState(
     JSON.parse(atob(sessionStorage.getItem(btoa("user")))) || {}
   );
-  useEffect(() => {
-    let estado = document.querySelectorAll(".card-estado");
-    estado[0].classList.add("on");
-  }, []);
+
+  const elegirEmocion = (e) => {
+    let estado = document.getElementsByClassName("card-estado");
+    for (let i = 0; i < estado.length; i++) {
+      estado[i].classList.remove("on");
+    }
+
+    e.target.classList.add("on");
+  };
 
   useEffect(() => {
     console.log(user);
@@ -158,6 +163,9 @@ const Dashboard = () => {
 
       case 1:
         return `Hola ${name}, estos últimos días has estado fatal, porfavor te recomiendo seguir los consejos o hablar con EVA `;
+
+      default:
+        return `Hola ${name}, es hora de completar tus registros, cuéntame ¿como vas hoy?`;
     }
   };
   // console.log(fechaHoy);
@@ -211,10 +219,10 @@ const Dashboard = () => {
                 <video
                   className="video"
                   src={video}
-                  autoplay="autoplay"
+                  autoPlay="autoplay"
                   muted="muted"
                   loop="loop"
-                  playsinline=""
+                  playsInline=""
                   type="video/mp4"
                 ></video>
               </div>
@@ -272,7 +280,11 @@ const Dashboard = () => {
               <ul>
                 {ESTADOS_ANIMOS.map((item, key) => {
                   return (
-                    <li key={key} className="card-estado">
+                    <li
+                      key={key}
+                      className="card-estado"
+                      onClick={(e) => elegirEmocion(e)}
+                    >
                       <img src={item.src} alt={item.name} />
                     </li>
                   );

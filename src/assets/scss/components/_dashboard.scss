@@ -54,6 +54,11 @@
             .card-estado {
               filter: grayscale(100%);
               transition: 0.5s all ease-in-out;
+
+              img {
+                pointer-events: none;
+              }
+
               &:hover {
                 filter: none;
               }
