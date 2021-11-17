@@ -5,7 +5,8 @@ import IconoFb from "./../assets/icons/fb_logo.svg";
 import IconoGoogle from "./../assets/icons/google_logo.png";
 import ImagenLogin from "./../assets/images/ig_login.svg";
 import swal from "sweetalert";
-import { postLogin } from "../services/login";
+import { postLogin, postRegister } from "../services/login";
+import GoogleLogin from "react-google-login";
 
 const Login = () => {
   let history = useHistory();
@@ -35,6 +36,69 @@ const Login = () => {
         swal("Opps!", "Error al ingresar, intentelo nuevamente", "error")
       );
   };
+
+  const responseGoogle = (user) => {
+    const usuario = {
+      nombre: user.profileObj.givenName,
+      apaterno: user.profileObj.familyName,
+      amaterno: user.profileObj.familyName,
+      fechaNacimiento: null,
+      correo: user.profileObj.email,
+      contrasenia: user.profileObj.email,
+      estado: 1,
+      alias: "",
+      sexo: "S",
+      foto: user.profileObj.imageUrl,
+      calendarioAnimo: [],
+      calendarioEmociones: [],
+    }
+
+    postLogin(JSON.stringify({correo: usuario.correo, contrasenia: usuario.contrasenia}))
+      .then((response) => {
+        if (response.mensaje !== "Credenciales no válidas") {
+          console.log(response.correo);
+          sessionStorage.setItem(
+            btoa("user"),
+            btoa(JSON.stringify(response.correo))
+          );
+          history.push("/dashboard");
+        } else {
+          postRegister(JSON.stringify(user))
+          .then((response) => {
+            postLogin(JSON.stringify({correo: usuario.correo, contrasenia: usuario.contrasenia}))
+            .then((response) => {
+              if (response.mensaje !== "Credenciales no válidas") {
+                console.log(response.correo);
+                sessionStorage.setItem(
+                  btoa("user"),
+                  btoa(JSON.stringify(response.correo))
+                );
+                history.push("/dashboard");
+              } else {
+                swal(
+                  "Opps!",
+                  "Credenciales inválidas, intentelo nuevamente",
+                  "error"
+                );
+              }
+            })
+            .catch((error) =>
+              swal("Opps!", "Error al ingresar, intentelo nuevamente", "error")
+            );
+      })
+      .catch((error) =>
+        swal("Opps!", "Error al registrar, intentelo nuevamente", "error")
+      );
+        }
+      })
+
+    
+  };
+
+  const errGoogle = () => {
+    swal("Opps!", "Error al ingresar con google, intentelo nuevamente", "error")
+  }
+  
 
   return (
     <div className="login auth">
@@ -83,6 +147,13 @@ const Login = () => {
           <div className="api__item">
             <img src={IconoGoogle} alt="icono de google" />
           </div>
+          <GoogleLogin
+            clientId="47155732943-hsta3sd0ae54v1dmncj53k9dbfujuh16.apps.googleusercontent.com"
+            buttonText="Login"
+            onSuccess={responseGoogle}
+            onFailure={() => errGoogle()}
+            cookiePolicy={'single_host_origin'}
+          />
           <div className="api__item">
             <img src={IconoFb} alt="icono de facebook" />
           </div>
