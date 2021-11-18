@@ -1,7 +1,12 @@
 import React from "react";
+import MenuLateral from "../components/atom/MenuLateral";
 
 const Dashboard = () => {
-  return <div></div>;
+  return (
+    <>
+      <MenuLateral />
+    </>
+  );
 };
 
 export default Dashboard;
