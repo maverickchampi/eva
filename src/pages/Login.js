@@ -160,15 +160,15 @@ const Login = () => {
         </p>
         <div className="api-contenedor">
           <div className="api__item">
-            <img src={IconoGoogle} alt="icono de google" />
-          </div>
           <GoogleLogin
             clientId="47155732943-hsta3sd0ae54v1dmncj53k9dbfujuh16.apps.googleusercontent.com"
-            buttonText="Login"
+            buttonText=""
             onSuccess={responseGoogle}
             onFailure={() => errGoogle()}
             cookiePolicy={'single_host_origin'}
           />
+          </div>
+          
           <div className="api__item">
             <img src={IconoFb} alt="icono de facebook" />
           </div>
