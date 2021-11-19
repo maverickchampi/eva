@@ -1,11 +1,20 @@
 import React, { useEffect, useRef, useState } from "react";
 import PopupEmocion from "../atom/PopupEmocion";
 import swal from "sweetalert";
+import Post from "../atom/Post";
 
-const RedSocial = ({ user, setUser, busqueda, setBusqueda }) => {
+const RedSocial = ({
+  user,
+  setUser,
+  busqueda,
+  setBusqueda,
+  newpost,
+  setNewPost,
+}) => {
   const [showStop, setShowStop] = useState(false);
   const [rec, setRec] = useState(null);
   const popup = useRef();
+  const newPost = useRef();
 
   const handleMicrophone = () => {
     if (!("webkitSpeechRecognition" in window)) {
@@ -17,8 +26,6 @@ const RedSocial = ({ user, setUser, busqueda, setBusqueda }) => {
       rec.addEventListener("result", (e) => {
         for (let i = e.resultIndex; i < e.results.length; i++) {
           setBusqueda(e.results[i][0].transcript);
-          document.getElementById("busqueda").value =
-            e.results[i][0].transcript;
         }
       });
       rec.start();
@@ -27,6 +34,20 @@ const RedSocial = ({ user, setUser, busqueda, setBusqueda }) => {
 
   const stopMicrophone = () => {
     rec.stop();
+  };
+
+  const toggleButtonPost = (e) => {
+    if (e.target.children[0].classList.contains("fa-plus")) {
+      e.target.children[0].classList.remove("fa-plus");
+      e.target.children[0].classList.add("fa-minus");
+      newPost.current.classList.add("div-active");
+      document.getElementById("cabecera").classList.remove("post-tamanio");
+    } else {
+      e.target.children[0].classList.add("fa-plus");
+      e.target.children[0].classList.remove("fa-minus");
+      newPost.current.classList.remove("div-active");
+      document.getElementById("cabecera").classList.add("post-tamanio");
+    }
   };
 
   useEffect(() => {
@@ -70,40 +91,52 @@ const RedSocial = ({ user, setUser, busqueda, setBusqueda }) => {
 
   return (
     <div className="red-social">
-      <div className="ultimas-emociones">
-        <ul>
-          {user.semanaEmociones.map((emocion, key) => (
-            <li
-              key={key}
-              className={key === 6 ? "active on" : "no-today"}
-              onClick={() => (key === 6 ? eligeEmocion() : "")}
-            >
-              <img src={urlEmocion(emocion)} alt="emocion" />
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className="search">
-        <i class="fas fa-search"></i>
-        <input
-          type="text"
-          placeholder="Buscar..."
-          id="busqueda"
-          onChange={(e) => setBusqueda(e.target.value)}
+      <div class="cabecera post-tamanio" id="cabecera">
+        <div className="ultimas-emociones">
+          <ul className="ul">
+            {user.semanaEmociones.map((emocion, key) => (
+              <li
+                key={key}
+                className={key === 6 ? "active on li" : "no-today li"}
+                onClick={() => (key === 6 ? eligeEmocion() : "")}
+              >
+                <img src={urlEmocion(emocion)} alt="emocion" />
+              </li>
+            ))}
+            <PopupEmocion user={user} setUser={setUser} reference={popup} />
+          </ul>
+        </div>
+        <div className="search">
+          <div className="content__search">
+            <i class="fas fa-search"></i>
+            <input
+              type="text"
+              placeholder="Buscar..."
+              onChange={(e) => setBusqueda(e.target.value)}
+              value={busqueda}
+            />
+            {showStop ? (
+              <button onClick={() => stopMicrophone()}>
+                <i class="fas fa-square"></i>
+              </button>
+            ) : (
+              <button onClick={() => handleMicrophone()}>
+                <i class="fas fa-microphone"></i>
+              </button>
+            )}
+          </div>
+          <button className="new-post" onClick={(e) => toggleButtonPost(e)}>
+            <i class="fas fa-plus"></i>
+          </button>
+        </div>
+        <Post
+          reference={newPost}
+          user={user}
+          newpost={newpost}
+          setNewPost={setNewPost}
         />
-        {showStop ? (
-          <button onClick={() => stopMicrophone()}>
-            <i class="fas fa-square"></i>
-          </button>
-        ) : (
-          <button onClick={() => handleMicrophone()}>
-            <i class="fas fa-microphone"></i>
-          </button>
-        )}
       </div>
-      <div>Escribe un nuevo post...</div>
-      <button>Publicar</button>
-      <PopupEmocion user={user} setUser={setUser} reference={popup} />
+      <div className="cuerpo"></div>
     </div>
   );
 };

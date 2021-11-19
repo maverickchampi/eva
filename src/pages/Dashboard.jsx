@@ -15,6 +15,7 @@ const Dashboard = () => {
     semanaEmociones: [2, 5, 2, 1, 3, 4, 0],
   });
   const [busqueda, setBusqueda] = useState("");
+  const [newpost, setNewPost] = useState("");
 
   return (
     <>
@@ -27,6 +28,8 @@ const Dashboard = () => {
               setUser={setUser}
               busqueda={busqueda}
               setBusqueda={setBusqueda}
+              newpost={newpost}
+              setNewPost={setNewPost}
             />
             <MiniPerfil user={user} />
           </div>
