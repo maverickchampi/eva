@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import PopupEmocion from "../atom/PopupEmocion";
 import swal from "sweetalert";
 import Post from "../atom/Post";
+import UseSearch from "../../hooks/UseSearch";
 
 const RedSocial = ({
   user,
@@ -10,11 +11,14 @@ const RedSocial = ({
   setBusqueda,
   newpost,
   setNewPost,
+  posts,
+  setPosts,
 }) => {
   const [showStop, setShowStop] = useState(false);
   const [rec, setRec] = useState(null);
   const popup = useRef();
   const newPost = useRef();
+  const { filteredResults } = UseSearch(posts, "contenido", busqueda);
 
   const handleMicrophone = () => {
     if (!("webkitSpeechRecognition" in window)) {
@@ -42,6 +46,7 @@ const RedSocial = ({
       e.target.children[0].classList.remove("fa-plus");
       e.target.children[0].classList.add("fa-minus");
       newPost.current.classList.add("div-active");
+      newPost.current.classList.remove("hidden-post");
       document.getElementById("cabecera").classList.remove("post-tamanio");
     } else {
       document.getElementById("cuerpo").classList.remove("posts-tamanio");
@@ -49,6 +54,7 @@ const RedSocial = ({
       e.target.children[0].classList.remove("fa-minus");
       newPost.current.classList.remove("div-active");
       document.getElementById("cabecera").classList.add("post-tamanio");
+      setTimeout(() => newPost.current.classList.add("hidden-post"), 200);
     }
   };
 
@@ -89,6 +95,10 @@ const RedSocial = ({
 
   const eligeEmocion = () => {
     popup.current.classList.toggle("popup-show");
+  };
+
+  const toggleComentarios = (id) => {
+    document.getElementById(id).classList.toggle("comentarios-show");
   };
 
   return (
@@ -136,17 +146,44 @@ const RedSocial = ({
           user={user}
           newpost={newpost}
           setNewPost={setNewPost}
+          posts={posts}
+          setPosts={setPosts}
         />
       </div>
       <div className="cuerpo" id="cuerpo">
-        {[0, 0, 0, 0, 0, 0, 0, 0, 0].map((post, key) => (
-          <div className="post">
-            <h3 className="title">María Julieta</h3>
-            <p className="contenido">
-              Ayer me robaron mi celular y me siento mal, ¿recomendaciones?
-            </p>
-          </div>
-        ))}
+        {filteredResults &&
+          filteredResults.map((post, key) => (
+            <div className="post" key={key}>
+              <h3 className="title">{post.title}</h3>
+              <p className="contenido">{post.contenido}</p>
+              <div className="botones">
+                <button className="like">
+                  {false ? (
+                    <i class="fas fa-heart"></i>
+                  ) : (
+                    <i class="far fa-heart"></i>
+                  )}{" "}
+                  {post.likes}
+                </button>
+                <button onClick={() => toggleComentarios(`comentario-${key}`)}>
+                  <i class="fas fa-comments"></i> Comentarios
+                </button>
+              </div>
+
+              <div className="comentarios" id={`comentario-${key}`}>
+                {post.comentarios && post.comentarios.length > 0 ? (
+                  post.comentarios.map((comentario, i) => (
+                    <div className="comentario">
+                      <h3 className="title">{comentario.title}</h3>
+                      <p className="contenido">{comentario.contenido}</p>
+                    </div>
+                  ))
+                ) : (
+                  <div className="comentario">Sin comentarios</div>
+                )}
+              </div>
+            </div>
+          ))}
       </div>
     </div>
   );

@@ -14,8 +14,57 @@ const Dashboard = () => {
     calendarioAnimos: [0, 1, 3, 2, 2, 3],
     semanaEmociones: [2, 5, 2, 1, 3, 4, 0],
   });
+  const [posts, setPosts] = useState([
+    {
+      id: 1,
+      title: "María Julieta - 18/11/2021",
+      contenido:
+        "Ayer me robaron mi celular y me siento mal, ¿recomendaciones?",
+      likes: 10,
+      comentarios: [
+        {
+          id: 1,
+          title: "Juan - 18/11/2021",
+          contenido: "Ayer me robaron mi celular igual f",
+        },
+        {
+          id: 2,
+          title: "Juana - 18/11/2021",
+          contenido: "pobre uu",
+        },
+      ],
+    },
+    {
+      id: 2,
+      title: "María Julieta - 18/11/2021",
+      contenido:
+        "Sufro de ansiedad y me da ataques de pánicos, que puedo hacer ayudaaaa",
+      likes: 2,
+    },
+    {
+      id: 3,
+      title: "María Julieta - 18/11/2021",
+      contenido:
+        "Ayer aprobé un curso super dificil, estuve algo ansioso pero estoy feliz",
+      likes: 5,
+    },
+    {
+      id: 4,
+      title: "María Julieta - 18/11/2021",
+      contenido:
+        "Estoy por cumplir un año con mi novia, que emoción, estoy muy nervioso",
+      likes: 14,
+    },
+    {
+      id: 5,
+      title: "María Julieta - 18/11/2021",
+      contenido:
+        "Mi perrito murió, me siento devastado, me deprimo, ando sin ganas, nose que hacer",
+      likes: 1,
+    },
+  ]);
   const [busqueda, setBusqueda] = useState("");
-  const [newpost, setNewPost] = useState("");
+  const [newpost, setNewPost] = useState({});
 
   return (
     <>
@@ -30,6 +79,8 @@ const Dashboard = () => {
               setBusqueda={setBusqueda}
               newpost={newpost}
               setNewPost={setNewPost}
+              posts={posts}
+              setPosts={setPosts}
             />
             <MiniPerfil user={user} />
           </div>

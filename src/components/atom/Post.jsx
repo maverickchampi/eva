@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import swal from "sweetalert";
 
-const Post = ({ reference, newpost, setNewPost, user }) => {
+const Post = ({ reference, newpost, setNewPost, user, posts, setPosts }) => {
   const [showStop, setShowStop] = useState(false);
   const [rec, setRec] = useState(null);
 
@@ -14,7 +14,7 @@ const Post = ({ reference, newpost, setNewPost, user }) => {
       rec.interim = true;
       rec.addEventListener("result", (e) => {
         for (let i = e.resultIndex; i < e.results.length; i++) {
-          setNewPost(e.results[i][0].transcript);
+          setNewPost({ ...newpost, contenido: e.results[i][0].transcript });
         }
       });
       rec.start();
@@ -26,12 +26,20 @@ const Post = ({ reference, newpost, setNewPost, user }) => {
   };
 
   const handleVoice = () => {
-    speechSynthesis.speak(new SpeechSynthesisUtterance(newpost));
+    speechSynthesis.speak(new SpeechSynthesisUtterance(newpost.contenido));
   };
 
   const publicarPost = (e) => {
     e.preventDefault();
-    console.log("Publicado...");
+    const post = {
+      id: 99,
+      title: user.name || "",
+      contenido: newpost.contenido || "",
+      likes: 0,
+    };
+    const newArray = [...posts];
+    newArray.unshift(post);
+    setPosts([...newArray]);
     swal("Publicado!", "Tu post se publico", "success");
     setNewPost("");
   };
@@ -55,13 +63,15 @@ const Post = ({ reference, newpost, setNewPost, user }) => {
   }, []);
 
   return (
-    <div className="post" ref={reference}>
+    <div className="post hidden-post" ref={reference}>
       <form onSubmit={(e) => publicarPost(e)}>
         <textarea
           id="contentpost"
           placeholder="Escribe un nuevo post..."
-          value={newpost}
-          onChange={(e) => setNewPost(e.target.value)}
+          value={newpost.contenido || ""}
+          onChange={(e) =>
+            setNewPost({ ...newpost, contenido: e.target.value })
+          }
         ></textarea>
         <div className="botones">
           <div class="audio">

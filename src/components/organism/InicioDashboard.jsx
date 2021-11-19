@@ -9,6 +9,8 @@ const InicioDashboard = ({
   setBusqueda,
   newpost,
   setNewPost,
+  posts,
+  setPosts,
 }) => {
   return (
     <div className="inicio-dashboard">
@@ -20,6 +22,8 @@ const InicioDashboard = ({
         setBusqueda={setBusqueda}
         newpost={newpost}
         setNewPost={setNewPost}
+        posts={posts}
+        setPosts={setPosts}
       />
     </div>
   );
