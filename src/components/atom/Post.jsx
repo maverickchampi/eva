@@ -25,6 +25,10 @@ const Post = ({ reference, newpost, setNewPost, user }) => {
     rec.stop();
   };
 
+  const handleVoice = () => {
+    speechSynthesis.speak(new SpeechSynthesisUtterance(newpost));
+  };
+
   const publicarPost = (e) => {
     e.preventDefault();
     console.log("Publicado...");
@@ -70,7 +74,7 @@ const Post = ({ reference, newpost, setNewPost, user }) => {
                 <i class="fas fa-microphone"></i>
               </button>
             )}
-            <button type="button">
+            <button type="button" onClick={() => handleVoice()}>
               <i class="fas fa-volume-down"></i>
             </button>
           </div>
