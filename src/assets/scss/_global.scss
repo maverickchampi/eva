@@ -20,3 +20,6 @@
 .post-tamanio {
   height: 158px !important;
 }
+.posts-tamanio {
+  max-height: calc(100vh - 367px) !important;
+}

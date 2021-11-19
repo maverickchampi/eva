@@ -38,11 +38,13 @@ const RedSocial = ({
 
   const toggleButtonPost = (e) => {
     if (e.target.children[0].classList.contains("fa-plus")) {
+      document.getElementById("cuerpo").classList.add("posts-tamanio");
       e.target.children[0].classList.remove("fa-plus");
       e.target.children[0].classList.add("fa-minus");
       newPost.current.classList.add("div-active");
       document.getElementById("cabecera").classList.remove("post-tamanio");
     } else {
+      document.getElementById("cuerpo").classList.remove("posts-tamanio");
       e.target.children[0].classList.add("fa-plus");
       e.target.children[0].classList.remove("fa-minus");
       newPost.current.classList.remove("div-active");
@@ -136,7 +138,16 @@ const RedSocial = ({
           setNewPost={setNewPost}
         />
       </div>
-      <div className="cuerpo"></div>
+      <div className="cuerpo" id="cuerpo">
+        {[0, 0, 0, 0, 0, 0, 0, 0, 0].map((post, key) => (
+          <div className="post">
+            <h3 className="title">María Julieta</h3>
+            <p className="contenido">
+              Ayer me robaron mi celular y me siento mal, ¿recomendaciones?
+            </p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
