@@ -14,30 +14,111 @@
     border-radius: 0;
     background: linear-gradient(to top, #ffffff 50%, $color-primario 50%);
     .card-content {
-      max-width: 1024px;
+      max-width: 1040px;
       margin: auto;
+      padding: 0 1rem;
       display: grid;
       background-color: transparent;
       border: none;
       grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1f;
       gap: 1rem;
       .card__item {
         background-color: $color-cuarto;
         color: $color-primario;
         border: $border;
         box-shadow: $box-shadow;
-        height: 230px;
-        padding: 1.2rem;
+        height: 100%;
+        padding: 1.1rem 1.2rem;
         border-radius: 1rem;
         text-align: center;
         i {
-          font-size: 3rem;
+          font-size: 2.5rem;
+          background-color: rgba(228, 223, 240, 0.685);
+          border-radius: 50%;
+          padding: 0.5rem;
+        }
+        p {
+          font-size: 14px;
         }
         h3 {
-          font-weight: 500;
-          margin: 0.2rem 0;
+          font-weight: 600;
+          margin: 1.2rem 0 0.3rem 0;
         }
       }
     }
   }
+
+  .nosotros {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-evenly;
+    img {
+      margin: auto;
+      width: 300px;
+      height: 350px;
+      object-fit: contain;
+    }
+    .nosotros-content {
+      h2 {
+        margin: 1rem 0;
+        font-weight: 600;
+      }
+      p {
+        font-weight: 300;
+        line-height: 27px;
+        text-align: left;
+      }
+    }
+
+    @media screen and (min-width: 660px) {
+      padding: 0 2rem;
+      .nosotros-content {
+        padding: 0 1rem 0 0;
+      }
+    }
+  }
+  .objetivos {
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 5rem;
+    .objetivos-principal {
+      padding: 0 1rem;
+    }
+    .objetivos-descripcion {
+      .objetivos-card {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        .image {
+          margin-right: 1rem;
+          width: 70px;
+          height: 70px;
+          background-color: rgba(145, 51, 253, 0.39);
+          color: rgb(145, 51, 253);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          i {
+            font-size: 2rem;
+          }
+        }
+        .content {
+          width: calc(100% - 80px);
+        }
+      }
+    }
+  }
+}
+.main {
+  max-width: 1040px;
+  margin: auto;
+  padding: 0 1rem;
 }

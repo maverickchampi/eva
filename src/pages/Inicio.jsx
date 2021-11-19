@@ -56,8 +56,74 @@ const Inicio = () => {
             <h3>Próposito</h3>
             <p>
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione
-              cumque asperiores ab cum inventore excepturi atque laborum
+              cumque asperiores ab cum inventore
             </p>
+          </div>
+        </div>
+      </section>
+      <section className="nosotros main">
+        <img alt="fondo" src="https://i.ibb.co/BLVMP60/eva-questions.png" />
+        <div className="nosotros-content">
+          <h2>¿Qué es Eva?</h2>
+          <p>
+            EVA (Emotional Virtual Assistant) es un proyecto creado con la
+            finalidad de poder brindarle al usuario una mejor evaluación con
+            registro de las emociones y estados de ánimo, y posibles respuestas
+            a los problemas emocionales que pueda estar teniendo.
+          </p>
+        </div>
+      </section>
+      <section className="objetivos main">
+        <div className="objetivos-principal">
+          <h2>¿Qué es Eva?</h2>
+          <p>
+            EVA (Emotional Virtual Assistant) es un proyecto creado con la
+            finalidad de poder brindarle al usuario una mejor evaluación con
+            registro de las emociones y estados de ánimo, y posibles respuestas
+            a los problemas emocionales que pueda estar teniendo, además, de
+            compartir con otras personas que estén pasando por la misma
+            situación.
+          </p>
+        </div>
+        <div className="objetivos-descripcion">
+          <div className="objetivos-card">
+            <div className="image">
+              <i class="fas fa-users"></i>
+            </div>
+            <div className="content">
+              <h3>Nombre</h3>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque
+                nihil, quo eum vitae unde laborum eaque eveniet explicabo ut
+                tempora voluptat
+              </p>
+            </div>
+          </div>
+          <div className="objetivos-card">
+            <div className="image">
+              <i class="fas fa-users"></i>
+            </div>
+            <div className="content">
+              <h3>Nombre</h3>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque
+                nihil, quo eum vitae unde laborum eaque eveniet explicabo ut
+                tempora voluptate
+              </p>
+            </div>
+          </div>
+          <div className="objetivos-card">
+            <div className="image">
+              <i class="fas fa-users"></i>
+            </div>
+            <div className="content">
+              <h3>Nombre</h3>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque
+                nihil, quo eum vitae unde laborum eaque eveniet explicabo ut
+                tempora voluptate
+              </p>
+            </div>
           </div>
         </div>
       </section>

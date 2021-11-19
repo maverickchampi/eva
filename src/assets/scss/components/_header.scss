@@ -17,6 +17,12 @@
       color: $color-cuarto;
       li {
         padding: 0 1rem;
+        a {
+          &.active {
+            padding-bottom: 5px;
+            border-bottom: 1px solid white;
+          }
+        }
       }
     }
     .botones {

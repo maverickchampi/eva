@@ -8,6 +8,9 @@ const HeaderInicio = () => {
         <img src={logo} alt="logo eva" />
         <ul className="nav">
           <li>
+            <a className="active">Inicio</a>
+          </li>
+          <li>
             <a>Nosotros</a>
           </li>
           <li>
