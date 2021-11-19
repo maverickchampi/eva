@@ -1,3 +1,7 @@
 @import "variables";
 @import "global";
-@import "components/menu";
+@import "./components/header";
+@import "./components/menu";
+
+@import "./components/inicio";
+@import "./components/carousel";

@@ -1,0 +1,50 @@
+.header-inicio {
+  //   background-color: #1e088c;
+  .header__contenedor {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    padding: 0.5rem 1rem;
+    align-items: center;
+    max-width: 1440px;
+    margin: auto;
+    img {
+      height: 40px;
+    }
+    .nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: $color-cuarto;
+      li {
+        padding: 0 1rem;
+      }
+    }
+    .botones {
+      display: flex;
+      div {
+        padding: 0.5rem 1rem;
+        border: 1px solid white;
+        border-radius: 1rem;
+        color: $color-cuarto;
+        margin-right: 1rem;
+        cursor: pointer;
+        &.on {
+          background-color: $color-cuarto;
+          color: black;
+          &:hover {
+            background: transparent;
+            color: $color-cuarto;
+          }
+        }
+        &.off {
+          background: transparent;
+          color: $color-cuarto;
+          &:hover {
+            background-color: $color-cuarto;
+            color: black;
+          }
+        }
+      }
+    }
+  }
+}
