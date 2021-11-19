@@ -1,0 +1,31 @@
+.popupEmocion {
+  position: absolute;
+  margin-top: -115px;
+  margin-left: 353px;
+  transition: 0.5s;
+  display: none;
+
+  ul {
+    li {
+      list-style: none;
+      cursor: pointer;
+
+      &:hover {
+        img {
+          filter: none;
+        }
+      }
+
+      img {
+        width: 50px;
+        border-radius: 50%;
+      }
+    }
+  }
+  .off {
+    filter: grayscale(100%);
+  }
+}
+.popup-show {
+  display: flex;
+}

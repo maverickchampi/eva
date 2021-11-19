@@ -8,4 +8,9 @@
   text-decoration: none;
   text-decoration: capitalize; //mayusculas en cada palabra
   transition: 0.2s linear;
+  font-family: "Poppins", sans-serif;
+}
+#WACContainer.WACContainer .WACVisuallyHidden {
+  width: 0 !important;
+  height: 0 !important;
 }
