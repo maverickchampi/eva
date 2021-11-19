@@ -14,3 +14,19 @@
   width: 0 !important;
   height: 0 !important;
 }
+.div-active {
+  opacity: 1 !important;
+  position: relative !important;
+  top: 0 !important;
+}
+
+.post-tamanio {
+  height: 158px !important;
+}
+.posts-tamanio {
+  max-height: calc(100vh - 367px) !important;
+}
+.hidden-post {
+  position: absolute;
+  top: -150px;
+}

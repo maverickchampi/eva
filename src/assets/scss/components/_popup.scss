@@ -1,24 +1,26 @@
 .popupEmocion {
   position: absolute;
-  margin-top: -115px;
-  margin-left: 353px;
+  margin-top: 60px;
+  margin-left: 345px;
   transition: 0.5s;
   display: none;
 
-  ul {
-    li {
+  .orden {
+    .orden-li {
       list-style: none;
       cursor: pointer;
 
       &:hover {
-        img {
+        .img {
           filter: none;
         }
       }
 
-      img {
+      .img {
         width: 50px;
         border-radius: 50%;
+        position: relative;
+        z-index: 999;
       }
     }
   }
