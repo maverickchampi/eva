@@ -95,13 +95,13 @@
 
       .recompensa {
         // background-color: rgb(255, 131, 30);
-        border: 1px solid #f36912;
+        border: 1px solid #ff7f32;
         border-radius: 15px;
 
         h3 {
           padding: 8px;
           border-radius: 15px 15px 0 0;
-          background-color: #f36912;
+          background-color: #ff7f32;
           color: $color-cuarto;
         }
 
@@ -116,11 +116,11 @@
           padding: 4px 8px;
           border-radius: 7px;
           cursor: pointer;
-          background-color: #f36912;
+          background-color: #ff7f32;
           color: #fff;
 
           &:hover {
-            background-color: #ca4f03;
+            background-color: #f36912;
           }
         }
       }
