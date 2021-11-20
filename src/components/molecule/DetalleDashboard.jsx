@@ -20,7 +20,6 @@ const DetalleDashboard = () => {
       <div className="calendario">
         <FullCalendar
           events={events}
-          initialDate="2021-11-30"
           initialView="dayGridMonth"
           plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
           headerToolbar={{
@@ -30,8 +29,15 @@ const DetalleDashboard = () => {
           }}
         />
       </div>
-      <div className="recomendaciones">
-        <div>recomendaciones</div>
+      <div className="recompensas">
+        <div className="recompensa">
+          <h3>Come rico en Rappi</h3>
+          <p>
+            Completa el regisro de tus emociones por 7 días y gana un cupón del
+            25%.
+          </p>
+          <button>Reclamar 0/7</button>
+        </div>
       </div>
     </div>
   );

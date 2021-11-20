@@ -37,11 +37,15 @@ const Post = ({ reference, newpost, setNewPost, user, posts, setPosts }) => {
       contenido: newpost.contenido || "",
       likes: 0,
     };
-    const newArray = [...posts];
-    newArray.unshift(post);
-    setPosts([...newArray]);
-    swal("Publicado!", "Tu post se publico", "success");
-    setNewPost("");
+    if (post.contenido !== null && post.contenido !== "") {
+      const newArray = [...posts];
+      newArray.unshift(post);
+      setPosts([...newArray]);
+      swal("Publicado!", "Tu post se publico", "success");
+      setNewPost("");
+    } else {
+      swal("Opps!", "No puedes dejar el post vacio", "error");
+    }
   };
 
   useEffect(() => {
