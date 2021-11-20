@@ -8,6 +8,40 @@
     border-radius: 18px;
     position: relative;
     z-index: 995;
+    display: grid;
+    grid-template-rows: 75% 25%;
+
+    .calendario {
+      padding: 16px;
+
+      a {
+        font-size: 12px;
+      }
+
+      h2 {
+        font-size: 22px;
+        margin-left: 16px;
+      }
+      .fc-toolbar-chunk {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+      .fc-header-toolbar {
+        text-align: center;
+      }
+      .fc-view-harn {
+        height: 322px;
+      }
+
+      .fc-daygrid-event {
+        border: none;
+        background-color: transparent;
+        font-size: 20px;
+      }
+    }
+
+    .recomendaciones {
+    }
   }
 
   .red-social {
