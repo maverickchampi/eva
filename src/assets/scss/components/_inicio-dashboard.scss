@@ -6,6 +6,197 @@
   .detalle-dashboard {
     box-shadow: 1px 0px 2px 1px rgb(0 0 0 / 25%);
     border-radius: 18px;
+    position: relative;
+    z-index: 995;
+    display: grid;
+    grid-template-rows: 75% 25%;
+
+    .calendario {
+      padding: 16px;
+
+      a {
+        font-size: 12px;
+      }
+
+      h2 {
+        font-size: 22px;
+        margin-left: 16px;
+      }
+      .fc-toolbar-chunk {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+      .fc-header-toolbar {
+        text-align: center;
+      }
+
+      .fc-daygrid-event {
+        border: none;
+        background-color: transparent;
+        font-size: 20px;
+      }
+      .fc .fc-scrollgrid-liquid {
+        height: 275px;
+
+        @media screen and (min-height: 610px) {
+          height: 325px;
+        }
+        @media screen and (min-height: 645px) {
+          height: 350px;
+        }
+        @media screen and (min-height: 670px) {
+          height: 350px;
+        }
+        @media screen and (min-height: 700px) {
+          height: 375px;
+        }
+        @media screen and (min-height: 750px) {
+          height: 400px;
+        }
+      }
+      .fc-scroller {
+        /* Tamaño del scroll */
+        &::-webkit-scrollbar {
+          width: 8px;
+        }
+
+        /* Estilos barra (thumb) de scroll */
+        &::-webkit-scrollbar-thumb {
+          background: #ccc;
+          border-radius: 4px;
+        }
+
+        &::-webkit-scrollbar-thumb:active {
+          background-color: #999999;
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+          background: #b3b3b3;
+          box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Estilos track de scroll */
+        &::-webkit-scrollbar-track {
+          background: #e1e1e1;
+          border-radius: 4px;
+        }
+
+        &::-webkit-scrollbar-track:hover,
+        &::-webkit-scrollbar-track:active {
+          background: #d4d4d4;
+        }
+      }
+    }
+
+    .recompensas {
+      padding: 24px 16px;
+      display: flex;
+      align-items: flex-end;
+
+      .rappi {
+        border: 1px solid #ff7f32;
+        h3 {
+          background-color: #ff7f32;
+          color: $color-cuarto;
+        }
+
+        button {
+          background-color: #ff7f32;
+          color: #fff;
+
+          &:hover {
+            background-color: #f36912;
+          }
+        }
+      }
+      .manzana {
+        border: 1px solid #1b703d;
+        h3 {
+          background-color: #1b703d;
+          color: $color-cuarto;
+        }
+
+        button {
+          background-color: #1b703d;
+          color: #fff;
+
+          &:hover {
+            background-color: #11572d;
+          }
+        }
+      }
+      .felipe {
+        border: 1px solid #1ea7ac;
+        h3 {
+          background-color: #1ea7ac;
+          color: $color-cuarto;
+        }
+
+        button {
+          background-color: #1ea7ac;
+          color: #fff;
+
+          &:hover {
+            background-color: #199094;
+          }
+        }
+      }
+      .pichincha {
+        border: 1px solid #fcdb25;
+        h3 {
+          background-color: #fcdb25;
+          color: $color-cuarto;
+        }
+
+        button {
+          background-color: #fcdb25;
+          color: #fff;
+
+          &:hover {
+            background-color: #c5ac1d;
+          }
+        }
+      }
+      .recompensa {
+        // background-color: rgb(255, 131, 30);
+        border-radius: 15px;
+
+        h3 {
+          padding: 8px;
+          border-radius: 15px 15px 0 0;
+        }
+
+        p {
+          padding: 4px 8px;
+          font-size: 14px;
+        }
+
+        button {
+          margin: 8px;
+          margin-top: 4px;
+          padding: 4px 8px;
+          border-radius: 7px;
+          cursor: pointer;
+        }
+
+        .botones {
+          display: flex;
+          justify-content: space-between;
+
+          div {
+            display: flex;
+
+            button {
+              margin: 8px 4px;
+
+              i {
+                pointer-events: none;
+              }
+            }
+          }
+        }
+      }
+    }
   }
 
   .red-social {

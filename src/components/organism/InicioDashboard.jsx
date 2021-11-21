@@ -11,10 +11,11 @@ const InicioDashboard = ({
   setNewPost,
   posts,
   setPosts,
+  recompensas,
 }) => {
   return (
     <div className="inicio-dashboard">
-      <DetalleDashboard />
+      <DetalleDashboard recompensas={recompensas} />
       <RedSocial
         user={user}
         setUser={setUser}

@@ -63,6 +63,44 @@ const Dashboard = () => {
       likes: 1,
     },
   ]);
+  const [recompensas, setRecompensas] = useState([
+    {
+      id: 1,
+      class: "rappi",
+      title: "Come rico en Rappi",
+      description:
+        "Completa el regisro de tus emociones por 7 días y gana un cupón del 25%.",
+      status: false,
+      descriptionStatus: "0/7",
+    },
+    {
+      id: 2,
+      class: "manzana",
+      title: "Disfruta saludablemente",
+      description:
+        "Publica 10 posts y gana un descuento del 10% en Manzana Verde",
+      status: true,
+      descriptionStatus: "10/10",
+    },
+    {
+      id: 3,
+      class: "felipe",
+      title: "Consultas en Clínica San Felipe",
+      description:
+        "Registra tu estado de ánimo por un mes y gana 50% de descuento en consultas",
+      status: false,
+      descriptionStatus: "10/30",
+    },
+    {
+      id: 4,
+      class: "pichincha",
+      title: "Pensando en ti",
+      description:
+        "Descuento del 2% en tasa de cambio a dólares con Pichincha al hacer 25 aportes",
+      status: false,
+      descriptionStatus: "2/25",
+    },
+  ]);
   const [busqueda, setBusqueda] = useState("");
   const [newpost, setNewPost] = useState({});
 
@@ -81,6 +119,7 @@ const Dashboard = () => {
               setNewPost={setNewPost}
               posts={posts}
               setPosts={setPosts}
+              recompensas={recompensas}
             />
             <MiniPerfil user={user} />
           </div>
