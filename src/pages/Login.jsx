@@ -80,7 +80,7 @@ const Login = () => {
               <div className="form-group">
                 <label htmlFor="contrasenia">Contraseña</label>
                 <input
-                  type="text"
+                  type="password"
                   name="contrasenia"
                   value={usuario.contrasenia}
                   required

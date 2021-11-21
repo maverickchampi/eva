@@ -61,11 +61,6 @@
     }
   }
 }
-.back-registro {
-  svg {
-    transform: rotate(180deg);
-  }
-}
 .formulario-content {
   margin: auto;
   background: #ffffffeb;
@@ -139,10 +134,13 @@
         font-weight: 500;
         margin-left: 5px;
         color: $color-footer-derecho;
+        &:hover {
+          color: #1d087a;
+          text-decoration: underline;
+        }
       }
     }
   }
-
   @media screen and (min-height: 800px) {
     min-height: 700px;
     max-width: 600px;

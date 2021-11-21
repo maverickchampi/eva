@@ -54,11 +54,15 @@ const Registro = () => {
     <div className="registro">
       <Background clase="back-registro" />
       <div className="registro-content">
-        <div className="registro__item"></div>
+        <img
+          src="https://i.ibb.co/RzdYqyB/eva.png"
+          alt="eva"
+          className="registro-img"
+        />
         <div className="registro__item">
           <div className="formulario-content">
             <h1 className="titulo">
-              <span>Registrarse</span>
+              <span>Registráte</span>
             </h1>
             <form onSubmit={(e) => handleRegistro(e)}>
               <div className="form-group">
@@ -124,11 +128,12 @@ const Registro = () => {
               <button type="submit">Registrar</button>
               <h5 className="titulo-registrar">
                 ¿Ya tienes una cuentas registrada?
-                <Link to="/login">Registrate</Link>
+                <Link to="/login">Ingresa</Link>
               </h5>
             </form>
           </div>
         </div>
+        <div className="registro__item"></div>
       </div>
     </div>
   );
