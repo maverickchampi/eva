@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import swal from "sweetalert";
 import Background from "../components/atom/Background";
-import { postLogin } from "../services/Usuario";
+import { postLogin, recuperaUsuario } from "../services/Usuario";
 
 const Login = () => {
   let history = useHistory();
@@ -30,6 +30,23 @@ const Login = () => {
       .catch((error) =>
         swal("Opps!", "Error al ingresar, intentelo nuevamente", "error")
       );
+  };
+
+  const handleRecuperar = () => {
+    swal({
+      title: "Ingrese su correo",
+      content: "input",
+    }).then((value) => {
+      if (value) {
+        recuperaUsuario(JSON.stringify({ correo: value }))
+          .then((response) => {
+            swal("Listo!", "Contraseña enviada a su correo", "success");
+          })
+          .catch((error) =>
+            swal("Opps!", "Error al enviar, intentelo nuevamente", "error")
+          );
+      }
+    });
   };
 
   return (
@@ -72,7 +89,11 @@ const Login = () => {
                   }
                 />
               </div>
-              <Link to="#" className="titulo-contrasenia">
+              <Link
+                to="#"
+                onClick={() => handleRecuperar()}
+                className="titulo-contrasenia"
+              >
                 ¿Has olvidado tu contraseña?
               </Link>
               <button>Ingresar</button>

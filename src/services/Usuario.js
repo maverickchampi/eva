@@ -67,3 +67,17 @@ export const getUsuario = async (id) => {
   const info = respuesta.json();
   return info;
 };
+
+export const recuperaUsuario = async (data) => {
+  const respuesta = await fetch(`${url}/usuario/recupera`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Methods": "*",
+    },
+    body: data,
+  });
+
+  const info = respuesta.json();
+  return info;
+};
