@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import swal from "sweetalert";
 import Background from "../components/atom/Background";
 import { postRegister } from "../services/Usuario";
@@ -48,57 +48,78 @@ const Registro = () => {
       <div className="registro-content">
         <div className="registro__item"></div>
         <div className="registro__item">
-          <h1>Registrarse</h1>
-          <form onSubmit={(e) => handleRegistro(e)}>
-            <input
-              type="text"
-              placeholder="Nombre"
-              name="nombre"
-              onChange={(e) =>
-                setUsuario({ ...usuario, nombre: e.target.value })
-              }
-            />
-            <input
-              type="text"
-              name="apellido_pa"
-              placeholder="Apellido paterno"
-              onChange={(e) =>
-                setUsuario({ ...usuario, apellidoPa: e.target.value })
-              }
-            />
-            <input
-              type="text"
-              name="apellido_ma"
-              placeholder="Apellido maaterno"
-              onChange={(e) =>
-                setUsuario({ ...usuario, apellidoMa: e.target.value })
-              }
-            />
-            <input
-              type="date"
-              name="fecha_nac"
-              onChange={(e) =>
-                setUsuario({ ...usuario, fechaNaci: e.target.value })
-              }
-            />
-            <input
-              type="email"
-              name="correo"
-              placeholder="Correo"
-              onChange={(e) =>
-                setUsuario({ ...usuario, correo: e.target.value })
-              }
-            />
-            <input
-              type="password"
-              name="contrasenia"
-              placeholder="Contraseña"
-              onChange={(e) =>
-                setUsuario({ ...usuario, contrasenia: e.target.value })
-              }
-            />
-            <input type="submit" value="Registrar" />
-          </form>
+          <div className="formulario-content">
+            <h1 className="titulo">
+              <span>Registrarse</span>
+            </h1>
+            <form onSubmit={(e) => handleRegistro(e)}>
+              <div className="form-group">
+                <label htmlFor="nombre">Nombre</label>
+                <input
+                  type="text"
+                  name="nombre"
+                  onChange={(e) =>
+                    setUsuario({ ...usuario, nombre: e.target.value })
+                  }
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="nombre">Apellido Paterno</label>
+                <input
+                  type="text"
+                  name="apellido_pa"
+                  onChange={(e) =>
+                    setUsuario({ ...usuario, apellidoPa: e.target.value })
+                  }
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="nombre">Apellido Materno</label>
+                <input
+                  type="text"
+                  name="apellido_ma"
+                  onChange={(e) =>
+                    setUsuario({ ...usuario, apellidoMa: e.target.value })
+                  }
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="fecha_nac">Fecha de nacimiento</label>
+                <input
+                  type="date"
+                  name="fecha_nac"
+                  onChange={(e) =>
+                    setUsuario({ ...usuario, fechaNaci: e.target.value })
+                  }
+                />
+              </div>
+              <div className="form-group">
+                <label name="correo"> Correo</label>
+                <input
+                  type="email"
+                  name="correo"
+                  onChange={(e) =>
+                    setUsuario({ ...usuario, correo: e.target.value })
+                  }
+                />
+              </div>
+              <div className="form-group">
+                <label name="contrasenia"> Contraseña</label>
+                <input
+                  type="password"
+                  name="contrasenia"
+                  onChange={(e) =>
+                    setUsuario({ ...usuario, contrasenia: e.target.value })
+                  }
+                />
+              </div>
+              <button type="submit">Registrar</button>
+              <h5 className="titulo-registrar">
+                ¿Ya tienes una cuentas registrada?
+                <Link to="/login">Registrate</Link>
+              </h5>
+            </form>
+          </div>
         </div>
       </div>
     </div>

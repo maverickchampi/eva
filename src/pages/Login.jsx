@@ -36,11 +36,14 @@ const Login = () => {
     <div className="login">
       <Background />
       <div className="login-content">
+        <img
+          src="https://i.ibb.co/RzdYqyB/eva.png"
+          alt="eva"
+          className="login-img"
+        />
+        <div className="login__item"></div>
         <div className="login__item">
-          <h2></h2>
-        </div>
-        <div className="login__item">
-          <div className="login-formulario">
+          <div className="formulario-content">
             <h1 className="titulo">
               <span>Iniciar Sesión</span>
             </h1>
@@ -50,7 +53,6 @@ const Login = () => {
                 <input
                   type="email"
                   name="correo"
-                  placeholder="Correo"
                   value={usuario.correo}
                   required
                   onChange={(e) =>
@@ -63,7 +65,6 @@ const Login = () => {
                 <input
                   type="text"
                   name="contrasenia"
-                  placeholder="Contraseña"
                   value={usuario.contrasenia}
                   required
                   onChange={(e) =>
@@ -71,16 +72,22 @@ const Login = () => {
                   }
                 />
               </div>
-              <Link to="#">¿Has olvidado tu contraseña?</Link>
+              <Link to="#" className="titulo-contrasenia">
+                ¿Has olvidado tu contraseña?
+              </Link>
               <button>Ingresar</button>
+              <h5 className="titulo-registrar">
+                ¿No cuentas con una cuenta?{" "}
+                <Link to="/registro">Registrate</Link>
+              </h5>
             </form>
             <div className="login-api">
               <div className="api__item google">
-                <i class="fab fa-google"></i>
+                <i className="fab fa-google"></i>
                 <p>Ingresar con Google</p>
               </div>
               <div className="api__item facebook">
-                <i class="fab fa-facebook"></i>
+                <i className="fab fa-facebook"></i>
                 <p>Ingresar con Facebook</p>
               </div>
             </div>
