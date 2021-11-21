@@ -29,10 +29,18 @@ const Registro = () => {
     ) {
       postRegister(JSON.stringify(usuario))
         .then((response) => {
-          swal("Éxito", "Registro completado", "success");
-          setTimeout(() => {
-            history.push("/login");
-          }, 2000);
+          if (response.mensaje === "Se registró correctamente.") {
+            swal("Éxito", "Registro completado", "success");
+            setTimeout(() => {
+              history.push("/login");
+            }, 2000);
+          } else {
+            swal(
+              "Opps!",
+              "Correo ya registrado, intentelo nuevamente",
+              "error"
+            );
+          }
         })
         .catch((error) =>
           swal("Opps!", "Error al registrar, intentelo nuevamente", "error")
