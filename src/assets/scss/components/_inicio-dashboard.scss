@@ -93,16 +93,77 @@
       display: flex;
       align-items: flex-end;
 
+      .rappi {
+        border: 1px solid #ff7f32;
+        h3 {
+          background-color: #ff7f32;
+          color: $color-cuarto;
+        }
+
+        button {
+          background-color: #ff7f32;
+          color: #fff;
+
+          &:hover {
+            background-color: #f36912;
+          }
+        }
+      }
+      .manzana {
+        border: 1px solid #1b703d;
+        h3 {
+          background-color: #1b703d;
+          color: $color-cuarto;
+        }
+
+        button {
+          background-color: #1b703d;
+          color: #fff;
+
+          &:hover {
+            background-color: #11572d;
+          }
+        }
+      }
+      .felipe {
+        border: 1px solid #1ea7ac;
+        h3 {
+          background-color: #1ea7ac;
+          color: $color-cuarto;
+        }
+
+        button {
+          background-color: #1ea7ac;
+          color: #fff;
+
+          &:hover {
+            background-color: #199094;
+          }
+        }
+      }
+      .pichincha {
+        border: 1px solid #fcdb25;
+        h3 {
+          background-color: #fcdb25;
+          color: $color-cuarto;
+        }
+
+        button {
+          background-color: #fcdb25;
+          color: #fff;
+
+          &:hover {
+            background-color: #c5ac1d;
+          }
+        }
+      }
       .recompensa {
         // background-color: rgb(255, 131, 30);
-        border: 1px solid #ff7f32;
         border-radius: 15px;
 
         h3 {
           padding: 8px;
           border-radius: 15px 15px 0 0;
-          background-color: #ff7f32;
-          color: $color-cuarto;
         }
 
         p {
@@ -116,11 +177,22 @@
           padding: 4px 8px;
           border-radius: 7px;
           cursor: pointer;
-          background-color: #ff7f32;
-          color: #fff;
+        }
 
-          &:hover {
-            background-color: #f36912;
+        .botones {
+          display: flex;
+          justify-content: space-between;
+
+          div {
+            display: flex;
+
+            button {
+              margin: 8px 4px;
+
+              i {
+                pointer-events: none;
+              }
+            }
           }
         }
       }
