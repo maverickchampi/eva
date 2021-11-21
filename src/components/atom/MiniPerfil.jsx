@@ -62,7 +62,7 @@ const MiniPerfil = ({ user }) => {
             <img src={user.foto} alt="Foto de perfil" />
           </div>
           <div>
-            <h1>{`${user.name} ${user.lastname}`}</h1>
+            <h1>{`${user.nombre} ${user.apellidoPa}`}</h1>
             <label>
               <i className="fas fa-map-marker-alt"></i> Lima, Perú
             </label>

@@ -173,7 +173,7 @@ const RedSocial = ({
               <div className="comentarios" id={`comentario-${key}`}>
                 {post.comentarios && post.comentarios.length > 0 ? (
                   post.comentarios.map((comentario, i) => (
-                    <div className="comentario">
+                    <div className="comentario" key={i}>
                       <h3 className="title">{comentario.title}</h3>
                       <p className="contenido">{comentario.contenido}</p>
                     </div>

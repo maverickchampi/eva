@@ -6,6 +6,9 @@ import Login from "../pages/Login";
 import Perfil from "../pages/Perfil";
 import Plus from "../pages/Plus";
 import Registro from "../pages/Registro";
+import { user } from "../constants/methods";
+
+import { Redirect } from "react-router-dom";
 
 export const routes = [
   {
@@ -16,32 +19,32 @@ export const routes = [
   {
     path: "/login",
     exact: true,
-    render: () => <Login />,
+    render: () => (user() ? <Redirect to="/dashboard" /> : <Login />),
   },
   {
     path: "/registro",
     exact: true,
-    render: () => <Registro />,
+    render: () => (user() ? <Redirect to="/dashboard" /> : <Registro />),
   },
   {
     path: "/dashboard",
     exact: true,
-    render: () => <Dashboard />,
+    render: () => (user() ? <Dashboard /> : <Redirect to="/login" />),
   },
   {
     path: "/perfil",
     exact: true,
-    render: () => <Perfil />,
+    render: () => (user() ? <Perfil /> : <Redirect to="/login" />),
   },
   {
     path: "/plus",
     exact: true,
-    render: () => <Plus />,
+    render: () => (user() ? <Plus /> : <Redirect to="/login" />),
   },
   {
     path: "/box",
     exact: true,
-    render: () => <Baul />,
+    render: () => (user() ? <Baul /> : <Redirect to="/login" />),
   },
   { path: "", exact: false, render: () => <Inicio /> },
 ];

@@ -7,7 +7,7 @@ const WSPLink = () => {
         href="https://api.whatsapp.com/send?phone=14155238886&text=Hola%20EVA"
         target="_blank"
       >
-        <i class="fas fa-phone-alt"></i>
+        <i className="fas fa-phone-alt"></i>
       </a>
     </div>
   );
