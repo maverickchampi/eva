@@ -86,6 +86,9 @@
           background: #d4d4d4;
         }
       }
+      .fc .fc-daygrid-day.fc-day-today {
+        background-color: #ded6ff !important;
+      }
     }
 
     .recompensas {
@@ -142,14 +145,14 @@
         }
       }
       .pichincha {
-        border: 1px solid #fcdb25;
+        border: 1px solid #f3ce00;
         h3 {
-          background-color: #fcdb25;
+          background-color: #f3ce00;
           color: $color-cuarto;
         }
 
         button {
-          background-color: #fcdb25;
+          background-color: #f3ce00;
           color: #fff;
 
           &:hover {
