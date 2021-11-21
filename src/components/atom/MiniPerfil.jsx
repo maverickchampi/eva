@@ -64,7 +64,7 @@ const MiniPerfil = ({ user }) => {
           <div>
             <h1>{`${user.name} ${user.lastname}`}</h1>
             <label>
-              <i class="fas fa-map-marker-alt"></i> Lima, Perú
+              <i className="fas fa-map-marker-alt"></i> Lima, Perú
             </label>
           </div>
         </div>
