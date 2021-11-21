@@ -80,3 +80,5 @@ export const TEXTS_CONVENIOS = [
     name: "Banco Pichincha",
   },
 ];
+
+export const url = "http://localhost:8090/eva";

@@ -1,13 +1,21 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/eva.png";
 import WSPLink from "./WSPLink";
 
 const MenuLateral = ({ link = 0 }) => {
+  let history = useHistory();
+
+  const signOut = () => {
+    sessionStorage.removeItem(btoa("user"));
+    history.push("/login");
+  };
+
   return (
     <>
       <header className="menuLateral">
-        <Link to="/dashboard" className="link">
+        <Link to="/" className="link">
           <img src={logo} alt="logo" />
         </Link>
         <nav>
@@ -27,9 +35,9 @@ const MenuLateral = ({ link = 0 }) => {
             <i className="fas fa-box"></i>
           </Link>
         </nav>
-        <Link to="" className="link">
+        <button className="link b-link" onClick={signOut}>
           <i className="fas fa-power-off"></i>
-        </Link>
+        </button>
       </header>
       <WSPLink />
     </>

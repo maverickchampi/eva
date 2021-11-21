@@ -3,17 +3,18 @@ import MenuLateral from "../components/atom/MenuLateral";
 import MiniPerfil from "../components/atom/MiniPerfil";
 import Chat from "../components/atom/Chat";
 import InicioDashboard from "../components/organism/InicioDashboard";
+import { user as usuario } from "../constants/methods";
 
 const Dashboard = () => {
   const [user, setUser] = useState({
-    name: "Juan",
-    lastname: "de la Torres",
+    ...usuario(),
+    foto: usuario()?.foto || "https://i.ibb.co/JBcGfKj/imagen.png",
     posts: 5,
     aportes: 2,
-    foto: "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200",
     calendarioAnimos: [0, 1, 3, 2, 2, 3],
     semanaEmociones: [2, 5, 2, 1, 3, 4, 0],
   });
+
   const [posts, setPosts] = useState([
     {
       id: 1,
