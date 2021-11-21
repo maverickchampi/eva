@@ -120,7 +120,7 @@ const RedSocial = ({
         </div>
         <div className="search">
           <div className="content__search">
-            <i class="fas fa-search"></i>
+            <i className="fas fa-search"></i>
             <input
               type="text"
               placeholder="Buscar..."
@@ -129,16 +129,16 @@ const RedSocial = ({
             />
             {showStop ? (
               <button onClick={() => stopMicrophone()}>
-                <i class="fas fa-square"></i>
+                <i className="fas fa-square"></i>
               </button>
             ) : (
               <button onClick={() => handleMicrophone()}>
-                <i class="fas fa-microphone"></i>
+                <i className="fas fa-microphone"></i>
               </button>
             )}
           </div>
           <button className="new-post" onClick={(e) => toggleButtonPost(e)}>
-            <i class="fas fa-plus"></i>
+            <i className="fas fa-plus"></i>
           </button>
         </div>
         <Post
@@ -159,14 +159,14 @@ const RedSocial = ({
               <div className="botones">
                 <button className="like">
                   {false ? (
-                    <i class="fas fa-heart"></i>
+                    <i className="fas fa-heart"></i>
                   ) : (
-                    <i class="far fa-heart"></i>
+                    <i className="far fa-heart"></i>
                   )}{" "}
                   {post.likes}
                 </button>
                 <button onClick={() => toggleComentarios(`comentario-${key}`)}>
-                  <i class="fas fa-comments"></i> Comentarios
+                  <i className="fas fa-comments"></i> Comentarios
                 </button>
               </div>
 

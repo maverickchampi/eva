@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import logo from "./../../assets/icons/eva_logo_c.png";
 
 const HeaderInicio = () => {
@@ -6,7 +7,7 @@ const HeaderInicio = () => {
     <header className="header-inicio">
       <div className="header__contenedor">
         <img src={logo} alt="logo eva" />
-        <ul className="nav">
+        {/* <ul className="nav">
           <li>
             <a className="active">Inicio</a>
           </li>
@@ -17,12 +18,16 @@ const HeaderInicio = () => {
             <a>Objetivos</a>
           </li>
           <li>
-            <a>Faq</a>
+            <a>Convenios</a>
           </li>
-        </ul>
+        </ul> */}
         <div className="botones">
-          <div className="off">Iniciar Sesión</div>
-          <div className="on">Registrar</div>
+          <Link to="/login" className="off">
+            Iniciar Sesión
+          </Link>
+          <Link to="/registro" className="on">
+            Registrar
+          </Link>
         </div>
       </div>
     </header>

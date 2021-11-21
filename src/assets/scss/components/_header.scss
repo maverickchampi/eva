@@ -2,9 +2,10 @@
   //   background-color: #1e088c;
   .header__contenedor {
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto auto;
     padding: 0.5rem 1rem;
     align-items: center;
+    justify-content: space-between;
     max-width: 1440px;
     margin: auto;
     img {
@@ -28,7 +29,7 @@
     .botones {
       display: flex;
       div {
-        padding: 0.5rem 1rem;
+        padding: 0.3rem 1rem;
         border: 1px solid white;
         border-radius: 1rem;
         color: $color-cuarto;

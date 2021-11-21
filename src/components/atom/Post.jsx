@@ -74,18 +74,18 @@ const Post = ({ reference, newpost, setNewPost, user, posts, setPosts }) => {
           }
         ></textarea>
         <div className="botones">
-          <div class="audio">
+          <div className="audio">
             {showStop ? (
               <button type="button" onClick={() => stopMicrophone()}>
-                <i class="fas fa-square"></i>
+                <i className="fas fa-square"></i>
               </button>
             ) : (
               <button type="button" onClick={() => handleMicrophone()}>
-                <i class="fas fa-microphone"></i>
+                <i className="fas fa-microphone"></i>
               </button>
             )}
             <button type="button" onClick={() => handleVoice()}>
-              <i class="fas fa-volume-down"></i>
+              <i className="fas fa-volume-down"></i>
             </button>
           </div>
           <button className="submit">Publicar</button>

@@ -1,23 +1,82 @@
 export const TEXTS_SLIDES = [
   {
-    title: "Hasta un 50% de descuento 1",
-    subtitle: "Fresco y orgánico",
+    title: "Un bot que se adapta a ti.",
+    subtitle: "Emotional Virtual Assistant",
     image: "https://i.ibb.co/ryZ250N/carousel-1.png",
-    nameButton: "Comprar ahora",
-    urlButton: "#",
+    nameButton: "Empieza ahora",
+    urlButton: "/login",
   },
   {
-    title: "Hasta un 30% de descuento 2",
-    subtitle: "Fresco y orgánico",
-    image: "https://i.ibb.co/jDXBZnx/slide-2.webp",
-    nameButton: "Comprar ahora",
-    urlButton: "#",
+    title: "Siempre ofreciendote lo mejor.",
+    subtitle: "Emotional Virtual Assistant",
+    image: "https://i.ibb.co/f2JvTCT/tecnologia.png",
+    nameButton: "Empieza ahora",
+    urlButton: "/login",
   },
   {
-    title: "Hasta un 40% de descuento 3",
-    subtitle: "Fresco y orgánico",
-    image: "https://i.ibb.co/F3knbyc/slide-3.webp",
-    nameButton: "Comprar ahora",
-    urlButton: "#",
+    title: "Somos más que un servicio.",
+    subtitle: "Emotional Virtual Assistant",
+    image: "https://i.ibb.co/tqdDGqB/familia.png",
+    nameButton: "Empieza ahora",
+    urlButton: "/login",
+  },
+];
+export const TEXTS_SLIDES_CARD = [
+  {
+    icon: "fas fa-grin",
+    title: "Servicios",
+    description: "Contamos con un chatbot para dar soporte emocional.",
+  },
+  {
+    icon: "fa fa-users",
+    title: "Comunidad",
+    description:
+      "Podrás ser parte de una comunidad que comparten el mismo objetivo.",
+  },
+  {
+    icon: "fa fa-chart-line",
+    title: "Análisis",
+    description:
+      "A partir de tus datos que nosotros analicemos, tú tomarás las mejores decisiones. ",
+  },
+];
+
+export const TEXTS_OBJETIVOS = [
+  {
+    icon: "fas fa-robot",
+    title: "IA",
+    description:
+      "Convertirnos en la aplicación web más concurrida sobre inteligencia emcional.",
+  },
+  {
+    icon: "fa fa-trophy",
+    title: "Motivación",
+    description: "Incentivar sobre el concepto de salud mental",
+  },
+  {
+    icon: "fa fa-user-shield",
+    title: "Acompañamiento",
+    description:
+      "Acompañar en el cambio a todas las personas dispuestas a hacerlo.",
+  },
+];
+
+export const TEXTS_CONVENIOS = [
+  {
+    image:
+      "https://legal.rappi.com/wp-content/uploads/2019/02/logo-rappi-new.png",
+    name: "Rappi",
+  },
+  {
+    image: "https://manzanaverde.la/favicon.png",
+    name: "Manzana Verde",
+  },
+  {
+    image: "https://www.clinicasanfelipe.com/sites/default/files/favicon.png",
+    name: "Clínica San Felipe",
+  },
+  {
+    image: "https://www.pichincha.pe/themes/custom/financiero/img/favicon.ico",
+    name: "Banco Pichincha",
   },
 ];
