@@ -17,12 +17,13 @@
     position: relative;
     .login-img {
       position: absolute;
-      top: 50px;
+      top: 0;
       right: 0;
       width: 200px;
       cursor: pointer;
     }
     .login__item {
+      position: relative;
       .login-api {
         .api__item {
           display: flex;

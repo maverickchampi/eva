@@ -20,6 +20,9 @@
     justify-content: center;
     align-items: center;
     position: relative;
+    .registro__item {
+      position: relative;
+    }
     .formulario-content {
       form {
         width: 410px;
@@ -27,7 +30,7 @@
     }
     .registro-img {
       position: absolute;
-      top: 50px;
+      top: 0;
       left: 0;
       width: 200px;
       cursor: pointer;

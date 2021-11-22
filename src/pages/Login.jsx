@@ -53,14 +53,14 @@ const Login = () => {
     <div className="login">
       <Background />
       <div className="login-content">
-        <img
-          src="https://i.ibb.co/RzdYqyB/eva.png"
-          alt="eva"
-          className="login-img"
-          onClick={() => history.push("/")}
-        />
         <div className="login__item"></div>
         <div className="login__item">
+          <img
+            src="https://i.ibb.co/RzdYqyB/eva.png"
+            alt="eva"
+            className="login-img"
+            onClick={() => history.push("/")}
+          />
           <div className="formulario-content">
             <h1 className="titulo">
               <span>Iniciar Sesión</span>

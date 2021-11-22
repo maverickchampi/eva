@@ -54,13 +54,13 @@ const Registro = () => {
     <div className="registro">
       <Background clase="back-registro" />
       <div className="registro-content">
-        <img
-          src="https://i.ibb.co/RzdYqyB/eva.png"
-          alt="eva"
-          className="registro-img"
-          onClick={() => history.push("/")}
-        />
         <div className="registro__item">
+          <img
+            src="https://i.ibb.co/RzdYqyB/eva.png"
+            alt="eva"
+            className="registro-img"
+            onClick={() => history.push("/")}
+          />
           <div className="formulario-content">
             <h1 className="titulo">
               <span>Registráte</span>
