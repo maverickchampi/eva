@@ -44,7 +44,7 @@ const DetalleDashboard = ({ recompensas }) => {
   useEffect(() => {}, []);
 
   return (
-    <div class="detalle-dashboard">
+    <div className="detalle-dashboard">
       <div className="calendario">
         <FullCalendar
           events={events}
@@ -73,10 +73,10 @@ const DetalleDashboard = ({ recompensas }) => {
             </button>
             <div>
               <button onClick={() => backRecompensa()}>
-                <i class="fas fa-chevron-left"></i>
+                <i className="fas fa-chevron-left"></i>
               </button>
               <button onClick={() => nextRecompensa()}>
-                <i class="fas fa-chevron-right"></i>
+                <i className="fas fa-chevron-right"></i>
               </button>
             </div>
           </div>

@@ -1,7 +1,16 @@
 import React, { useEffect, useState } from "react";
 import swal from "sweetalert";
+import { postPost } from "../../services/Posts";
 
-const Post = ({ reference, newpost, setNewPost, user, posts, setPosts }) => {
+const Post = ({
+  reference,
+  newpost,
+  setNewPost,
+  user,
+  posts,
+  setPosts,
+  cargarPosts,
+}) => {
   const [showStop, setShowStop] = useState(false);
   const [rec, setRec] = useState(null);
 
@@ -32,17 +41,26 @@ const Post = ({ reference, newpost, setNewPost, user, posts, setPosts }) => {
   const publicarPost = (e) => {
     e.preventDefault();
     const post = {
-      id: 99,
-      title: user.name || "",
       contenido: newpost.contenido || "",
-      likes: 0,
     };
     if (post.contenido !== null && post.contenido !== "") {
-      const newArray = [...posts];
-      newArray.unshift(post);
-      setPosts([...newArray]);
-      swal("Publicado!", "Tu post se publico", "success");
-      setNewPost("");
+      const json = {
+        post: {
+          usuario: { id: user.id },
+          descripcion: post.contenido,
+          estado: true,
+        },
+        login: { correo: user.correo, contrasenia: user.contrasenia },
+      };
+      postPost(JSON.stringify(json))
+        .then((resp) => {
+          swal("Publicado!", "Tu post se publico", "success");
+          cargarPosts();
+          setNewPost("");
+        })
+        .catch((err) => {
+          swal("Opps!", "No se pudo publicar", "error");
+        });
     } else {
       swal("Opps!", "No puedes dejar el post vacio", "error");
     }

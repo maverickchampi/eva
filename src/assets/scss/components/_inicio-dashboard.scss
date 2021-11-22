@@ -439,16 +439,42 @@
       }
 
       .post {
-        margin: 14px;
+        margin: 14px 28px;
         padding: 8px 12px;
         border-radius: 10px;
         background-color: $color-cuarto;
         box-shadow: 1px 1px 1px 0px rgb(0 0 0 / 25%);
 
-        h3 {
-          color: $color-primario;
-          font-size: 16px;
-          margin-top: 4px;
+        .cabecera-post {
+          display: grid;
+          grid-template-columns: 1fr 30px;
+          justify-content: space-between;
+
+          h3 {
+            color: $color-primario;
+            font-size: 16px;
+            margin-top: 4px;
+          }
+
+          button {
+            background-color: #d41414;
+            border-radius: 7px;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            &:hover {
+              background-color: #b10b0b;
+            }
+
+            i {
+              pointer-events: none;
+              font-size: 14px;
+              color: rgb(248, 248, 248);
+            }
+          }
         }
 
         p {

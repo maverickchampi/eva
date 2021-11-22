@@ -3,6 +3,7 @@ import PopupEmocion from "../atom/PopupEmocion";
 import swal from "sweetalert";
 import Post from "../atom/Post";
 import UseSearch from "../../hooks/UseSearch";
+import { postLike, putPost } from "../../services/Posts";
 
 const RedSocial = ({
   user,
@@ -13,6 +14,7 @@ const RedSocial = ({
   setNewPost,
   posts,
   setPosts,
+  cargarPosts,
 }) => {
   const [showStop, setShowStop] = useState(false);
   const [rec, setRec] = useState(null);
@@ -101,9 +103,73 @@ const RedSocial = ({
     document.getElementById(id).classList.toggle("comentarios-show");
   };
 
+  const like = (like_id, post_id, like) => {
+    const json = {
+      like: {
+        usuario: { id: user.id },
+        post: { id: post_id },
+        estado: !like,
+      },
+      login: { correo: user.correo, contrasenia: user.contrasenia },
+    };
+
+    if (like_id !== undefined) {
+      json.like.id = like_id;
+    }
+
+    postLike(JSON.stringify(json)).then((resp) => {
+      cargarPosts();
+    });
+  };
+
+  const eliminaPost = (post) => {
+    swal({
+      title: "¿Estás seguro?",
+      text: "Una vez eliminado, no podrás recuperar este post",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        const json = {
+          post: {
+            id: post.id,
+            usuario: { id: user.id },
+            descripcion: post.contenido,
+            estado: false,
+          },
+          login: { correo: user.correo, contrasenia: user.contrasenia },
+        };
+        putPost(JSON.stringify(json))
+          .then((resp) => {
+            cargarPosts();
+            swal("Eliminado!", "Tu post se eliminó", "success");
+          })
+          .catch((err) => {
+            swal("Opps!", "No se pudo eliminar", "error");
+          });
+
+        // const json = {
+        //   post: {
+        //     id: post.id,
+        //     usuario: { id: user.id },
+        //   },
+        //   login: { correo: user.correo, contrasenia: user.contrasenia },
+        // };
+        // postEliminaPost(JSON.stringify(json))
+        //   .then((resp) => {
+        //     cargarPosts();
+        //   })
+        //   .catch((err) => {
+        //     console.log(err);
+        //   });
+      }
+    });
+  };
+
   return (
     <div className="red-social">
-      <div class="cabecera post-tamanio" id="cabecera">
+      <div className="cabecera post-tamanio" id="cabecera">
         <div className="ultimas-emociones">
           <ul className="ul">
             {user.semanaEmociones.map((emocion, key) => (
@@ -148,17 +214,28 @@ const RedSocial = ({
           setNewPost={setNewPost}
           posts={posts}
           setPosts={setPosts}
+          cargarPosts={cargarPosts}
         />
       </div>
       <div className="cuerpo" id="cuerpo">
         {filteredResults &&
           filteredResults.map((post, key) => (
             <div className="post" key={key}>
-              <h3 className="title">{post.title}</h3>
+              <div className="cabecera-post">
+                <h3 className="title">{post.title}</h3>
+                {post.edit && (
+                  <button className="delete" onClick={() => eliminaPost(post)}>
+                    <i className="fas fa-trash-alt"></i>
+                  </button>
+                )}
+              </div>
               <p className="contenido">{post.contenido}</p>
               <div className="botones">
-                <button className="like">
-                  {false ? (
+                <button
+                  className="like"
+                  onClick={() => like(post.like_id, post.id, post.like)}
+                >
+                  {post.like ? (
                     <i className="fas fa-heart"></i>
                   ) : (
                     <i className="far fa-heart"></i>

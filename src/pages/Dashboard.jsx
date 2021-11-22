@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MenuLateral from "../components/atom/MenuLateral";
 import MiniPerfil from "../components/atom/MiniPerfil";
 import Chat from "../components/atom/Chat";
 import InicioDashboard from "../components/organism/InicioDashboard";
 import { user as usuario } from "../constants/methods";
+import { getPosts } from "../services/Posts";
 
 const Dashboard = () => {
   const [user, setUser] = useState({
@@ -22,46 +23,14 @@ const Dashboard = () => {
       contenido:
         "Ayer me robaron mi celular y me siento mal, ¿recomendaciones?",
       likes: 10,
+      like: true,
       comentarios: [
         {
           id: 1,
           title: "Juan - 18/11/2021",
           contenido: "Ayer me robaron mi celular igual f",
         },
-        {
-          id: 2,
-          title: "Juana - 18/11/2021",
-          contenido: "pobre uu",
-        },
       ],
-    },
-    {
-      id: 2,
-      title: "María Julieta - 18/11/2021",
-      contenido:
-        "Sufro de ansiedad y me da ataques de pánicos, que puedo hacer ayudaaaa",
-      likes: 2,
-    },
-    {
-      id: 3,
-      title: "María Julieta - 18/11/2021",
-      contenido:
-        "Ayer aprobé un curso super dificil, estuve algo ansioso pero estoy feliz",
-      likes: 5,
-    },
-    {
-      id: 4,
-      title: "María Julieta - 18/11/2021",
-      contenido:
-        "Estoy por cumplir un año con mi novia, que emoción, estoy muy nervioso",
-      likes: 14,
-    },
-    {
-      id: 5,
-      title: "María Julieta - 18/11/2021",
-      contenido:
-        "Mi perrito murió, me siento devastado, me deprimo, ando sin ganas, nose que hacer",
-      likes: 1,
     },
   ]);
   const [recompensas, setRecompensas] = useState([
@@ -105,6 +74,65 @@ const Dashboard = () => {
   const [busqueda, setBusqueda] = useState("");
   const [newpost, setNewPost] = useState({});
 
+  const cargarPosts = () => {
+    getPosts().then((response) => {
+      let _posts = [];
+
+      const contarLikes = (likes, id) => {
+        const __posts = likes.filter(
+          (p) => Number(p.post.id) === Number(id) && p.estado === true
+        );
+        return __posts.length;
+      };
+
+      const verificaLike = (likes, id) => {
+        const __posts = likes.filter(
+          (p) =>
+            Number(p.post.id) === Number(id) &&
+            Number(p.usuario.id) === Number(usuario().id) &&
+            p.estado === true
+        );
+        const resp = __posts.length > 0 ? true : false;
+        return resp;
+      };
+
+      const likeId = (likes, id) => {
+        const __posts = likes.filter(
+          (p) =>
+            Number(p.post.id) === Number(id) &&
+            Number(p.usuario.id) === Number(usuario().id)
+        );
+        return __posts[0]?.id;
+      };
+
+      response.posts.map(
+        (r) =>
+          r.estado === true &&
+          _posts.push({
+            id: r.id,
+            title: `${r.usuario.nombre} ${
+              r.usuario.apellidoPa
+            } / ${r.fecha.slice(0, 10)}`,
+            fecha: r.fecha,
+            edit: r.usuario.id === usuario().id ? true : false,
+            contenido: r.descripcion,
+            likes: contarLikes(response.likes, r.id),
+            like: verificaLike(response.likes, r.id),
+            like_id: likeId(response.likes, r.id),
+            comentarios: [],
+          })
+      );
+      _posts.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
+      _posts.reverse();
+      setPosts(_posts);
+      // console.log(_posts);
+    });
+  };
+
+  useEffect(() => {
+    cargarPosts();
+  }, []);
+
   return (
     <>
       <div className="dashboard">
@@ -121,6 +149,7 @@ const Dashboard = () => {
               posts={posts}
               setPosts={setPosts}
               recompensas={recompensas}
+              cargarPosts={cargarPosts}
             />
             <MiniPerfil user={user} />
           </div>

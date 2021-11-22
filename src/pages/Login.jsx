@@ -40,7 +40,11 @@ const Login = () => {
       if (value) {
         recuperaUsuario(JSON.stringify({ correo: value }))
           .then((response) => {
-            swal("Listo!", "Contraseña enviada a su correo", "success");
+            swal(
+              "Listo!",
+              "Si el correo esta registrado le llegará la nueva contraseña",
+              "success"
+            );
           })
           .catch((error) =>
             swal("Opps!", "Error al enviar, intentelo nuevamente", "error")

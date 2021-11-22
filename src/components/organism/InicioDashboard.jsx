@@ -12,6 +12,7 @@ const InicioDashboard = ({
   posts,
   setPosts,
   recompensas,
+  cargarPosts,
 }) => {
   return (
     <div className="inicio-dashboard">
@@ -25,6 +26,7 @@ const InicioDashboard = ({
         setNewPost={setNewPost}
         posts={posts}
         setPosts={setPosts}
+        cargarPosts={cargarPosts}
       />
     </div>
   );
