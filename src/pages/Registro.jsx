@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import swal from "sweetalert";
 import Background from "../components/atom/Background";
@@ -49,6 +49,20 @@ const Registro = () => {
       swal("Opps!", "Error al registrar, intentelo nuevamente", "error");
     }
   };
+
+  useEffect(() => {
+    if (document.getElementsByClassName("WACLauncher__Button").length !== 0) {
+      for (
+        let i = 0;
+        i < document.getElementsByClassName("WACLauncher__Button").length;
+        i++
+      ) {
+        document
+          .getElementsByClassName("WACLauncher__Button")
+          [i].classList.add("d-none");
+      }
+    }
+  }, []);
 
   return (
     <div className="registro">

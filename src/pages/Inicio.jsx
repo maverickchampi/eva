@@ -25,6 +25,21 @@ const Inicio = () => {
     let prevValue = position - 1 < 0 ? max : position - 1;
     setCarousel(TEXTS_SLIDES[prevValue]);
   };
+
+  useEffect(() => {
+    if (document.getElementsByClassName("WACLauncher__Button").length !== 0) {
+      for (
+        let i = 0;
+        i < document.getElementsByClassName("WACLauncher__Button").length;
+        i++
+      ) {
+        document
+          .getElementsByClassName("WACLauncher__Button")
+          [i].classList.add("d-none");
+      }
+    }
+  }, []);
+
   return (
     <div className="inicio">
       <div className="main-header">
