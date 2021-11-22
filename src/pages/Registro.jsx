@@ -58,6 +58,7 @@ const Registro = () => {
           src="https://i.ibb.co/RzdYqyB/eva.png"
           alt="eva"
           className="registro-img"
+          onClick={() => history.push("/")}
         />
         <div className="registro__item">
           <div className="formulario-content">
