@@ -81,4 +81,5 @@ export const TEXTS_CONVENIOS = [
   },
 ];
 
-export const url = "http://localhost:8090/eva";
+// export const url = "http://localhost:8090/eva";
+export const url = "https://emotionalvirtualassistant.herokuapp.com/eva";
