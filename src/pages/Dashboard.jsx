@@ -5,6 +5,7 @@ import Chat from "../components/atom/Chat";
 import InicioDashboard from "../components/organism/InicioDashboard";
 import { user as usuario } from "../constants/methods";
 import { getPosts } from "../services/Posts";
+import { getEmocion } from "../services/Emocion";
 
 const Dashboard = () => {
   const [user, setUser] = useState({
@@ -15,24 +16,8 @@ const Dashboard = () => {
     calendarioAnimos: [0, 1, 3, 2, 2, 3],
     semanaEmociones: [2, 5, 2, 1, 3, 4, 0],
   });
-
-  const [posts, setPosts] = useState([
-    {
-      id: 1,
-      title: "María Julieta - 18/11/2021",
-      contenido:
-        "Ayer me robaron mi celular y me siento mal, ¿recomendaciones?",
-      likes: 10,
-      like: true,
-      comentarios: [
-        {
-          id: 1,
-          title: "Juan - 18/11/2021",
-          contenido: "Ayer me robaron mi celular igual f",
-        },
-      ],
-    },
-  ]);
+  const [emociones, setEmociones] = useState([]);
+  const [posts, setPosts] = useState([]);
   const [recompensas, setRecompensas] = useState([
     {
       id: 1,
@@ -190,8 +175,21 @@ const Dashboard = () => {
     });
   };
 
+  const cargarEmociones = () => {
+    const json = {
+      correo: usuario().correo,
+      contrasenia: usuario().contrasenia,
+    };
+    getEmocion(JSON.stringify(json)).then((response) => {
+      response.emociones.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
+      response.emociones.reverse();
+      setEmociones(response.emociones);
+    });
+  };
+
   useEffect(() => {
     cargarPosts();
+    cargarEmociones();
   }, []);
 
   return (
@@ -211,6 +209,9 @@ const Dashboard = () => {
               setPosts={setPosts}
               recompensas={recompensas}
               cargarPosts={cargarPosts}
+              emociones={emociones}
+              setEmociones={setEmociones}
+              cargarEmociones={cargarEmociones}
             />
             <MiniPerfil user={user} />
           </div>

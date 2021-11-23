@@ -13,7 +13,7 @@ const Login = () => {
     postLogin(JSON.stringify(usuario))
       .then((response) => {
         if (response.mensaje !== "Credenciales no válidas") {
-          console.log(response.correo);
+          // console.log(response.correo);
           sessionStorage.setItem(
             btoa("user"),
             btoa(JSON.stringify(response.correo))

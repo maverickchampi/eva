@@ -13,10 +13,13 @@ const InicioDashboard = ({
   setPosts,
   recompensas,
   cargarPosts,
+  emociones,
+  setEmociones,
+  cargarEmociones,
 }) => {
   return (
     <div className="inicio-dashboard">
-      <DetalleDashboard recompensas={recompensas} />
+      <DetalleDashboard recompensas={recompensas} emociones={emociones} />
       <RedSocial
         user={user}
         setUser={setUser}
@@ -27,6 +30,8 @@ const InicioDashboard = ({
         posts={posts}
         setPosts={setPosts}
         cargarPosts={cargarPosts}
+        emociones={emociones}
+        cargarEmociones={cargarEmociones}
       />
     </div>
   );

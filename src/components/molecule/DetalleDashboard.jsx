@@ -5,14 +5,14 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import swal from "sweetalert";
 
-const DetalleDashboard = ({ recompensas }) => {
+const DetalleDashboard = ({ recompensas, emociones }) => {
   const [recompensa, setRecompensa] = useState(recompensas[0]);
   const [events, setEvents] = useState([
-    { id: 1, start: "2021-11-18", title: "😀" },
-    { id: 2, start: "2021-11-17", title: "😡" },
-    { id: 3, start: "2021-11-16", title: "😢" },
-    { id: 4, start: "2021-11-15", title: "😲" },
-    { id: 5, start: "2021-11-14", title: "🥰" },
+    // { id: 1, start: "2021-11-18", title: "😀" },
+    // { id: 2, start: "2021-11-17", title: "😡" },
+    // { id: 3, start: "2021-11-16", title: "😢" },
+    // { id: 4, start: "2021-11-15", title: "" },
+    // { id: 5, start: "2021-11-14", title: "" },
   ]);
 
   const backRecompensa = () => {
@@ -41,7 +41,33 @@ const DetalleDashboard = ({ recompensas }) => {
     );
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    const returnEmoji = (valor) => {
+      switch (valor) {
+        case 1:
+          return "😡";
+        case 2:
+          return "😢";
+        case 3:
+          return "😲";
+        case 4:
+          return "😀";
+        case 5:
+          return "🥰";
+      }
+    };
+
+    let __emociones = [];
+    emociones.map((emocion) => {
+      let newEvent = {
+        id: emocion.id,
+        start: emocion.fecha,
+        title: returnEmoji(emocion.valor),
+      };
+      __emociones.push(newEvent);
+    });
+    setEvents([...__emociones]);
+  }, [emociones]);
 
   return (
     <div className="detalle-dashboard">

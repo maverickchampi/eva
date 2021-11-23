@@ -20,8 +20,11 @@ const RedSocial = ({
   posts,
   setPosts,
   cargarPosts,
+  emociones,cargarEmociones
 }) => {
   const [showStop, setShowStop] = useState(false);
+  const [emocionesUltimas, setEmocionesUltimas] = useState([]);
+  const [emocionUltima, setEmocionUltima] = useState({});
   const [rec, setRec] = useState(null);
   const [comentario, setComentario] = useState("");
   const popup = useRef();
@@ -87,15 +90,15 @@ const RedSocial = ({
   const urlEmocion = (emocion) => {
     switch (emocion) {
       case 1:
-        return "https://i.ibb.co/R00NP2K/haha-128x128-1991060.png";
+        return "https://i.ibb.co/LPNbLCx/angry-128x128-1991061.png";
       case 2:
-        return "https://i.ibb.co/KwqDmdB/care-128x128-1991058.png";
+        return "https://i.ibb.co/2MzMS6d/sad-128x128-1991063.png";
       case 3:
         return "https://i.ibb.co/HTQDtYZ/wow-128x128-1991062.png";
       case 4:
-        return "https://i.ibb.co/2MzMS6d/sad-128x128-1991063.png";
+        return "https://i.ibb.co/R00NP2K/haha-128x128-1991060.png";
       case 5:
-        return "https://i.ibb.co/LPNbLCx/angry-128x128-1991061.png";
+        return "https://i.ibb.co/KwqDmdB/care-128x128-1991058.png";
       case 0:
         return "https://i.pinimg.com/originals/2a/74/0f/2a740fea4967adb34b738012ecf37ccb.png";
     }
@@ -216,21 +219,77 @@ const RedSocial = ({
     });
   };
 
+  const fechaHoy = () => {
+    let fecha = new Date();
+    let dia = fecha.getDate() < 10 ? "0" + fecha.getDate() : fecha.getDate();
+    let mes =
+      fecha.getMonth() + 1 < 10
+        ? "0" + (fecha.getMonth() + 1)
+        : fecha.getMonth() + 1;
+    let anio = fecha.getFullYear();
+    return anio + "-" + mes + "-" + dia;
+  };
+
+  useEffect(() => {
+    if (emociones.length !== null) {
+      let _emociones = [
+        { valor: 0 },
+        { valor: 0 },
+        { valor: 0 },
+        { valor: 0 },
+        { valor: 0 },
+        { valor: 0 },
+        { valor: 0 },
+      ];
+      if (emociones.length > 7) {
+        _emociones = emociones.slice(0, 7);
+      } else {
+        for (let i = 0; i < emociones.length; i++) {
+          _emociones[i] = emociones[i];
+        }
+      }
+
+      if (_emociones[0]?.fecha === fechaHoy()) {
+        // console.log("fecha hoy");
+        setEmocionUltima(_emociones[0]);
+      } else {
+        // console.log("fecha no hoy");
+        // console.log(_emociones);
+        _emociones.unshift({ valor: 0 });
+        _emociones = _emociones.slice(0, 7);
+      }
+
+      // console.log(_emociones);
+
+      _emociones.reverse();
+      setEmocionesUltimas(_emociones);
+    }
+  }, [emociones]);
+
   return (
     <div className="red-social">
       <div className="cabecera post-tamanio" id="cabecera">
         <div className="ultimas-emociones">
           <ul className="ul">
-            {user.semanaEmociones.map((emocion, key) => (
+            {emocionesUltimas.map((emocion, key) => (
               <li
                 key={key}
                 className={key === 6 ? "active on li" : "no-today li"}
                 onClick={() => (key === 6 ? eligeEmocion() : "")}
               >
-                <img src={urlEmocion(emocion)} alt="emocion" />
+                <img src={urlEmocion(emocion.valor)} alt="emocion" />
               </li>
             ))}
-            <PopupEmocion user={user} setUser={setUser} reference={popup} />
+            <PopupEmocion
+              user={user}
+              setUser={setUser}
+              reference={popup}
+              emocionUltima={emocionUltima}
+              emocionesUltimas={emocionesUltimas}
+              setEmocionesUltimas={setEmocionesUltimas}
+              setEmocionUltima={setEmocionUltima}
+              cargarEmociones={cargarEmociones}
+            />
           </ul>
         </div>
         <div className="search">
@@ -256,7 +315,7 @@ const RedSocial = ({
             <i className="fas fa-plus"></i>
           </button>
           <button className="new-post" onClick={() => cargarPosts()}>
-            <i class="fas fa-undo-alt"></i>
+            <i className="fas fa-undo-alt"></i>
           </button>
         </div>
         <Post
@@ -333,7 +392,7 @@ const RedSocial = ({
                     className="plus-comentario"
                     onClick={() => addComentario(post.id)}
                   >
-                    <i class="fas fa-plus"></i>
+                    <i className="fas fa-plus"></i>
                   </button>
                 </div>
               </div>
