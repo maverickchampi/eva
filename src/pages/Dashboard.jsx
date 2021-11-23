@@ -153,9 +153,7 @@ const Dashboard = () => {
           r.estado === true &&
           _posts.push({
             id: r.id,
-            title: `${r.usuario.nombre} ${
-              r.usuario.apellidoPa
-            } / ${r.fecha.slice(0, 10)}`,
+            title: `${r.usuario.nombre} ${r.usuario.apellidoPa} / ${r.fecha}`,
             fecha: r.fecha,
             edit: editar(r.usuario.id),
             contenido: r.descripcion,

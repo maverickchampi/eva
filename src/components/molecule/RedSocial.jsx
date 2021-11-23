@@ -20,7 +20,8 @@ const RedSocial = ({
   posts,
   setPosts,
   cargarPosts,
-  emociones,cargarEmociones
+  emociones,
+  cargarEmociones,
 }) => {
   const [showStop, setShowStop] = useState(false);
   const [emocionesUltimas, setEmocionesUltimas] = useState([]);
@@ -365,11 +366,7 @@ const RedSocial = ({
                   post.comentarios.map((comentario, i) => (
                     <div className="comentario" key={i}>
                       <div className="cabecera-post">
-                        <h3 className="title-c">{`${
-                          comentario?.usuario?.nombre
-                        } ${
-                          comentario?.usuario?.apellidoPa
-                        } / ${comentario?.fecha?.slice(0, 10)}`}</h3>
+                        <h3 className="title-c">{`${comentario?.usuario?.nombre} ${comentario?.usuario?.apellidoPa} / ${comentario?.fecha}`}</h3>
                         {comentario?.edit && (
                           <button
                             className="delete"
