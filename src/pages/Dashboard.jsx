@@ -150,6 +150,10 @@ const Dashboard = () => {
             );
             __comentarios.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
             __comentarios.reverse();
+
+            __comentarios.map(
+              (c) => (c.edit = c.usuario.id === usuario().id ? true : false)
+            );
             return __comentarios;
           } else {
             return 0;
@@ -181,6 +185,7 @@ const Dashboard = () => {
       setPosts(_posts);
       // console.log(_mylikes);
       // console.log(_myposts);
+      // console.log(posts);
       setUser({ ...user, likes: _mylikes, posts: _myposts });
     });
   };

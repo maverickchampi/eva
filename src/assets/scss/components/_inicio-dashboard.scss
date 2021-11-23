@@ -264,7 +264,7 @@
       .search {
         display: grid;
         height: 40px;
-        grid-template-columns: calc(90% - 4px) calc(10% - 4px);
+        grid-template-columns: calc(80% - 8px) calc(10% - 8px) calc(10% - 8px);
         gap: 8px;
         margin: 16px 0;
 

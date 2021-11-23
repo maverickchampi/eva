@@ -3,7 +3,12 @@ import PopupEmocion from "../atom/PopupEmocion";
 import swal from "sweetalert";
 import Post from "../atom/Post";
 import UseSearch from "../../hooks/UseSearch";
-import { postLike, putPost } from "../../services/Posts";
+import {
+  postComentario,
+  postLike,
+  putComentario,
+  putPost,
+} from "../../services/Posts";
 
 const RedSocial = ({
   user,
@@ -150,31 +155,65 @@ const RedSocial = ({
           .catch((err) => {
             swal("Opps!", "No se pudo eliminar", "error");
           });
-
-        // const json = {
-        //   post: {
-        //     id: post.id,
-        //     usuario: { id: user.id },
-        //   },
-        //   login: { correo: user.correo, contrasenia: user.contrasenia },
-        // };
-        // postEliminaPost(JSON.stringify(json))
-        //   .then((resp) => {
-        //     cargarPosts();
-        //   })
-        //   .catch((err) => {
-        //     console.log(err);
-        //   });
       }
     });
   };
 
-  const addComentario = (e) => {
+  const addComentario = (idpost) => {
     if (comentario !== null && comentario !== "") {
-      console.log(e);
+      const json = {
+        comentario: {
+          usuario: { id: user.id },
+          post: { id: idpost },
+          descripcion: comentario,
+          estado: true,
+        },
+        login: { correo: user.correo, contrasenia: user.contrasenia },
+      };
+      postComentario(JSON.stringify(json))
+        .then((resp) => {
+          swal("Publicado!", "Tu comentario se publico", "success");
+          cargarPosts();
+          setComentario("");
+        })
+        .catch((err) => {
+          swal("Opps!", "No se pudo comentar", "error");
+        });
     } else {
       swal("Opps!", "No puedes dejar el comentarios vacio", "error");
     }
+  };
+
+  const eliminaComentario = (com) => {
+    swal({
+      title: "¿Estás seguro?",
+      text: "Una vez eliminado, no podrás recuperar este comentario",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        const json = {
+          comentario: {
+            id: com.id,
+            usuario: { id: user.id },
+            post: { id: com.post.id },
+            fecha: com.fecha,
+            descripcion: com.descripcion,
+            estado: false,
+          },
+          login: { correo: user.correo, contrasenia: user.contrasenia },
+        };
+        putComentario(JSON.stringify(json))
+          .then((resp) => {
+            cargarPosts();
+            swal("Eliminado!", "Tu comentario se eliminó", "success");
+          })
+          .catch((err) => {
+            swal("Opps!", "No se pudo eliminar", "error");
+          });
+      }
+    });
   };
 
   return (
@@ -215,6 +254,9 @@ const RedSocial = ({
           </div>
           <button className="new-post" onClick={(e) => toggleButtonPost(e)}>
             <i className="fas fa-plus"></i>
+          </button>
+          <button className="new-post" onClick={() => cargarPosts()}>
+            <i class="fas fa-undo-alt"></i>
           </button>
         </div>
         <Post
@@ -263,11 +305,21 @@ const RedSocial = ({
                   post.comentarios.length > 0 &&
                   post.comentarios.map((comentario, i) => (
                     <div className="comentario" key={i}>
-                      <h3 className="title-c">{`${
-                        comentario?.usuario?.nombre
-                      } ${
-                        comentario?.usuario?.apellidoPa
-                      } / ${comentario?.fecha?.slice(0, 10)}`}</h3>
+                      <div className="cabecera-post">
+                        <h3 className="title-c">{`${
+                          comentario?.usuario?.nombre
+                        } ${
+                          comentario?.usuario?.apellidoPa
+                        } / ${comentario?.fecha?.slice(0, 10)}`}</h3>
+                        {comentario?.edit && (
+                          <button
+                            className="delete"
+                            onClick={() => eliminaComentario(comentario)}
+                          >
+                            <i className="fas fa-trash-alt"></i>
+                          </button>
+                        )}
+                      </div>
                       <p className="contenido-c">{comentario?.descripcion}</p>
                     </div>
                   ))}
@@ -275,6 +327,7 @@ const RedSocial = ({
                   <textarea
                     name="comentario"
                     onChange={(e) => setComentario(e.target.value)}
+                    value={comentario}
                   ></textarea>
                   <button
                     className="plus-comentario"
