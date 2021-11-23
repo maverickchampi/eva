@@ -29,7 +29,7 @@ export const postPost = async (data) => {
 
 export const putPost = async (data) => {
   const respuesta = await fetch(`${url}/post`, {
-    method: "POST",
+    method: "DELETE",
     headers: {
       "Content-Type": "application/json",
       "Access-Control-Allow-Methods": "*",

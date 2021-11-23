@@ -519,6 +519,45 @@
             padding: 4px 8px;
             border-radius: 12px;
             margin: 4px 0;
+
+            .title-c {
+              margin-top: 8px;
+              font-size: 14px;
+            }
+            .contenido-c {
+              font-size: 14px;
+            }
+          }
+
+          .new-comentario {
+            display: grid;
+            align-items: center;
+            grid-template-columns: 1fr 30px;
+            gap: 8px;
+            margin-top: 8px;
+
+            textarea {
+              resize: none;
+              border-radius: 8px;
+              padding: 8px;
+              box-shadow: 1px 1px 1px 0px rgb(0 0 0 / 25%);
+            }
+
+            .plus-comentario {
+              background-color: rgb(0, 143, 0);
+              cursor: pointer;
+              color: #fff;
+              height: 30px;
+              border-radius: 8px;
+
+              &:hover {
+                background-color: rgb(1, 92, 1);
+              }
+
+              i {
+                pointer-events: none;
+              }
+            }
           }
         }
         .comentarios-show {

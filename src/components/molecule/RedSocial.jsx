@@ -18,6 +18,7 @@ const RedSocial = ({
 }) => {
   const [showStop, setShowStop] = useState(false);
   const [rec, setRec] = useState(null);
+  const [comentario, setComentario] = useState("");
   const popup = useRef();
   const newPost = useRef();
   const { filteredResults } = UseSearch(posts, "contenido", busqueda);
@@ -135,6 +136,7 @@ const RedSocial = ({
           post: {
             id: post.id,
             usuario: { id: user.id },
+            fecha: post.fecha,
             descripcion: post.contenido,
             estado: false,
           },
@@ -165,6 +167,14 @@ const RedSocial = ({
         //   });
       }
     });
+  };
+
+  const addComentario = (e) => {
+    if (comentario !== null && comentario !== "") {
+      console.log(e);
+    } else {
+      swal("Opps!", "No puedes dejar el comentarios vacio", "error");
+    }
   };
 
   return (
@@ -243,21 +253,36 @@ const RedSocial = ({
                   {post.likes}
                 </button>
                 <button onClick={() => toggleComentarios(`comentario-${key}`)}>
-                  <i className="fas fa-comments"></i> Comentarios
+                  <i className="fas fa-comments"></i>{" "}
+                  {post.comentarios.length || 0} comentarios
                 </button>
               </div>
 
               <div className="comentarios" id={`comentario-${key}`}>
-                {post.comentarios && post.comentarios.length > 0 ? (
+                {post.comentarios &&
+                  post.comentarios.length > 0 &&
                   post.comentarios.map((comentario, i) => (
                     <div className="comentario" key={i}>
-                      <h3 className="title">{comentario.title}</h3>
-                      <p className="contenido">{comentario.contenido}</p>
+                      <h3 className="title-c">{`${
+                        comentario?.usuario?.nombre
+                      } ${
+                        comentario?.usuario?.apellidoPa
+                      } / ${comentario?.fecha?.slice(0, 10)}`}</h3>
+                      <p className="contenido-c">{comentario?.descripcion}</p>
                     </div>
-                  ))
-                ) : (
-                  <div className="comentario">Sin comentarios</div>
-                )}
+                  ))}
+                <div className="new-comentario">
+                  <textarea
+                    name="comentario"
+                    onChange={(e) => setComentario(e.target.value)}
+                  ></textarea>
+                  <button
+                    className="plus-comentario"
+                    onClick={() => addComentario(post.id)}
+                  >
+                    <i class="fas fa-plus"></i>
+                  </button>
+                </div>
               </div>
             </div>
           ))}

@@ -10,8 +10,8 @@ const Dashboard = () => {
   const [user, setUser] = useState({
     ...usuario(),
     foto: usuario()?.foto || "https://i.ibb.co/JBcGfKj/imagen.png",
-    posts: 5,
-    aportes: 2,
+    posts: 0,
+    likes: 0,
     calendarioAnimos: [0, 1, 3, 2, 2, 3],
     semanaEmociones: [2, 5, 2, 1, 3, 4, 0],
   });
@@ -77,32 +77,86 @@ const Dashboard = () => {
   const cargarPosts = () => {
     getPosts().then((response) => {
       let _posts = [];
+      let _mylikes = 0;
+      let _myposts = 0;
 
       const contarLikes = (likes, id) => {
-        const __posts = likes.filter(
-          (p) => Number(p.post.id) === Number(id) && p.estado === true
-        );
-        return __posts.length;
+        if (likes !== undefined) {
+          if (likes.length > 0) {
+            const __posts = likes.filter(
+              (p) => Number(p.post.id) === Number(id) && p.estado === true
+            );
+            return __posts.length;
+          } else {
+            return 0;
+          }
+        } else {
+          return 0;
+        }
       };
 
       const verificaLike = (likes, id) => {
-        const __posts = likes.filter(
-          (p) =>
-            Number(p.post.id) === Number(id) &&
-            Number(p.usuario.id) === Number(usuario().id) &&
-            p.estado === true
-        );
-        const resp = __posts.length > 0 ? true : false;
-        return resp;
+        if (likes !== undefined) {
+          if (likes.length > 0) {
+            const __posts = likes.filter(
+              (p) =>
+                Number(p.post.id) === Number(id) &&
+                Number(p.usuario.id) === Number(usuario().id) &&
+                p.estado === true
+            );
+            const resp = __posts.length > 0 ? true : false;
+            if (resp === true) _mylikes += 1;
+            return resp;
+          } else {
+            return false;
+          }
+        } else {
+          return false;
+        }
       };
 
       const likeId = (likes, id) => {
-        const __posts = likes.filter(
-          (p) =>
-            Number(p.post.id) === Number(id) &&
-            Number(p.usuario.id) === Number(usuario().id)
-        );
-        return __posts[0]?.id;
+        if (likes !== undefined) {
+          if (likes.length > 0) {
+            const __posts = likes.filter(
+              (p) =>
+                Number(p.post.id) === Number(id) &&
+                Number(p.usuario.id) === Number(usuario().id)
+            );
+            return __posts[0]?.id;
+          } else {
+            return -1;
+          }
+        } else {
+          return -1;
+        }
+      };
+
+      const editar = (id) => {
+        if (id === usuario().id) {
+          _myposts += 1;
+          return true;
+        } else {
+          return false;
+        }
+      };
+
+      const filtraComentarios = (comentarios, idpost) => {
+        // console.log(comentarios);
+        if (comentarios !== undefined) {
+          if (comentarios.length > 0) {
+            const __comentarios = comentarios.filter(
+              (c) => c.estado === true && c.post.id === idpost
+            );
+            __comentarios.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
+            __comentarios.reverse();
+            return __comentarios;
+          } else {
+            return 0;
+          }
+        } else {
+          return 0;
+        }
       };
 
       response.posts.map(
@@ -114,18 +168,20 @@ const Dashboard = () => {
               r.usuario.apellidoPa
             } / ${r.fecha.slice(0, 10)}`,
             fecha: r.fecha,
-            edit: r.usuario.id === usuario().id ? true : false,
+            edit: editar(r.usuario.id),
             contenido: r.descripcion,
             likes: contarLikes(response.likes, r.id),
             like: verificaLike(response.likes, r.id),
             like_id: likeId(response.likes, r.id),
-            comentarios: [],
+            comentarios: filtraComentarios(response.comentarios, r.id),
           })
       );
       _posts.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
       _posts.reverse();
       setPosts(_posts);
-      // console.log(_posts);
+      // console.log(_mylikes);
+      // console.log(_myposts);
+      setUser({ ...user, likes: _mylikes, posts: _myposts });
     });
   };
 

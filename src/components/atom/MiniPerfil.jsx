@@ -74,8 +74,8 @@ const MiniPerfil = ({ user }) => {
             <label className="sub">posts</label>
           </div>
           <div>
-            <label className="top">{user.aportes}</label>
-            <label className="sub">aportes</label>
+            <label className="top">{user.likes}</label>
+            <label className="sub">likes</label>
           </div>
           <div>
             <label className="top">{`${fechaHoy.getDate()}/${
