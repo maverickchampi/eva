@@ -14,7 +14,7 @@ const Dashboard = () => {
     posts: 0,
     likes: 0,
     calendarioAnimos: [0, 1, 3, 2, 2, 3],
-    semanaEmociones: [2, 5, 2, 1, 3, 4, 0],
+    // semanaEmociones: [2, 5, 2, 1, 3, 4, 0],
   });
   const [emociones, setEmociones] = useState([]);
   const [posts, setPosts] = useState([]);
@@ -25,8 +25,8 @@ const Dashboard = () => {
       title: "Come rico en Rappi",
       description:
         "Completa el regisro de tus emociones por 7 días y gana un cupón del 25%.",
-      status: false,
-      descriptionStatus: "0/7",
+      valor_entregado: 0,
+      valor_total: 7,
     },
     {
       id: 2,
@@ -34,17 +34,17 @@ const Dashboard = () => {
       title: "Disfruta saludablemente",
       description:
         "Publica 10 posts y gana un descuento del 10% en Manzana Verde",
-      status: true,
-      descriptionStatus: "10/10",
+
+      valor_entregado: 10,
+      valor_total: 10,
     },
     {
       id: 3,
       class: "felipe",
       title: "Consultas en Clínica San Felipe",
-      description:
-        "Registra tu estado de ánimo por un mes y gana 50% de descuento en consultas",
-      status: false,
-      descriptionStatus: "10/30",
+      description: "Da 100 likes y gana 50% de descuento en consultas",
+      valor_entregado: 0,
+      valor_total: 100,
     },
     {
       id: 4,
@@ -52,8 +52,8 @@ const Dashboard = () => {
       title: "Pensando en ti",
       description:
         "Descuento del 2% en tasa de cambio a dólares con Pichincha al hacer 25 aportes",
-      status: false,
-      descriptionStatus: "2/25",
+      valor_entregado: 0,
+      valor_total: 25,
     },
   ]);
   const [busqueda, setBusqueda] = useState("");
@@ -64,6 +64,7 @@ const Dashboard = () => {
       let _posts = [];
       let _mylikes = 0;
       let _myposts = 0;
+      let _mycomments = 0;
 
       const contarLikes = (likes, id) => {
         if (likes !== undefined) {
@@ -140,6 +141,7 @@ const Dashboard = () => {
             __comentarios.map(
               (c) => (c.edit = c.usuario.id === usuario().id ? true : false)
             );
+            _mycomments += __comentarios.length;
             return __comentarios;
           } else {
             return 0;
@@ -170,6 +172,11 @@ const Dashboard = () => {
       // console.log(_mylikes);
       // console.log(_myposts);
       // console.log(posts);
+      let rec = [...recompensas];
+      rec[1].valor_entregado = _myposts;
+      rec[2].valor_entregado = _mylikes;
+      rec[3].valor_entregado = _mycomments;
+      setRecompensas(rec);
       setUser({ ...user, likes: _mylikes, posts: _myposts });
     });
   };
@@ -183,6 +190,9 @@ const Dashboard = () => {
       response.emociones.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
       response.emociones.reverse();
       setEmociones(response.emociones);
+      let rec = [...recompensas];
+      rec[0].valor_entregado = response.emociones.length;
+      setRecompensas(rec);
     });
   };
 

@@ -4,9 +4,12 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import swal from "sweetalert";
+import { postRecompensa } from "../../services/Recompensa";
+import { user } from "../../constants/methods";
 
 const DetalleDashboard = ({ recompensas, emociones }) => {
   const [recompensa, setRecompensa] = useState(recompensas[0]);
+  const [loading, setLoading] = useState(false);
   const [events, setEvents] = useState([
     // { id: 1, start: "2021-11-18", title: "😀" },
     // { id: 2, start: "2021-11-17", title: "😡" },
@@ -29,11 +32,27 @@ const DetalleDashboard = ({ recompensas, emociones }) => {
     setRecompensa(recompensas[newVale]);
   };
 
-  const reclamarCupon = () => {
-    swal("Felicidades!", "El cupón ya fue enviado a tu correo", "success");
+  const reclamarCupon = (id) => {
+    const json = {
+      recompensa: {
+        tipo: id,
+        usuario: { id: user().id },
+      },
+      login: {
+        correo: user().correo,
+        contrasenia: user().contrasenia,
+      },
+    };
+    setLoading(true);
+    // console.log(json);
+    postRecompensa(JSON.stringify(json)).then((resp) => {
+      setLoading(false);
+      swal("Felicidades!", "El cupón ya fue enviado a tu correo", "success");
+    });
   };
 
-  const completarCupon = () => {
+  const completarCupon = (id) => {
+    // console.log(id);
     swal(
       "Opps!",
       "Aún debes completar la tarea para reclamar el cupón",
@@ -72,6 +91,7 @@ const DetalleDashboard = ({ recompensas, emociones }) => {
   return (
     <div className="detalle-dashboard">
       <div className="calendario">
+        {/* <h4>Calendario de emociones</h4> */}
         <FullCalendar
           events={events}
           initialView="dayGridMonth"
@@ -88,15 +108,21 @@ const DetalleDashboard = ({ recompensas, emociones }) => {
           <h3>{recompensa.title}</h3>
           <p>{recompensa.description}</p>
           <div className="botones">
-            <button
-              onClick={() =>
-                recompensa.status ? reclamarCupon() : completarCupon()
-              }
-            >
-              {recompensa.status
-                ? `Completar ${recompensa.descriptionStatus}`
-                : `Reclamar ${recompensa.descriptionStatus}`}
-            </button>
+            {loading ? (
+              <label className="loading-recompensa">Cargando...</label>
+            ) : (
+              <button
+                onClick={() =>
+                  recompensa.valor_entregado >= recompensa.valor_total
+                    ? reclamarCupon(recompensa.id)
+                    : completarCupon(recompensa.id)
+                }
+              >
+                {recompensa.valor_entregado >= recompensa.valor_total
+                  ? `Reclamar ${recompensa.valor_entregado} / ${recompensa.valor_total}`
+                  : `Completar ${recompensa.valor_entregado} / ${recompensa.valor_total}`}
+              </button>
+            )}
             <div>
               <button onClick={() => backRecompensa()}>
                 <i className="fas fa-chevron-left"></i>
