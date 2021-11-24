@@ -42,7 +42,8 @@ const Dashboard = () => {
       id: 3,
       class: "felipe",
       title: "Consultas en Clínica San Felipe",
-      description: "Da 100 likes y gana 50% de descuento en consultas",
+      description:
+        "Da 100 likes y gana 50% de descuento en consultas en la clínica",
       valor_entregado: 0,
       valor_total: 100,
     },

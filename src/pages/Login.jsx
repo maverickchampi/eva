@@ -14,11 +14,19 @@ const Login = () => {
       .then((response) => {
         if (response.mensaje !== "Credenciales no válidas") {
           // console.log(response.correo);
-          sessionStorage.setItem(
-            btoa("user"),
-            btoa(JSON.stringify(response.correo))
-          );
-          history.push("/dashboard");
+          if (response.correo.estado === true) {
+            sessionStorage.setItem(
+              btoa("user"),
+              btoa(JSON.stringify(response.correo))
+            );
+            history.push("/eva/dashboard");
+          } else {
+            swal(
+              "Opps!",
+              "La cuenta se encuentra eliminada, cree una nueva con un correo distinto",
+              "error"
+            );
+          }
         } else {
           swal(
             "Opps!",
@@ -77,7 +85,7 @@ const Login = () => {
             src="https://i.ibb.co/RzdYqyB/eva.png"
             alt="eva"
             className="login-img"
-            onClick={() => history.push("/")}
+            onClick={() => history.push("/eva/")}
           />
           <div className="formulario-content">
             <h1 className="titulo">
@@ -118,7 +126,7 @@ const Login = () => {
               <button>Ingresar</button>
               <h5 className="titulo-registrar">
                 ¿No cuentas con una cuenta?{" "}
-                <Link to="/registro">Registrate</Link>
+                <Link to="/eva/registro">Registrate</Link>
               </h5>
             </form>
             <div className="login-api">

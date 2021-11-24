@@ -10,15 +10,15 @@ const HeaderInicio = () => {
         <img src={logo} alt="logo eva" />
         <div className="botones">
           {user() ? (
-            <Link to="/dashboard" className="off">
+            <Link to="/eva/dashboard" className="off">
               Mi dashboard
             </Link>
           ) : (
             <>
-              <Link to="/login" className="off">
+              <Link to="/eva/login" className="off">
                 Iniciar Sesión
               </Link>
-              <Link to="/registro" className="on">
+              <Link to="/eva/registro" className="on">
                 Registrar
               </Link>
             </>

@@ -1,24 +1,93 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
+import swal from "sweetalert";
+import { subirFoto } from "../../services/Usuario";
 
-const ActualizarPerfil = () => {
+const ActualizarPerfil = ({ edit, setEdit, user, setUser }) => {
   const [file, setFile] = useState({ filepreview: null });
+  const [userEdit, setUserEdit] = useState({ ...user, contrasenia: "" });
+
+  const myForm = useRef();
+
+  const editar = async (e) => {
+    e.preventDefault();
+    if (
+      userEdit.nombre !== "" &&
+      userEdit.apellidoPa !== "" &&
+      userEdit.apellidoMa !== "" &&
+      userEdit.fechaNaci !== ""
+    ) {
+      if (file.filepreview !== null) {
+        console.log("Se actualiza foto");
+        const data = new FormData();
+        data.append("key", "2b60843bcdb5f79baedd209dfdced757");
+        data.append("image", file.filepreview);
+
+        subirFoto(data)
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+
+      if (userEdit.contrasenia.length > 0) {
+        if (userEdit.contrasenia.length >= 8) {
+          console.log("Se actualiza contraseña");
+          swal("Éxito", "Tu perfil ha sido actualizado", "success");
+          setEdit(true);
+          console.log(userEdit);
+        } else {
+          swal("", "La contraseña debe tener al menos 8 caracteres", "info");
+        }
+      } else {
+        userEdit.contrasenia = user.contrasenia;
+        swal("Éxito", "Tu perfil ha sido actualizado", "success");
+        setEdit(true);
+        console.log(userEdit);
+      }
+    } else {
+      swal("Error", "Todos los campos son obligatorios", "error");
+    }
+  };
+
+  const cancelar = () => {
+    myForm.current.reset();
+    document.getElementById("file").value = "";
+    setFile({ filepreview: null });
+    setUserEdit({ ...user, contrasenia: "" });
+    setEdit(true);
+  };
+
   return (
     <div className="actualizar-perfil">
-      <h2>Actualizar Perfil</h2>
+      <h2>Mis datos</h2>
       <div className="formulario-perfil">
         <div className="card card-foto">
-          <img className="foto-preview" src={file.filepreview} />
+          <img
+            className="foto-preview"
+            src={file.filepreview || userEdit.foto}
+            width="50"
+          />
           <div className="foto-contenedor">
             <input
               type="file"
               name="file"
               id="file"
               className="foto-input"
-              onChange={(e) =>
-                setFile({
-                  filepreview: URL.createObjectURL(e.target.files[0]),
-                })
-              }
+              disabled={edit}
+              onChange={(e) => {
+                try {
+                  setFile({
+                    filepreview: URL.createObjectURL(e.target.files[0]),
+                  });
+                } catch (err) {
+                  setFile({
+                    filepreview: null,
+                  });
+                }
+              }}
+              accept="image/*"
               data-multgit
               aiple-caption=""
               multiple
@@ -38,43 +107,115 @@ const ActualizarPerfil = () => {
             </label>
           </div>
         </div>
-        <form>
+        <form ref={myForm}>
           <div className="form-group">
             <label htmlFor="nombre">Nombre</label>
-            <input type="text" name="nombre" required />
+            <input
+              type="text"
+              name="nombre"
+              required
+              readOnly={edit}
+              defaultValue={userEdit.nombre}
+              onChange={(e) =>
+                setUserEdit({ ...userEdit, nombre: e.target.value })
+              }
+            />
           </div>
           <div className="form-group">
             <label htmlFor="apellido_pat">Apellido Paterno</label>
-            <input type="text" name="apellido_pat" required />
+            <input
+              type="text"
+              name="apellido_pat"
+              required
+              readOnly={edit}
+              defaultValue={userEdit.apellidoPa}
+              onChange={(e) =>
+                setUserEdit({ ...userEdit, apellidoPa: e.target.value })
+              }
+            />
           </div>
           <div className="form-group">
             <label htmlFor="apellido_mat">Apellido Materno</label>
-            <input type="text" name="apellido_mat" required />
+            <input
+              type="text"
+              name="apellido_mat"
+              required
+              readOnly={edit}
+              defaultValue={userEdit.apellidoMa}
+              onChange={(e) =>
+                setUserEdit({ ...userEdit, apellidoMa: e.target.value })
+              }
+            />
           </div>
           <div className="form-group">
             <label htmlFor="fecha_nac">Fecha de nacimiento</label>
-            <input type="date" name="fecha_nac" required />
+            <input
+              type="date"
+              name="fecha_nac"
+              required
+              readOnly={edit}
+              defaultValue={userEdit.fechaNaci}
+              onChange={(e) =>
+                setUserEdit({ ...userEdit, fechaNaci: e.target.value })
+              }
+            />
           </div>
           <div className="form-group">
             <label htmlFor="sexo">Sexo</label>
-            <select>
-              <option value="masculino">Masculino</option>
-              <option value="femenino">Femenino</option>
+            <select
+              name="sexo"
+              disabled={edit}
+              defaultValue={userEdit.sexo}
+              onChange={(e) =>
+                setUserEdit({ ...userEdit, sexo: e.target.value })
+              }
+            >
+              <option value="S">Sin definir</option>
+              <option value="M">Masculino</option>
+              <option value="F">Femenino</option>
             </select>
           </div>
           <div className="form-group">
             <label htmlFor="celular">Celular</label>
-            <input type="number" name="celular" />
+            <input
+              type="number"
+              name="celular"
+              readOnly={edit}
+              defaultValue={userEdit.telefono}
+              onChange={(e) =>
+                setUserEdit({ ...userEdit, telefono: e.target.value })
+              }
+            />
           </div>
           <div className="form-group">
             <label htmlFor="correo">Correo</label>
-            <input type="text" name="correo" required />
+            <input
+              type="text"
+              name="correo"
+              readOnly={true}
+              defaultValue={userEdit.correo}
+            />
           </div>
           <div className="form-group">
             <label htmlFor="contrasenia">Contraseña</label>
-            <input type="password" name="contrasenia" />
+            <input
+              type="password"
+              name="contrasenia"
+              readOnly={edit}
+              placeholder="********"
+              onChange={(e) =>
+                setUserEdit({ ...userEdit, contrasenia: e.target.value })
+              }
+            />
           </div>
-          <button>Guardar</button>
+          {!edit && (
+            <>
+              <button onClick={(e) => editar(e)}>Guardar</button>
+              <button type="button" onClick={() => cancelar()}>
+                Cancelar
+              </button>
+            </>
+          )}
         </form>
       </div>
     </div>

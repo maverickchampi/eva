@@ -118,7 +118,9 @@ const Inicio = () => {
           {TEXTS_CONVENIOS.map((item, index) => {
             return (
               <div className="convenios__item" key={index}>
-                <img src={item.image} alt={item.name} />
+                <a href={item.url} target="_blank">
+                  <img src={item.image} alt={item.name} />
+                </a>
                 <p>{item.name}</p>
               </div>
             );

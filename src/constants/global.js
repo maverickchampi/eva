@@ -4,21 +4,21 @@ export const TEXTS_SLIDES = [
     subtitle: "Emotional Virtual Assistant",
     image: "https://i.ibb.co/ryZ250N/carousel-1.png",
     nameButton: "Empieza ahora",
-    urlButton: "/login",
+    urlButton: "/eva/login",
   },
   {
     title: "Siempre ofreciendote lo mejor.",
     subtitle: "Emotional Virtual Assistant",
     image: "https://i.ibb.co/f2JvTCT/tecnologia.png",
     nameButton: "Empieza ahora",
-    urlButton: "/login",
+    urlButton: "/eva/login",
   },
   {
     title: "Somos más que un servicio.",
     subtitle: "Emotional Virtual Assistant",
     image: "https://i.ibb.co/tqdDGqB/familia.png",
     nameButton: "Empieza ahora",
-    urlButton: "/login",
+    urlButton: "/eva/login",
   },
 ];
 export const TEXTS_SLIDES_CARD = [
@@ -66,18 +66,22 @@ export const TEXTS_CONVENIOS = [
     image:
       "https://legal.rappi.com/wp-content/uploads/2019/02/logo-rappi-new.png",
     name: "Rappi",
+    url: "https://www.rappi.com/",
   },
   {
     image: "https://manzanaverde.la/favicon.png",
     name: "Manzana Verde",
+    url: "https://manzanaverde.la/",
   },
   {
     image: "https://www.clinicasanfelipe.com/sites/default/files/favicon.png",
     name: "Clínica San Felipe",
+    url: "https://www.clinicasanfelipe.com/",
   },
   {
     image: "https://www.pichincha.pe/themes/custom/financiero/img/favicon.ico",
     name: "Banco Pichincha",
+    url: "https://www.pichincha.pe/",
   },
 ];
 

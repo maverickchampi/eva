@@ -176,3 +176,38 @@
   box-shadow: 1px 0px 2px 1px rgb(0 0 0 / 25%);
   border-radius: 18px;
 }
+.perfil-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  button {
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 16px;
+    margin-bottom: 4px;
+
+    i {
+      pointer-events: none;
+    }
+  }
+
+  .edit {
+    background-color: rgb(0, 165, 27);
+
+    &:hover {
+      background-color: rgb(0, 153, 25);
+    }
+  }
+  .delete {
+    background-color: #c90032;
+
+    &:hover {
+      background-color: #a30026;
+    }
+  }
+}

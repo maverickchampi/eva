@@ -32,7 +32,7 @@ const Registro = () => {
           if (response.mensaje === "Se registró correctamente.") {
             swal("Éxito", "Registro completado", "success");
             setTimeout(() => {
-              history.push("/login");
+              history.push("/eva/login");
             }, 2000);
           } else {
             swal(
@@ -73,7 +73,7 @@ const Registro = () => {
             src="https://i.ibb.co/RzdYqyB/eva.png"
             alt="eva"
             className="registro-img"
-            onClick={() => history.push("/")}
+            onClick={() => history.push("/eva/")}
           />
           <div className="formulario-content">
             <h1 className="titulo">
@@ -143,7 +143,7 @@ const Registro = () => {
               <button type="submit">Registrar</button>
               <h5 className="titulo-registrar">
                 ¿Ya tienes una cuentas registrada?
-                <Link to="/login">Ingresa</Link>
+                <Link to="/eva/login">Ingresa</Link>
               </h5>
             </form>
           </div>

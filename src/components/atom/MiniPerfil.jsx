@@ -1,7 +1,10 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { Chart } from "primereact/chart";
+import swal from "sweetalert";
 
-const MiniPerfil = ({ user }) => {
+const MiniPerfil = ({ user, buttonsEdit = false, setEdit }) => {
+  let history = useHistory();
   const data = {
     labels: [
       "Julio",
@@ -54,6 +57,43 @@ const MiniPerfil = ({ user }) => {
   };
 
   const fechaHoy = new Date();
+
+  const editarPerfil = () => {
+    setEdit(false);
+  };
+
+  const eliminarPerfil = () => {
+    swal({
+      title: "¿Estás seguro?",
+      text: "Una vez eliminado tu perfil no podrás recuperarlo",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        swal({
+          title: "Por seguridad debemos volverte a preguntar",
+          text: "Una vez clickeado 'Ok' la acción será irreversible",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        }).then((willDelete) => {
+          if (willDelete) {
+            sessionStorage.removeItem(btoa("user"));
+            history.push("/eva/login");
+            swal("Tu perfil ha sido eliminado", {
+              icon: "success",
+            });
+          } else {
+            swal("", "Tu perfil no ha sido eliminado", "info");
+          }
+        });
+      } else {
+        swal("", "Tu perfil no ha sido eliminado", "info");
+      }
+    });
+  };
+
   return (
     <div className="miniperfil">
       <section className="informacion">
@@ -69,14 +109,33 @@ const MiniPerfil = ({ user }) => {
           </div>
         </div>
         <div className="content__subtitle">
-          <div>
-            <label className="top">{user.posts}</label>
-            <label className="sub">posts</label>
-          </div>
-          <div>
-            <label className="top">{user.likes}</label>
-            <label className="sub">likes</label>
-          </div>
+          {buttonsEdit ? (
+            <>
+              <div className="perfil-button">
+                <button className="edit" onClick={() => editarPerfil()}>
+                  <i className="fas fa-pen"></i>
+                </button>
+                <label className="sub">Editar</label>
+              </div>
+              <div className="perfil-button">
+                <button className="delete" onClick={() => eliminarPerfil()}>
+                  <i className="fas fa-minus-circle"></i>
+                </button>
+                <label className="sub">Eliminar</label>
+              </div>
+            </>
+          ) : (
+            <>
+              <div>
+                <label className="top">{user.posts}</label>
+                <label className="sub">posts</label>
+              </div>
+              <div>
+                <label className="top">{user.likes}</label>
+                <label className="sub">likes</label>
+              </div>
+            </>
+          )}
           <div>
             <label className="top">{`${fechaHoy.getDate()}/${
               fechaHoy.getMonth() + 1

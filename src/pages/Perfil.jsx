@@ -10,6 +10,8 @@ const Perfil = () => {
     ...usuario(),
     foto: usuario()?.foto || "https://i.ibb.co/JBcGfKj/imagen.png",
   });
+  const [edit, setEdit] = useState(true);
+
   return (
     <div className="dashboard dashboard-perfil">
       <div className="container">
@@ -17,9 +19,19 @@ const Perfil = () => {
         <div className="content content-perfil">
           <div className="perfil__item">
             <DetallePerfil />
-            <ActualizarPerfil />
+            <ActualizarPerfil
+              edit={edit}
+              setEdit={setEdit}
+              user={user}
+              setUser={setUser}
+            />
           </div>
-          <MiniPerfil user={user} />
+          <MiniPerfil
+            user={user}
+            buttonsEdit={true}
+            edit={edit}
+            setEdit={setEdit}
+          />
         </div>
       </div>
     </div>

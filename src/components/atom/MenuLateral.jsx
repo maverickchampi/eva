@@ -9,29 +9,32 @@ const MenuLateral = ({ link = 0 }) => {
 
   const signOut = () => {
     sessionStorage.removeItem(btoa("user"));
-    history.push("/login");
+    history.push("/eva/login");
   };
 
   return (
     <>
       <header className="menuLateral">
-        <Link to="/" className="link">
+        <Link to="/eva/" className="link">
           <img src={logo} alt="logo" />
         </Link>
         <nav>
           <Link
-            to="/dashboard"
+            to="/eva/dashboard"
             className={`link ${link === 0 ? "active" : ""}`}
           >
             <i className="fas fa-home"></i>
           </Link>
-          <Link to="/perfil" className={`link ${link === 1 ? "active" : ""}`}>
+          <Link
+            to="/eva/perfil"
+            className={`link ${link === 1 ? "active" : ""}`}
+          >
             <i className="fas fa-user"></i>
           </Link>
-          <Link to="/plus" className={`link ${link === 2 ? "active" : ""}`}>
+          <Link to="/eva/plus" className={`link ${link === 2 ? "active" : ""}`}>
             <i className="fas fa-plus"></i>
           </Link>
-          <Link to="/box" className={`link ${link === 3 ? "active" : ""}`}>
+          <Link to="/eva/box" className={`link ${link === 3 ? "active" : ""}`}>
             <i className="fas fa-box"></i>
           </Link>
         </nav>
