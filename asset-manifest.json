@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/eva/static/css/main.9932c9a5.chunk.css",
+    "main.js": "/eva/static/js/main.c462d49e.chunk.js",
+    "main.js.map": "/eva/static/js/main.c462d49e.chunk.js.map",
+    "runtime-main.js": "/eva/static/js/runtime-main.573e53b8.js",
+    "runtime-main.js.map": "/eva/static/js/runtime-main.573e53b8.js.map",
+    "static/css/2.cc1b1c8e.chunk.css": "/eva/static/css/2.cc1b1c8e.chunk.css",
+    "static/js/2.589bbb27.chunk.js": "/eva/static/js/2.589bbb27.chunk.js",
+    "static/js/2.589bbb27.chunk.js.map": "/eva/static/js/2.589bbb27.chunk.js.map",
+    "static/js/3.700b1fbb.chunk.js": "/eva/static/js/3.700b1fbb.chunk.js",
+    "static/js/3.700b1fbb.chunk.js.map": "/eva/static/js/3.700b1fbb.chunk.js.map",
+    "index.html": "/eva/index.html",
+    "static/css/2.cc1b1c8e.chunk.css.map": "/eva/static/css/2.cc1b1c8e.chunk.css.map",
+    "static/css/main.9932c9a5.chunk.css.map": "/eva/static/css/main.9932c9a5.chunk.css.map",
+    "static/js/2.589bbb27.chunk.js.LICENSE.txt": "/eva/static/js/2.589bbb27.chunk.js.LICENSE.txt",
+    "static/js/3.700b1fbb.chunk.js.LICENSE.txt": "/eva/static/js/3.700b1fbb.chunk.js.LICENSE.txt",
+    "static/media/index.scss": "/eva/static/media/background_inicio.d3816822.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.573e53b8.js",
+    "static/css/2.cc1b1c8e.chunk.css",
+    "static/js/2.589bbb27.chunk.js",
+    "static/css/main.9932c9a5.chunk.css",
+    "static/js/main.c462d49e.chunk.js"
+  ]
+}
