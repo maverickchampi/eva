@@ -118,11 +118,13 @@ const Dashboard = () => {
       };
 
       const editar = (id) => {
-        if (id === usuario().id) {
-          _myposts += 1;
-          return true;
-        } else {
-          return false;
+        if (usuario() !== null) {
+          if (id === usuario().id) {
+            _myposts += 1;
+            return true;
+          } else {
+            return false;
+          }
         }
       };
 
@@ -134,7 +136,6 @@ const Dashboard = () => {
               (c) => c.estado === true && c.post.id === idpost
             );
             __comentarios.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
-            __comentarios.reverse();
 
             __comentarios.map(
               (c) => (c.edit = c.usuario.id === usuario().id ? true : false)
