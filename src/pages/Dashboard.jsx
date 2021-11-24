@@ -118,11 +118,13 @@ const Dashboard = () => {
       };
 
       const editar = (id) => {
-        if (id === usuario().id) {
-          _myposts += 1;
-          return true;
-        } else {
-          return false;
+        if (usuario() !== null) {
+          if (id === usuario().id) {
+            _myposts += 1;
+            return true;
+          } else {
+            return false;
+          }
         }
       };
 

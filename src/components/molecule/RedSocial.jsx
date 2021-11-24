@@ -30,7 +30,7 @@ const RedSocial = ({
   const [comentario, setComentario] = useState("");
   const popup = useRef();
   const newPost = useRef();
-  const { filteredResults } = UseSearch(posts, "contenido", busqueda);
+  const { filteredResults } = UseSearch(posts, busqueda, "contenido", "title");
 
   const handleMicrophone = () => {
     if (!("webkitSpeechRecognition" in window)) {
