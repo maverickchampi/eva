@@ -143,11 +143,54 @@
   }
 }
 .actualizar-perfil {
+  overflow: scroll;
   margin-top: 1rem;
   width: 100%;
   display: flex;
+  max-height: calc(100vh - 50px);
   flex-direction: column;
   align-items: center;
+  overflow-x: hidden;
+  h2 {
+    margin-bottom: 1rem;
+    span {
+      color: $color-primario;
+      // border-bottom: 2px solid $color-primario;
+    }
+  }
+  /* Tamaño del scroll */
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  /* Estilos barra (thumb) de scroll */
+  &::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb:active {
+    background-color: #999999;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #b3b3b3;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Estilos track de scroll */
+  &::-webkit-scrollbar-track {
+    background: #e1e1e1;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-track:hover,
+  &::-webkit-scrollbar-track:active {
+    background: #d4d4d4;
+  }
+  @media screen and (min-height: 755px) {
+    overflow: hidden;
+  }
   .formulario-perfil {
     width: 80%;
     .form-group {
@@ -167,7 +210,87 @@
         padding: 0 10px;
         height: 45px;
         border-radius: 10px;
-        background: #f3f3f3;
+        background: #ececec;
+      }
+    }
+    .botones {
+      display: flex;
+      align-self: center;
+      justify-content: flex-end;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      button {
+        padding: 0.4rem 1rem;
+        color: $color-cuarto;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+      .btn-save {
+        background-color: #532cf1;
+        &:hover {
+          background-color: rgb(108, 80, 223);
+        }
+      }
+      .btn-cancelar {
+        background-color: #666565;
+        &:hover {
+          background-color: #797878;
+        }
+      }
+    }
+    .card-foto {
+      position: relative;
+      width: 150px;
+      height: 150px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .foto-contenedor {
+        text-align: center;
+        .foto-input {
+          width: 0.1px;
+          height: 0.1px;
+          opacity: 0;
+          overflow: hidden;
+          position: absolute;
+          z-index: -1;
+        }
+        .foto-input + label {
+          position: absolute;
+          bottom: -15px;
+          left: 0;
+          right: 0;
+          cursor: pointer;
+        }
+        .foto-input + label figure {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background-color: $color-boton;
+          display: block;
+          padding: 10px;
+          margin: 0 auto 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          &:hover {
+            background-color: #7b61e4;
+          }
+        }
+        .foto-input + label svg {
+          width: 100%;
+          height: 100%;
+          fill: #fff;
+        }
+      }
+      .foto-preview {
+        width: 140px;
+        height: 140px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 2px solid $color-tercer;
+        box-shadow: $box-shadow;
       }
     }
   }
@@ -197,17 +320,17 @@
   }
 
   .edit {
-    background-color: rgb(0, 165, 27);
-
+    background-color: #7651de;
+    cursor: pointer;
     &:hover {
-      background-color: rgb(0, 153, 25);
+      background-color: #8462e2;
     }
   }
   .delete {
-    background-color: #c90032;
-
+    background-color: #f33540;
+    cursor: pointer;
     &:hover {
-      background-color: #a30026;
+      background-color: #f54851;
     }
   }
 }

@@ -61,13 +61,15 @@ const ActualizarPerfil = ({ edit, setEdit, user, setUser }) => {
 
   return (
     <div className="actualizar-perfil">
-      <h2>Mis datos</h2>
+      <h2>
+        <span>Mis datos personales</span>
+      </h2>
       <div className="formulario-perfil">
         <div className="card card-foto">
           <img
             className="foto-preview"
             src={file.filepreview || userEdit.foto}
-            width="50"
+            alt={file.filepreview || userEdit.foto}
           />
           <div className="foto-contenedor">
             <input
@@ -209,12 +211,18 @@ const ActualizarPerfil = ({ edit, setEdit, user, setUser }) => {
             />
           </div>
           {!edit && (
-            <>
-              <button onClick={(e) => editar(e)}>Guardar</button>
-              <button type="button" onClick={() => cancelar()}>
+            <div className="botones">
+              <button onClick={(e) => editar(e)} className="btn-save">
+                Guardar
+              </button>
+              <button
+                type="button"
+                onClick={() => cancelar()}
+                className="btn-cancelar"
+              >
                 Cancelar
               </button>
-            </>
+            </div>
           )}
         </form>
       </div>
