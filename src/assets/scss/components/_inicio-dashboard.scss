@@ -444,7 +444,7 @@
 
       .post {
         margin: 14px 28px;
-        padding: 8px 12px;
+        padding: 10px 12px;
         border-radius: 10px;
         background-color: $color-cuarto;
         box-shadow: 1px 1px 1px 0px rgb(0 0 0 / 25%);
@@ -456,9 +456,15 @@
 
           .header {
             display: flex;
+            gap: 0.5rem;
             width: 100%;
-            justify-content: space-between;
-
+            justify-content: start;
+            img {
+              width: 50px;
+              height: 50px;
+              object-fit: cover;
+              border-radius: 50%;
+            }
             h4 {
               margin-right: 12px;
               font-weight: normal;
@@ -467,11 +473,20 @@
               align-items: center;
             }
           }
+          .header-comentario {
+            margin-top: 0.5rem;
+            img {
+              width: 40px;
+              height: 40px;
+            }
+            h3 {
+              margin-top: 0 !important;
+            }
+          }
 
           h3 {
             color: $color-primario;
             font-size: 16px;
-            margin-top: 4px;
           }
 
           button {
@@ -480,6 +495,8 @@
             border: none;
             cursor: pointer;
             display: flex;
+            height: 30px;
+            margin-top: 5px;
             justify-content: center;
             align-items: center;
 
@@ -497,9 +514,14 @@
 
         p {
           font-size: 16px;
-          margin: 8px 0 12px;
+          margin: 16px 0 25px;
         }
-
+        .contenido-c {
+          margin: 15px 0;
+        }
+        p::first-letter {
+          text-transform: uppercase;
+        }
         .botones {
           width: 100%;
           display: flex;
@@ -559,6 +581,36 @@
               border-radius: 8px;
               padding: 8px;
               box-shadow: 1px 1px 1px 0px rgb(0 0 0 / 25%);
+              /* Tamaño del scroll */
+              &::-webkit-scrollbar {
+                width: 8px;
+              }
+
+              /* Estilos barra (thumb) de scroll */
+              &::-webkit-scrollbar-thumb {
+                background: #ccc;
+                border-radius: 4px;
+              }
+
+              &::-webkit-scrollbar-thumb:active {
+                background-color: #999999;
+              }
+
+              &::-webkit-scrollbar-thumb:hover {
+                background: #b3b3b3;
+                box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+              }
+
+              /* Estilos track de scroll */
+              &::-webkit-scrollbar-track {
+                background: #e1e1e1;
+                border-radius: 4px;
+              }
+
+              &::-webkit-scrollbar-track:hover,
+              &::-webkit-scrollbar-track:active {
+                background: #d4d4d4;
+              }
             }
 
             .plus-comentario {

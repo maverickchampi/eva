@@ -330,13 +330,20 @@ const RedSocial = ({
         />
       </div>
       <div className="cuerpo" id="cuerpo">
+        {console.log(filteredResults)}
         {filteredResults &&
           filteredResults.map((post, key) => (
             <div className="post" key={key}>
               <div className="cabecera-post">
                 <div className="header">
-                  <h3 className="title">{post.title}</h3>
-                  <h4 className="title">{post?.fecha?.slice(0, 16)}</h4>
+                  <img
+                    src={post.foto || "https://i.ibb.co/JBcGfKj/imagen.png"}
+                    alt="usuario de post"
+                  />
+                  <div className="header-content">
+                    <h3 className="title">{post.title}</h3>
+                    <h4 className="title">{post?.fecha?.slice(0, 16)}</h4>
+                  </div>
                 </div>
                 {post.edit && (
                   <button className="delete" onClick={() => eliminaPost(post)}>
@@ -369,11 +376,20 @@ const RedSocial = ({
                   post.comentarios.map((comentario, i) => (
                     <div className="comentario" key={i}>
                       <div className="cabecera-post">
-                        <div className="header">
-                          <h3 className="title-c">
-                            {`${comentario?.usuario?.nombre} ${comentario?.usuario?.apellidoPa}`}
-                          </h3>
-                          <h4>{`${comentario?.fecha}`}</h4>
+                        <div className="header header-comentario">
+                          <img
+                            src={
+                              comentario?.usuario?.foto ||
+                              "https://i.ibb.co/JBcGfKj/imagen.png"
+                            }
+                            alt="usuario de post"
+                          />
+                          <div className="header-content">
+                            <h3 className="title-c">{`${comentario?.usuario?.nombre} ${comentario?.usuario?.apellidoPa}`}</h3>
+                            <h4 className="title">
+                              {comentario?.fecha?.slice(0, 16)}
+                            </h4>
+                          </div>
                         </div>
                         {comentario?.edit && (
                           <button

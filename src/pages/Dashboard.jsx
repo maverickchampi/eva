@@ -165,6 +165,7 @@ const Dashboard = () => {
             like: verificaLike(response.likes, r.id),
             like_id: likeId(response.likes, r.id),
             comentarios: filtraComentarios(response.comentarios, r.id),
+            foto: r.usuario.foto,
           })
       );
       _posts.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
