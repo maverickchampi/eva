@@ -1,9 +1,12 @@
 import React, { useRef, useState } from "react";
 import swal from "sweetalert";
-import { subirFoto } from "../../services/Usuario";
+import { putData, subirFoto } from "../../services/Usuario";
 
 const ActualizarPerfil = ({ edit, setEdit, user, setUser }) => {
-  const [file, setFile] = useState({ filepreview: null });
+  const [file, setFile] = useState({
+    url: null,
+    imagen: null,
+  });
   const [userEdit, setUserEdit] = useState({ ...user, contrasenia: "" });
 
   const myForm = useRef();
@@ -16,36 +19,71 @@ const ActualizarPerfil = ({ edit, setEdit, user, setUser }) => {
       userEdit.apellidoMa !== "" &&
       userEdit.fechaNaci !== ""
     ) {
-      if (file.filepreview !== null) {
+      if (file.url !== null && file.imagen !== null) {
         console.log("Se actualiza foto");
-        const data = new FormData();
-        data.append("key", "2b60843bcdb5f79baedd209dfdced757");
-        data.append("image", file.filepreview);
 
-        subirFoto(data)
+        await subirFoto(file.imagen)
           .then((res) => {
-            console.log(res);
+            userEdit.foto = res.data.url;
+            setFile({
+              url: null,
+              imagen: null,
+            });
           })
           .catch((err) => {
-            console.log(err);
+            swal("Error", "Error al actualizar foto", "error");
           });
       }
 
       if (userEdit.contrasenia.length > 0) {
         if (userEdit.contrasenia.length >= 8) {
-          console.log("Se actualiza contraseña");
-          swal("Éxito", "Tu perfil ha sido actualizado", "success");
-          setEdit(true);
-          console.log(userEdit);
+          // console.log("Se actualiza contraseña");
+          putData(JSON.stringify(userEdit))
+            .then((res) => {
+              setUser(userEdit);
+              sessionStorage.setItem(
+                btoa("user"),
+                btoa(JSON.stringify(userEdit))
+              );
+              swal("Éxito", "Tu perfil ha sido actualizado", "success");
+              setEdit(true);
+              try {
+                document.getElementById("pass-edit").value = "";
+              } catch {}
+            })
+            .catch((err) => {
+              swal("Error", "Error al actualizar contraseña", "error");
+            });
         } else {
           swal("", "La contraseña debe tener al menos 8 caracteres", "info");
         }
+        setFile({
+          url: null,
+          imagen: null,
+        });
       } else {
         userEdit.contrasenia = user.contrasenia;
-        swal("Éxito", "Tu perfil ha sido actualizado", "success");
-        setEdit(true);
-        console.log(userEdit);
+        putData(JSON.stringify(userEdit))
+          .then((res) => {
+            setUser(userEdit);
+            sessionStorage.setItem(
+              btoa("user"),
+              btoa(JSON.stringify(userEdit))
+            );
+            swal("Éxito", "Tu perfil ha sido actualizado", "success");
+            setEdit(true);
+            try {
+              document.getElementById("pass-edit").value = "";
+            } catch {}
+          })
+          .catch((err) => {
+            swal("Error", "Error al actualizar contraseña", "error");
+          });
       }
+      setFile({
+        url: null,
+        imagen: null,
+      });
     } else {
       swal("Error", "Todos los campos son obligatorios", "error");
     }
@@ -54,7 +92,10 @@ const ActualizarPerfil = ({ edit, setEdit, user, setUser }) => {
   const cancelar = () => {
     myForm.current.reset();
     document.getElementById("file").value = "";
-    setFile({ filepreview: null });
+    setFile({
+      url: null,
+      imagen: null,
+    });
     setUserEdit({ ...user, contrasenia: "" });
     setEdit(true);
   };
@@ -66,7 +107,7 @@ const ActualizarPerfil = ({ edit, setEdit, user, setUser }) => {
         <div className="card card-foto">
           <img
             className="foto-preview"
-            src={file.filepreview || userEdit.foto}
+            src={file.url || userEdit.foto}
             width="50"
           />
           <div className="foto-contenedor">
@@ -79,11 +120,13 @@ const ActualizarPerfil = ({ edit, setEdit, user, setUser }) => {
               onChange={(e) => {
                 try {
                   setFile({
-                    filepreview: URL.createObjectURL(e.target.files[0]),
+                    url: URL.createObjectURL(e.target.files[0]),
+                    imagen: e.target.files[0],
                   });
                 } catch (err) {
                   setFile({
-                    filepreview: null,
+                    url: null,
+                    imagen: null,
                   });
                 }
               }}
@@ -200,6 +243,7 @@ const ActualizarPerfil = ({ edit, setEdit, user, setUser }) => {
             <label htmlFor="contrasenia">Contraseña</label>
             <input
               type="password"
+              id="pass-edit"
               name="contrasenia"
               readOnly={edit}
               placeholder="********"

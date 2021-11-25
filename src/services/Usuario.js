@@ -83,14 +83,18 @@ export const recuperaUsuario = async (data) => {
 };
 
 export const subirFoto = async (data) => {
+  const formData = new FormData();
+
+  formData.append("key", "2b60843bcdb5f79baedd209dfdced757");
+  formData.append("image", data);
+
   const respuesta = await fetch(`https://api.imgbb.com/1/upload`, {
     method: "POST",
-    headers: {
-      "Content-Type": "multipart/form-data",
-      Accept: "multipart/form-data",
-      // "Access-Control-Allow-Methods": "*",
-    },
-    body: data,
+    // headers: {
+    //   "Content-Type": "multipart/form-data",
+    //   Accept: "multipart/form-data",
+    // },
+    body: formData,
   });
 
   const info = respuesta.json();
