@@ -405,8 +405,9 @@
 
     .cuerpo {
       overflow-y: scroll;
-      max-height: calc(100vh - 182px);
-      height: 100%;
+      max-height: 864px;
+      transition: 0.2s;
+      height: calc(100vh - 184px);
       width: 100%;
       background-color: #f0f2f5;
       border-radius: 15px;

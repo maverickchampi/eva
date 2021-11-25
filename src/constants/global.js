@@ -46,7 +46,7 @@ export const TEXTS_OBJETIVOS = [
     icon: "fas fa-robot",
     title: "IA",
     description:
-      "Convertirnos en la aplicación web más concurrida sobre inteligencia emcional.",
+      "Convertirnos en la aplicación web más concurrida sobre inteligencia emocional.",
   },
   {
     icon: "fa fa-trophy",
