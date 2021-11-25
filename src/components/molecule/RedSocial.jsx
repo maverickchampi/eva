@@ -334,7 +334,10 @@ const RedSocial = ({
           filteredResults.map((post, key) => (
             <div className="post" key={key}>
               <div className="cabecera-post">
-                <h3 className="title">{post.title}</h3>
+                <div className="header">
+                  <h3 className="title">{post.title}</h3>
+                  <h4 className="title">{post?.fecha?.slice(0, 16)}</h4>
+                </div>
                 {post.edit && (
                   <button className="delete" onClick={() => eliminaPost(post)}>
                     <i className="fas fa-trash-alt"></i>
@@ -366,7 +369,12 @@ const RedSocial = ({
                   post.comentarios.map((comentario, i) => (
                     <div className="comentario" key={i}>
                       <div className="cabecera-post">
-                        <h3 className="title-c">{`${comentario?.usuario?.nombre} ${comentario?.usuario?.apellidoPa} / ${comentario?.fecha}`}</h3>
+                        <div className="header">
+                          <h3 className="title-c">
+                            {`${comentario?.usuario?.nombre} ${comentario?.usuario?.apellidoPa}`}
+                          </h3>
+                          <h4>{`${comentario?.fecha}`}</h4>
+                        </div>
                         {comentario?.edit && (
                           <button
                             className="delete"

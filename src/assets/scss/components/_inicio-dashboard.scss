@@ -454,6 +454,20 @@
           grid-template-columns: 1fr 30px;
           justify-content: space-between;
 
+          .header {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+
+            h4 {
+              margin-right: 12px;
+              font-weight: normal;
+              font-size: 11px;
+              display: flex;
+              align-items: center;
+            }
+          }
+
           h3 {
             color: $color-primario;
             font-size: 16px;
