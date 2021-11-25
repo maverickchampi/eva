@@ -142,7 +142,10 @@ const Dashboard = () => {
             __comentarios.map(
               (c) => (c.edit = c.usuario.id === usuario().id ? true : false)
             );
-            _mycomments += __comentarios.length;
+            __comentarios.map((c) =>
+              c.usuario.id === usuario().id ? (_mycomments += 1) : false
+            );
+
             return __comentarios;
           } else {
             return 0;

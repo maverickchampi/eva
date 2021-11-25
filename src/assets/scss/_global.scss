@@ -31,7 +31,8 @@
   height: 158px !important;
 }
 .posts-tamanio {
-  max-height: calc(100vh - 367px) !important;
+  height: calc(100vh - 372px) !important;
+  max-height: 675px !important;
 }
 .hidden-post {
   position: absolute;
@@ -92,4 +93,8 @@
 }
 .d-none {
   display: none !important;
+}
+.imgbb-button {
+  display: none !important;
+  opacity: 0 !important;
 }
