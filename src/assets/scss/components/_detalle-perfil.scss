@@ -1,2 +1,22 @@
-* {
+.detalle-perfil {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  .recomendaciones {
+    background-color: red;
+    width: 90%;
+    margin: 0 auto;
+    height: 650px;
+    .recomendacion-content {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      .recomendacion__item {
+        width: 100%;
+        height: 150px;
+        border: 1px solid black;
+        border-radius: 1rem;
+      }
+    }
+  }
 }
