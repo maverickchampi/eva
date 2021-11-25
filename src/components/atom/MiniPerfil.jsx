@@ -2,6 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { Chart } from "primereact/chart";
 import swal from "sweetalert";
+import { putData } from "../../services/Usuario";
 
 const MiniPerfil = ({ user, buttonsEdit = false, setEdit }) => {
   let history = useHistory();
@@ -79,11 +80,18 @@ const MiniPerfil = ({ user, buttonsEdit = false, setEdit }) => {
           dangerMode: true,
         }).then((willDelete) => {
           if (willDelete) {
-            sessionStorage.removeItem(btoa("user"));
-            history.push("/eva/login");
-            swal("Tu perfil ha sido eliminado", {
-              icon: "success",
-            });
+            user.estado = false;
+            putData(JSON.stringify(user))
+              .then((res) => {
+                sessionStorage.removeItem(btoa("user"));
+                history.push("/eva/login");
+                swal("Tu perfil ha sido eliminado", {
+                  icon: "success",
+                });
+              })
+              .catch((err) => {
+                swal("Error", "Error al eliminar", "error");
+              });
           } else {
             swal("", "Tu perfil no ha sido eliminado", "info");
           }
