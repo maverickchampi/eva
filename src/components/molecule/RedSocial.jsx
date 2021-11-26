@@ -330,7 +330,6 @@ const RedSocial = ({
         />
       </div>
       <div className="cuerpo" id="cuerpo">
-        {console.log(filteredResults)}
         {filteredResults &&
           filteredResults.map((post, key) => (
             <div className="post" key={key}>

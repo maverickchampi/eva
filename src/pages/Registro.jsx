@@ -70,7 +70,7 @@ const Registro = () => {
       <div className="registro-content">
         <div className="registro__item">
           <img
-            src="https://i.ibb.co/RzdYqyB/eva.png"
+            src="https://i.ibb.co/n8ZtmZj/eva.png"
             alt="eva"
             className="registro-img"
             onClick={() => history.push("/eva/")}

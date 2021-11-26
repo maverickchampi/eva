@@ -1,5 +1,4 @@
 import React from "react";
-import Baul from "../pages/Baul";
 import Dashboard from "../pages/Dashboard";
 import Inicio from "../pages/Inicio";
 import Login from "../pages/Login";
@@ -40,11 +39,6 @@ export const routes = [
     path: "/eva/plus",
     exact: true,
     render: () => (user() ? <Plus /> : <Redirect to="/eva/login" />),
-  },
-  {
-    path: "/eva/box",
-    exact: true,
-    render: () => (user() ? <Baul /> : <Redirect to="/eva/login" />),
   },
   { path: "", exact: false, render: () => <Redirect to="/eva/" /> },
 ];

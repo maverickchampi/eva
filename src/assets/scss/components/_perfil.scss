@@ -17,6 +17,8 @@
     }
   }
   .miniperfil {
+    height: calc(100vh - 24px);
+    max-height: 1024px;
     background-color: $color-primario;
     border-radius: 25px 13px 13px 13px;
     display: grid;

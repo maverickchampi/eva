@@ -82,7 +82,7 @@ const Login = () => {
         <div className="login__item"></div>
         <div className="login__item">
           <img
-            src="https://i.ibb.co/RzdYqyB/eva.png"
+            src="https://i.ibb.co/n8ZtmZj/eva.png"
             alt="eva"
             className="login-img"
             onClick={() => history.push("/eva/")}

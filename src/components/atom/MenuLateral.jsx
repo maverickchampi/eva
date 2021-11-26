@@ -1,6 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
+import swal from "sweetalert";
 import logo from "../../assets/images/eva.png";
 import WSPLink from "./WSPLink";
 
@@ -25,6 +26,7 @@ const MenuLateral = ({ link = 0 }) => {
           >
             <i className="fas fa-home"></i>
           </Link>
+
           <Link
             to="/eva/perfil"
             className={`link ${link === 1 ? "active" : ""}`}
@@ -32,9 +34,6 @@ const MenuLateral = ({ link = 0 }) => {
             <i className="fas fa-user"></i>
           </Link>
           <Link to="/eva/plus" className={`link ${link === 2 ? "active" : ""}`}>
-            <i className="fas fa-plus"></i>
-          </Link>
-          <Link to="/eva/box" className={`link ${link === 3 ? "active" : ""}`}>
             <i className="fas fa-box"></i>
           </Link>
         </nav>
