@@ -8,4 +8,18 @@
   .p-absolute {
     position: absolute;
   }
+  span {
+    padding: 8px 1rem;
+    background-color: aquamarine;
+    border: 1px solid black;
+  }
+  .galeria-content {
+    .galeria-body {
+      .galeria__item {
+        img {
+          width: 150px;
+        }
+      }
+    }
+  }
 }

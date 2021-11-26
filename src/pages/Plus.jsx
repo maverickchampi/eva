@@ -158,32 +158,42 @@ const Plus = () => {
       <div className="container">
         <MenuLateral link={2} />
         <div className="content face">
-          <span>{initialised ? "Modo desactivado" : "Modo activado"}</span>
-          <span onClick={startVideo}>Activar CA</span>
-          <span onClick={stopCamara}>Detener CA</span>
-          {camara && (
-            <>
-              <span onClick={handleVideoOnPlay}>Empezar</span>
-              <span onClick={stopVideo}>Detener</span>
-              <span onClick={capturarFoto}>Capturar foto y subir</span>
-            </>
-          )}
-          <div className="display-flex jc-center">
-            <video
-              id="video"
-              ref={videoRef}
-              height={videoHeight}
-              width={videoWidth}
-              autoPlay
-              muted
-            ></video>
-            <canvas
-              id="canvas"
-              className="p-absolute"
-              ref={canvasRef}
-              height={videoHeight}
-              width={videoWidth}
-            ></canvas>
+          <div className="camara-content">
+            <span>{initialised ? "Modo desactivado" : "Modo activado"}</span>
+            <span onClick={startVideo}>Activar CA</span>
+            <span onClick={stopCamara}>Detener CA</span>
+            {camara && (
+              <>
+                <span onClick={handleVideoOnPlay}>Empezar</span>
+                <span onClick={stopVideo}>Detener</span>
+                <span onClick={capturarFoto}>Capturar foto y subir</span>
+              </>
+            )}
+            <div className="display-flex jc-center">
+              <video
+                id="video"
+                ref={videoRef}
+                height={videoHeight}
+                width={videoWidth}
+                autoPlay
+                muted
+              ></video>
+              <canvas
+                id="canvas"
+                className="p-absolute"
+                ref={canvasRef}
+                height={videoHeight}
+                width={videoWidth}
+              ></canvas>
+            </div>
+          </div>
+          <div className="galeria-content">
+            <div className="galeroa-header"></div>
+            <div className="galeria-body">
+              <div className="galeria__item">
+                <img src="https://i.ibb.co/8zQNLTg/dog.jpg" alt="" />
+              </div>
+            </div>
           </div>
         </div>
       </div>
