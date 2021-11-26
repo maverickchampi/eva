@@ -13,11 +13,21 @@
     background-color: aquamarine;
     border: 1px solid black;
   }
-  .galeria-content {
-    .galeria-body {
-      .galeria__item {
-        img {
-          width: 150px;
+  .face-content {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    .camara-content {
+      background-color: rgb(236, 189, 189);
+    }
+    .galeria-content {
+      background-color: rgb(194, 138, 247);
+      .galeria-body {
+        .galeria__item {
+          img {
+            width: 150px;
+          }
         }
       }
     }
