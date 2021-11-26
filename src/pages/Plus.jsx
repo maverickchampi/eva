@@ -1,6 +1,9 @@
 import React, { useRef, useState, useEffect } from "react";
 import MenuLateral from "../components/atom/MenuLateral";
 import * as faceapi from "face-api.js";
+import swal from "sweetalert";
+import { subirFoto } from "../services/Usuario";
+import { user } from "../constants/methods";
 
 const Plus = () => {
   const videoHeight = 480;
@@ -100,9 +103,39 @@ const Plus = () => {
     if (canvasRef.current) {
       canvasRef.current
         .getContext("2d")
-        .clearRect(0, 0, videoHeight, videoWidth);
+        .clearRect(0, 0, videoWidth, videoHeight);
     }
   };
+
+  const capturarFoto = () => {
+    const canvas = document.getElementById("canvas");
+    const video = document.getElementById("video");
+    canvas.getContext("2d").drawImage(video, 0, 0, videoWidth, videoHeight);
+    const img = canvas.toDataURL("image/png");
+    canvasRef.current.getContext("2d").clearRect(0, 0, videoWidth, videoHeight);
+
+    subirFoto(dataURLtoFile(img, `${user().nombre}-facial.png`))
+      .then((res) => {
+        swal("Foto subida", "", "success");
+      })
+      .catch((err) => {
+        swal("Error", "Error al subir foto", "error");
+      });
+  };
+
+  function dataURLtoFile(dataurl, filename) {
+    var arr = dataurl.split(","),
+      mime = arr[0].match(/:(.*?);/)[1],
+      bstr = atob(arr[1]),
+      n = bstr.length,
+      u8arr = new Uint8Array(n);
+
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
+    }
+
+    return new File([u8arr], filename, { type: mime });
+  }
 
   useEffect(() => {
     const loadModels = async () => {
@@ -132,17 +165,25 @@ const Plus = () => {
             <>
               <span onClick={handleVideoOnPlay}>Empezar</span>
               <span onClick={stopVideo}>Detener</span>
+              <span onClick={capturarFoto}>Capturar foto y subir</span>
             </>
           )}
           <div className="display-flex jc-center">
             <video
+              id="video"
               ref={videoRef}
               height={videoHeight}
               width={videoWidth}
               autoPlay
               muted
             ></video>
-            <canvas className="p-absolute" ref={canvasRef}></canvas>
+            <canvas
+              id="canvas"
+              className="p-absolute"
+              ref={canvasRef}
+              height={videoHeight}
+              width={videoWidth}
+            ></canvas>
           </div>
         </div>
       </div>
