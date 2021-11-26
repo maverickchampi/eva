@@ -163,6 +163,8 @@ const Plus = () => {
     getFoto(JSON.stringify(js)).then((resp) => setFotos(resp.fotos));
   }, []);
 
+  const eliminaFoto = (foto) => {};
+
   return (
     <div className="dashboard">
       <div className="container">
@@ -200,9 +202,19 @@ const Plus = () => {
           <div className="galeria-content">
             <div className="galeroa-header"></div>
             <div className="galeria-body">
-              <div className="galeria__item">
-                <img src="https://i.ibb.co/8zQNLTg/dog.jpg" alt="" />
-              </div>
+              {fotos &&
+                fotos.length > 0 &&
+                fotos.map(
+                  (foto, index) =>
+                    foto.estado && (
+                      <div className="galeria__item" key={index}>
+                        <img src={foto.url} alt="Foto" />
+                        <button onClick={() => eliminaFoto(foto)}>
+                          <i className="fas fa-trash-alt"></i>
+                        </button>
+                      </div>
+                    )
+                )}
             </div>
           </div>
         </div>
