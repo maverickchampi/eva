@@ -87,3 +87,24 @@ export const TEXTS_CONVENIOS = [
 
 // export const url = "http://localhost:8090/eva";
 export const url = "https://emotionalvirtualassistant.herokuapp.com/eva";
+
+export const PRUEBAS = [
+  {
+    imagen: "https://i.ibb.co/QbYtvC6/camara.jpg",
+    titulo: "Prueba 1",
+    descripcion:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismodLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod",
+  },
+  {
+    imagen: "https://i.ibb.co/QbYtvC6/camara.jpg",
+    titulo: "Prueba 2",
+    descripcion:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismodLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod",
+  },
+  {
+    imagen: "https://i.ibb.co/QbYtvC6/camara.jpg",
+    titulo: "Prueba 3",
+    descripcion:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismodLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod",
+  },
+];
