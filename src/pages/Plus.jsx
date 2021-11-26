@@ -2,9 +2,9 @@ import React, { useRef, useState, useEffect } from "react";
 import MenuLateral from "../components/atom/MenuLateral";
 import * as faceapi from "face-api.js";
 import swal from "sweetalert";
-import { subirFoto } from "../services/Usuario";
+import { putData, subirFoto } from "../services/Usuario";
 import { user } from "../constants/methods";
-import { getFoto } from "../services/Foto";
+import { getFoto, postFoto, putFoto } from "../services/Foto";
 
 const Plus = () => {
   const videoHeight = 500;
@@ -118,7 +118,25 @@ const Plus = () => {
 
     subirFoto(dataURLtoFile(img, `${user().nombre}-facial.png`))
       .then((res) => {
-        swal("Foto subida", "", "success");
+        const js = {
+          foto: {
+            url: res.data.url,
+            estado: true,
+            usuario: { id: user().id },
+          },
+          login: {
+            correo: user().correo,
+            contrasenia: user().contrasenia,
+          },
+        };
+        postFoto(JSON.stringify(js))
+          .then((resp) => {
+            traerFotos();
+            swal("Foto subida", "", "success");
+          })
+          .catch((err) => {
+            swal("Error", "Error al subir foto", "error");
+          });
       })
       .catch((err) => {
         swal("Error", "Error al subir foto", "error");
@@ -139,6 +157,45 @@ const Plus = () => {
     return new File([u8arr], filename, { type: mime });
   }
 
+  const traerFotos = () => {
+    const js = {
+      correo: user().correo,
+      contrasenia: user().contrasenia,
+    };
+    getFoto(JSON.stringify(js)).then((resp) => setFotos(resp.fotos));
+  };
+
+  const eliminaFoto = (foto) => {
+    swal({
+      title: "¿Estas seguro?",
+      text: "Una vez eliminada no podras recuperar la foto",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        const js = {
+          foto: {
+            ...foto,
+            estado: false,
+          },
+          login: {
+            correo: user().correo,
+            contrasenia: user().contrasenia,
+          },
+        };
+        putFoto(JSON.stringify(js))
+          .then((resp) => {
+            traerFotos();
+            swal("Foto eliminada", "", "success");
+          })
+          .catch((err) => {
+            swal("Error", "Error al eliminar foto", "error");
+          });
+      }
+    });
+  };
+
   useEffect(() => {
     const loadModels = async () => {
       const MODEL_URL = process.env.PUBLIC_URL + "/models";
@@ -156,14 +213,8 @@ const Plus = () => {
   }, []);
 
   useEffect(() => {
-    const js = {
-      correo: user().correo,
-      contrasenia: user().contrasenia,
-    };
-    getFoto(JSON.stringify(js)).then((resp) => setFotos(resp.fotos));
+    traerFotos();
   }, []);
-
-  const eliminaFoto = (foto) => {};
 
   return (
     <div className="dashboard">
