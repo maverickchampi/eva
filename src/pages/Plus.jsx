@@ -4,6 +4,7 @@ import * as faceapi from "face-api.js";
 import swal from "sweetalert";
 import { subirFoto } from "../services/Usuario";
 import { user } from "../constants/methods";
+import { getFoto } from "../services/Foto";
 
 const Plus = () => {
   const videoHeight = 480;
@@ -11,6 +12,7 @@ const Plus = () => {
   const [initialised, setInitialised] = useState(false);
   const [camara, setCamara] = useState(false);
   const [estado, setEstado] = useState();
+  const [fotos, setFotos] = useState([]);
   const videoRef = useRef();
   const canvasRef = useRef();
 
@@ -151,6 +153,14 @@ const Plus = () => {
         .catch((err) => console.log(err));
     };
     loadModels();
+  }, []);
+
+  useEffect(() => {
+    const js = {
+      correo: user().correo,
+      contrasenia: user().contrasenia,
+    };
+    getFoto(JSON.stringify(js)).then((resp) => setFotos(resp.fotos));
   }, []);
 
   return (
