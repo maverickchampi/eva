@@ -9,8 +9,17 @@ const MenuLateral = ({ link = 0 }) => {
   let history = useHistory();
 
   const signOut = () => {
-    sessionStorage.removeItem(btoa("user"));
-    history.push("/eva/login");
+    swal({
+      title: "¿Desea cerrar sesión?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        sessionStorage.removeItem(btoa("user"));
+        history.push("/eva/login");
+      }
+    });
   };
 
   return (
