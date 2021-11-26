@@ -6,6 +6,7 @@ import InicioDashboard from "../components/organism/InicioDashboard";
 import { user as usuario } from "../constants/methods";
 import { getPosts } from "../services/Posts";
 import { getEmocion } from "../services/Emocion";
+import { getAnimo } from "../services/Animo";
 
 const Dashboard = () => {
   const [user, setUser] = useState({
@@ -13,10 +14,11 @@ const Dashboard = () => {
     foto: usuario()?.foto || "https://i.ibb.co/JBcGfKj/imagen.png",
     posts: 0,
     likes: 0,
-    calendarioAnimos: [0, 1, 3, 2, 2, 3],
+    // calendarioAnimos: [0, 1, 3, 2, 2, 3],
     // semanaEmociones: [2, 5, 2, 1, 3, 4, 0],
   });
   const [emociones, setEmociones] = useState([]);
+  const [animos, setAnimos] = useState([0, 0, 0, 0, 0, 0]);
   const [posts, setPosts] = useState([]);
   const [recompensas, setRecompensas] = useState([
     {
@@ -59,6 +61,78 @@ const Dashboard = () => {
   ]);
   const [busqueda, setBusqueda] = useState("");
   const [newpost, setNewPost] = useState({});
+
+  const cargarAnimos = () => {
+    const js = {
+      correo: user.correo,
+      contrasenia: user.contrasenia,
+    };
+    getAnimo(JSON.stringify(js))
+      .then((resp) => {
+        let cantidad = [
+          { valor: 0, cantidad: 0 },
+          { valor: 0, cantidad: 0 },
+          { valor: 0, cantidad: 0 },
+          { valor: 0, cantidad: 0 },
+          { valor: 0, cantidad: 0 },
+          { valor: 0, cantidad: 0 },
+        ];
+        const animos = resp.animos;
+
+        if (animos) {
+          animos.forEach((animo) => {
+            switch (new Date(animo.fecha).getMonth()) {
+              case 6:
+                cantidad[0].valor += animo.valor;
+                cantidad[0].cantidad += 1;
+                break;
+              case 7:
+                cantidad[1].valor += animo.valor;
+                cantidad[1].cantidad += 1;
+                break;
+              case 8:
+                cantidad[2].valor += animo.valor;
+                cantidad[2].cantidad += 1;
+                break;
+              case 9:
+                cantidad[3].valor += animo.valor;
+                cantidad[3].cantidad += 1;
+                break;
+              case 10:
+                cantidad[4].valor += animo.valor;
+                cantidad[4].cantidad += 1;
+                break;
+              case 11:
+                cantidad[5].valor += animo.valor;
+                cantidad[5].cantidad += 1;
+                break;
+            }
+          });
+        }
+
+        setAnimos([
+          cantidad[0].cantidad > 0
+            ? Number((cantidad[0].valor / cantidad[0].cantidad).toFixed(0))
+            : 0,
+          cantidad[1].cantidad > 0
+            ? Number((cantidad[1].valor / cantidad[1].cantidad).toFixed(0))
+            : 0,
+          cantidad[2].cantidad > 0
+            ? Number((cantidad[2].valor / cantidad[2].cantidad).toFixed(0))
+            : 0,
+          cantidad[3].cantidad > 0
+            ? Number((cantidad[3].valor / cantidad[3].cantidad).toFixed(0))
+            : 0,
+          cantidad[4].cantidad > 0
+            ? Number((cantidad[4].valor / cantidad[4].cantidad).toFixed(0))
+            : 0,
+          cantidad[5].cantidad > 0
+            ? Number((cantidad[5].valor / cantidad[5].cantidad).toFixed(0))
+            : null,
+        ]);
+      })
+      .catch((err) => console.log(err));
+  };
 
   const cargarPosts = () => {
     getPosts().then((response) => {
@@ -204,6 +278,7 @@ const Dashboard = () => {
   useEffect(() => {
     cargarPosts();
     cargarEmociones();
+    cargarAnimos();
   }, []);
 
   return (
@@ -227,7 +302,7 @@ const Dashboard = () => {
               setEmociones={setEmociones}
               cargarEmociones={cargarEmociones}
             />
-            <MiniPerfil user={user} />
+            <MiniPerfil user={user} animos={animos} />
           </div>
         </div>
       </div>

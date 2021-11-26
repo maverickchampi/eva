@@ -162,7 +162,7 @@ const Plus = () => {
       correo: user().correo,
       contrasenia: user().contrasenia,
     };
-    getFoto(JSON.stringify(js)).then((resp) => setFotos(resp.fotos));
+    getFoto(JSON.stringify(js)).then((resp) => setFotos(resp.fotos.reverse()));
   };
 
   const eliminaFoto = (foto) => {

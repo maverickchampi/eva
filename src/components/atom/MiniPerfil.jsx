@@ -4,7 +4,7 @@ import { Chart } from "primereact/chart";
 import swal from "sweetalert";
 import { putData } from "../../services/Usuario";
 
-const MiniPerfil = ({ user, buttonsEdit = false, setEdit }) => {
+const MiniPerfil = ({ user, buttonsEdit = false, setEdit, animos }) => {
   let history = useHistory();
   const data = {
     labels: [
@@ -18,7 +18,7 @@ const MiniPerfil = ({ user, buttonsEdit = false, setEdit }) => {
     datasets: [
       {
         label: "Ánimo",
-        data: user.calendarioAnimos,
+        data: animos,
         fill: true,
         borderColor: "#7054e8",
         tension: 0.4,
