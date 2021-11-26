@@ -114,13 +114,13 @@ const Plus = () => {
     const img = canvas.toDataURL("image/png");
     canvasRef.current.getContext("2d").clearRect(0, 0, videoWidth, videoHeight);
 
-    // subirFoto(dataURLtoFile(img, `${user().nombre}-facial.png`))
-    //   .then((res) => {
-    swal("Foto subida", "", "success");
-    // })
-    // .catch((err) => {
-    //   swal("Error", "Error al subir foto", "error");
-    // });
+    subirFoto(dataURLtoFile(img, `${user().nombre}-facial.png`))
+      .then((res) => {
+        swal("Foto subida", "", "success");
+      })
+      .catch((err) => {
+        swal("Error", "Error al subir foto", "error");
+      });
   };
 
   function dataURLtoFile(dataurl, filename) {
@@ -168,7 +168,6 @@ const Plus = () => {
               <span onClick={capturarFoto}>Capturar foto y subir</span>
             </>
           )}
-          <img id="img" src="" alt="a" />
           <div className="display-flex jc-center">
             <video
               id="video"
