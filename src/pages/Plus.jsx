@@ -13,6 +13,7 @@ const Plus = () => {
   const [camara, setCamara] = useState(false);
   const [estado, setEstado] = useState();
   const [fotos, setFotos] = useState([]);
+  const [camaraOn, setCamaraOn] = useState(false);
   const videoRef = useRef();
   const canvasRef = useRef();
 
@@ -28,6 +29,7 @@ const Plus = () => {
         if (videoRef.current) {
           videoRef.current.srcObject = stream;
           setCamara(true);
+          setCamaraOn(true);
         }
       },
       (error) => console.error(error)
@@ -35,6 +37,8 @@ const Plus = () => {
   };
 
   const stopCamara = () => {
+    clearInterval(estado);
+    stopVideo();
     navigator.getUserMedia =
       navigator.getUserMedia ||
       navigator.webkitGetUserMedia ||
@@ -46,6 +50,7 @@ const Plus = () => {
         if (videoRef.current) {
           videoRef.current.srcObject = null;
           setCamara(false);
+          setCamaraOn(false);
         }
       },
       (error) => console.error(error)
@@ -246,12 +251,15 @@ const Plus = () => {
                 ></canvas>
               </div>
               <div className="botones-camara">
-                <span onClick={startVideo} title="Activar cámara">
-                  <i className="fas fa-lock-open"></i>
-                </span>
-                <span onClick={stopCamara} title="  Detener cámara">
-                  <i className="fas fa-lock"></i>
-                </span>
+                {camaraOn ? (
+                  <span onClick={stopCamara} title="  Detener cámara">
+                    <i className="fas fa-lock"></i>
+                  </span>
+                ) : (
+                  <span onClick={startVideo} title="Activar cámara">
+                    <i className="fas fa-lock-open"></i>
+                  </span>
+                )}
               </div>
               {camara && (
                 <div className="botones-captura">
