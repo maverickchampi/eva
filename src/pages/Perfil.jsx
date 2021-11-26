@@ -102,7 +102,7 @@ const Perfil = () => {
             : 0,
           cantidad[5].cantidad > 0
             ? Number((cantidad[5].valor / cantidad[5].cantidad).toFixed(0))
-            : null,
+            : 0,
         ]);
       })
       .catch((err) => console.log(err));
@@ -123,6 +123,7 @@ const Perfil = () => {
             <DetallePerfil
               user={user}
               setUser={setUser}
+              animos={animos}
               cargarAnimos={cargarAnimos}
               fechaHoy={fechaHoy}
             />

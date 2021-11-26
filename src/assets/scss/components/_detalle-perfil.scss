@@ -188,6 +188,10 @@
           height: 100%px;
         }
         .recomendacion-descripcion {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
           h5 {
             margin-top: 10px;
             font-weight: 500;

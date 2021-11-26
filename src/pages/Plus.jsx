@@ -59,41 +59,53 @@ const Plus = () => {
 
   const handleVideoOnPlay = () => {
     const _estado = setInterval(async () => {
-      if (canvasRef.current) {
-        if (initialised) {
-          setInitialised(false);
-        }
-        canvasRef.current.innerHTML = faceapi.createCanvasFromMedia(
-          videoRef.current
-        );
-        const displaySize = { width: videoWidth, height: videoHeight };
-        faceapi.matchDimensions(canvasRef.current, displaySize);
-        const detection = await faceapi
-          .detectAllFaces(
-            videoRef.current,
-            new faceapi.TinyFaceDetectorOptions()
-          )
-          .withFaceLandmarks()
-          .withFaceExpressions();
-        const resizedDetections = faceapi.resizeResults(detection, displaySize);
-
+      try {
         if (canvasRef.current) {
-          canvasRef.current
-            .getContext("2d")
-            .clearRect(0, 0, videoWidth, videoHeight);
-          faceapi.draw.drawDetections(canvasRef.current, resizedDetections);
-          faceapi.draw.drawFaceLandmarks(canvasRef.current, resizedDetections);
-          faceapi.draw.drawFaceExpressions(
-            canvasRef.current,
-            resizedDetections
+          if (initialised) {
+            setInitialised(false);
+          }
+          canvasRef.current.innerHTML = faceapi.createCanvasFromMedia(
+            videoRef.current
           );
-          console.log(detection);
+          const displaySize = { width: videoWidth, height: videoHeight };
+          faceapi.matchDimensions(canvasRef.current, displaySize);
+          const detection = await faceapi
+            .detectAllFaces(
+              videoRef.current,
+              new faceapi.TinyFaceDetectorOptions()
+            )
+            .withFaceLandmarks()
+            .withFaceExpressions();
+          const resizedDetections = faceapi.resizeResults(
+            detection,
+            displaySize
+          );
+
+          if (canvasRef.current) {
+            canvasRef.current
+              .getContext("2d")
+              .clearRect(0, 0, videoWidth, videoHeight);
+            faceapi.draw.drawDetections(canvasRef.current, resizedDetections);
+            faceapi.draw.drawFaceLandmarks(
+              canvasRef.current,
+              resizedDetections
+            );
+            faceapi.draw.drawFaceExpressions(
+              canvasRef.current,
+              resizedDetections
+            );
+            console.log(detection);
+          }
+        } else {
+          clearInterval(_estado);
+          stopVideo();
         }
-      } else {
+        console.log("Estoy consumiendo ram xd");
+      } catch (error) {
+        console.log(error);
         clearInterval(_estado);
         stopVideo();
       }
-      console.log("Estoy consumiendo ram xd");
     }, 500);
 
     if (canvasRef.current) {
