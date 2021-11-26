@@ -7,7 +7,7 @@ import { user } from "../constants/methods";
 import { getFoto, postFoto, putFoto } from "../services/Foto";
 
 const Plus = () => {
-  const videoHeight = 500;
+  const videoHeight = 400;
   const videoWidth = 500;
   const [initialised, setInitialised] = useState(false);
   const [camara, setCamara] = useState(false);
@@ -75,7 +75,7 @@ const Plus = () => {
         if (canvasRef.current) {
           canvasRef.current
             .getContext("2d")
-            .clearRect(0, 0, videoHeight, videoWidth);
+            .clearRect(0, 0, videoWidth, videoHeight);
           faceapi.draw.drawDetections(canvasRef.current, resizedDetections);
           faceapi.draw.drawFaceLandmarks(canvasRef.current, resizedDetections);
           faceapi.draw.drawFaceExpressions(
@@ -223,7 +223,12 @@ const Plus = () => {
         <div className="content face">
           <div className="face-content">
             <div className="camara-content">
-              <div className="display-flex jc-center">
+              <span className="estado">
+                {initialised
+                  ? "Reconocimiento facial desactivado"
+                  : "Reconocimiento facial activado"}
+              </span>
+              <div className="display-flex jc-center camara">
                 <video
                   id="video"
                   ref={videoRef}
@@ -241,36 +246,51 @@ const Plus = () => {
                 ></canvas>
               </div>
               <div className="botones-camara">
-                <span>
-                  {initialised ? "Modo desactivado" : "Modo activado"}
+                <span onClick={startVideo} title="Activar cámara">
+                  <i className="fas fa-lock-open"></i>
                 </span>
-                <span onClick={startVideo}>Activar cámara</span>
-                <span onClick={stopCamara}>Detener cámara</span>
+                <span onClick={stopCamara} title="  Detener cámara">
+                  <i className="fas fa-lock"></i>
+                </span>
               </div>
               {camara && (
                 <div className="botones-captura">
-                  <span onClick={handleVideoOnPlay}>Empezar</span>
-                  <span onClick={stopVideo}>Detener</span>
-                  <span onClick={capturarFoto}>Capturar foto y subir</span>
+                  <span
+                    onClick={handleVideoOnPlay}
+                    title="Empezar reconocimiento facial"
+                  >
+                    <i className="fas fa-play"></i>
+                  </span>
+                  <span
+                    onClick={stopVideo}
+                    title="Detener reconocimiento facial"
+                  >
+                    <i className="fas fa-stop"></i>
+                  </span>
+                  <span onClick={capturarFoto} title="Capturar foto y subir">
+                    <i className="fas fa-camera-retro"></i>
+                  </span>
                 </div>
               )}
             </div>
             <div className="galeria-content">
               <div className="galeroa-header"></div>
               <div className="galeria-body">
-                {fotos &&
-                  fotos.length > 0 &&
-                  fotos.map(
-                    (foto, index) =>
-                      foto.estado && (
-                        <div className="galeria__item" key={index}>
-                          <img src={foto.url} alt="Foto" />
-                          <button onClick={() => eliminaFoto(foto)}>
-                            <i className="fas fa-trash-alt"></i>
-                          </button>
-                        </div>
-                      )
-                  )}
+                <div className="foto-content">
+                  {fotos &&
+                    fotos.length > 0 &&
+                    fotos.map(
+                      (foto, index) =>
+                        foto.estado && (
+                          <div className="galeria__item" key={index}>
+                            <img src={foto.url} alt="Foto" />
+                            <button onClick={() => eliminaFoto(foto)}>
+                              <i className="fas fa-trash-alt"></i>
+                            </button>
+                          </div>
+                        )
+                    )}
+                </div>
               </div>
             </div>
           </div>
