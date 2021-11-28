@@ -172,3 +172,10 @@
     font-size: 14px;
   }
 }
+.convenios__item {
+  &:hover {
+    img {
+      filter: grayscale(0%);
+    }
+  }
+}
