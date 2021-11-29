@@ -16,7 +16,7 @@ export const TEXTS_SLIDES = [
   {
     title: "Somos más que un servicio.",
     subtitle: "Emotional Virtual Assistant",
-    image: "https://i.ibb.co/tqdDGqB/familia.png",
+    image: "https://i.ibb.co/mymDRX7/family.png",
     nameButton: "Empieza ahora",
     urlButton: "/eva/login",
   },
