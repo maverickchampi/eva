@@ -130,14 +130,14 @@ const Login = () => {
               </h5>
             </form>
             <div className="login-api">
-              <div className="api__item google">
+              {/* <div className="api__item google">
                 <i className="fab fa-google"></i>
                 <p>Ingresar con Google</p>
               </div>
               <div className="api__item facebook">
                 <i className="fab fa-facebook"></i>
                 <p>Ingresar con Facebook</p>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
