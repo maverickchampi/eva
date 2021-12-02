@@ -85,7 +85,7 @@ export const recuperaUsuario = async (data) => {
 export const subirFoto = async (data) => {
   const formData = new FormData();
 
-  formData.append("key", "2c2ba5b294260ca9d561a2bacc73faa2");
+  formData.append("key", "4ca6114fbc2413fbab24d93a3dc91f4b");
   formData.append("image", data);
 
   const respuesta = await fetch(`https://api.imgbb.com/1/upload`, {
