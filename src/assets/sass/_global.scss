@@ -8,4 +8,27 @@
   text-decoration: none;
   transition: 0.2s linear;
   font-size: 15px;
+  font-family: "Quicksand", sans-serif;
+}
+
+body{
+  color: $color__text;
+}
+
+use{
+  pointer-events: none;
+}
+
+path{
+  transition: none;
+}
+
+.icon{
+  width: 24px;
+  height: 24px;
+}
+
+.title{
+  font-size: 28px;
+  text-align: center;
 }

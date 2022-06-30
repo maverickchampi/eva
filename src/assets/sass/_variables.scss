@@ -1,1 +1,31 @@
-body{}
+// Colors light
+$color__primary: #0b0333;
+$color__secondary: #1e088c;
+$color__background: #e6e1ff;
+$color__text: #0b0333;
+$color__placeholder: #CEBBBB;
+$color__input-bg: #FFFAF6;
+$color__input-border: #d8d8d8;
+$color__button-text: #FFFAF6;
+$color__button-bg: #7054e8;
+$color__button-bg-hover: #6f54e8da;
+$color__button-bg-outline: #7054e8;
+$color__error: #ff0000;
+// Size web
+$size__mobile: 360px; //- 479px
+$size__tablet: 480px; //- 767px
+$size__desktop: 768px; //- 1023px
+$size__large: 1024px; //- 1279px
+$size__xlarge: 1280px; //- 1439px
+
+$border: 0.1rem solid rgba(0, 0, 0, 0.1);
+$box__shadow: -1px 1px 12px 1px rgb(153 153 153 / 29%);
+
+
+$color-tercer: #7054e8;
+$color-cuarto: rgb(250, 248, 248);
+$color-boton: #6849e6;
+$color-boton-hover: #7351fdce;
+$color-subtitulo: rgb(180, 180, 180);
+$color-quinto: #959595;
+$color-sexto: #ffffff24;

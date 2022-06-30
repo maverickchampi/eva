@@ -1,0 +1,26 @@
+.btn{
+  width: 100%;
+  height: 45px;
+  border-radius: 5px;
+  color: $color__button-text;
+  background: $color__button-bg;
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  user-select: none;
+
+  &:hover{
+    background: $color__button-bg-hover;
+  }
+}
+.btn-outline{
+  border: 1px solid $color__button-bg;
+  color: $color__button-bg;
+  background: transparent;
+
+  &:hover{
+    background: $color__button-bg-outline;
+    color: $color__button-text;
+  }
+}

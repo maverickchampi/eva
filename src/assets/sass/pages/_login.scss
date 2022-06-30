@@ -1,0 +1,27 @@
+.login{
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-width: 360px;
+  height: 100vh;
+  background-color: $color__background;
+
+  .login-container{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 40px;
+    width: 400px;
+    height: auto;
+    box-shadow: $box__shadow;
+    background-color: #fff;
+    border-radius: 15px;
+    .login-form{
+      .login-form-container{
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+      }
+    }
+  }
+}

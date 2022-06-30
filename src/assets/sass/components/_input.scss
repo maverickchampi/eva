@@ -1,0 +1,72 @@
+.input-float {
+  padding: 5px 0 0;
+
+	.input-float__container{
+		position: relative;
+		width: 100%;
+
+		&.error{
+				input{
+						border-color: $color__error !important;
+				}
+				
+				.float{
+						color: $color__error !important;
+				}
+		}
+		
+		input {
+			width: 100%;
+			padding: 10px 15px;
+			height: 45px;
+			border: 1px solid $color__input-border;
+			border-radius: 10px;
+
+			&[name="password"]{
+				padding-right: 40px;
+
+				& ~ svg{
+					position: absolute;
+					right: 10px;
+					transform: translateY(50%);
+					cursor: pointer;
+					fill: $color__primary;
+				}
+			}
+
+			&::placeholder { 
+				color: $color__placeholder; 
+			}
+
+			& + .float {
+				position: absolute;
+				top: 0;
+				left: 10px;
+				padding: 0 5px;
+				transform: translateY(-50%);
+				pointer-events: none;
+				color: $color__primary;
+				background-color: $color__input-bg;
+				font-size: 13px;
+				font-weight: 500;
+			}
+
+			&:focus {
+				border-color: $color__secondary;
+
+				& + .float {
+						color: $color__secondary;
+				}
+				
+				& ~ svg{
+						fill: $color__secondary;
+				}
+			}							
+		}
+
+		.error{
+			font-size: 14px;
+			color: $color__error;
+		}
+	}
+}
