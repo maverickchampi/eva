@@ -8,53 +8,37 @@ const MiniPerfil = ({ user, buttonsEdit = false, setEdit, emociones }) => {
   let history = useHistory();
   const data = {
     labels: [
-      "Julio",
-      "Agosto",
-      "Setiembre",
-      "Octubre",
-      "Noviembre",
-      "Diciembre",
+      "Feliz",
+      "Triste",
+      "Enojado",
     ],
     datasets: [
       {
-        label: "Ánimo",
-        data: emociones,
-        fill: true,
-        borderColor: "#7054e8",
-        tension: 0.4,
-        backgroundColor: "rgba(189,174,255,0.5)",
-      },
-    ],
+        data: [300, 50, 100],
+        backgroundColor: [
+          "#42A5F5",
+          "#66BB6A",
+          "#FFA726"
+        ],
+        hoverBackgroundColor: [
+          "#64B5F6",
+          "#81C784",
+          "#FFB74D"
+        ]
+      }
+  ]
   };
 
+  // change position legend
   const options = {
-    maintainAspectRatio: false,
-    aspectRatio: 0.6,
     plugins: {
       legend: {
+        position: "bottom",
         labels: {
-          color: "#495057",
-        },
-      },
-    },
-    scales: {
-      x: {
-        ticks: {
-          color: "#495057",
-        },
-        grid: {
-          color: "#ebedef",
-        },
-      },
-      y: {
-        ticks: {
-          color: "#495057",
-        },
-        grid: {
-          color: "#ebedef",
-        },
-      },
-    },
+            color: '#495057'
+        }
+      }
+    }
   };
 
   const fechaHoy = new Date();
@@ -154,12 +138,19 @@ const MiniPerfil = ({ user, buttonsEdit = false, setEdit, emociones }) => {
       </section>
       <section className="datos">
         <div className="content-grafico">
-          <h2>Estado de emociones en el último mes</h2>
+          <h2>Gráfico de emociones en: 
+            <select>
+              <option value="">Últimos mes</option>
+              <option value="">Últimos 3 meses</option>
+              <option value="">Últimos 6 meses</option>
+              <option value="">Últimos año</option>
+            </select>
+          </h2>
           <div className="grafico">
-            <Chart type="line" data={data} options={options} />
+            <Chart type="pie" data={data} options={options} />
           </div>
         </div>
-        <div className="leyenda">
+        {/* <div className="leyenda">
           <label className="label">
             <span>3</span> - Bien
           </label>
@@ -172,7 +163,7 @@ const MiniPerfil = ({ user, buttonsEdit = false, setEdit, emociones }) => {
           <label>
             <span>0</span> - Desconocido
           </label>
-        </div>
+        </div> */}
       </section>
     </div>
   );

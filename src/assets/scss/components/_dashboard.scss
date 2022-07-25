@@ -119,6 +119,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            gap: 8px;
 
             h2 {
               font-size: 16px;
@@ -127,11 +128,12 @@
             }
 
             .grafico {
-              width: 90%;
+              width: 225px;
               height: 225px;
 
               @media screen and (min-width: 1440px) {
-                height: 305px;
+                width: 325px;
+                height: 325px;
               }
 
               div {
