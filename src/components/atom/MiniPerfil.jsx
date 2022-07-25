@@ -4,7 +4,7 @@ import { Chart } from "primereact/chart";
 import swal from "sweetalert";
 import { putData } from "../../services/Usuario";
 
-const MiniPerfil = ({ user, buttonsEdit = false, setEdit, animos }) => {
+const MiniPerfil = ({ user, buttonsEdit = false, setEdit, emociones }) => {
   let history = useHistory();
   const data = {
     labels: [
@@ -18,7 +18,7 @@ const MiniPerfil = ({ user, buttonsEdit = false, setEdit, animos }) => {
     datasets: [
       {
         label: "Ánimo",
-        data: animos,
+        data: emociones,
         fill: true,
         borderColor: "#7054e8",
         tension: 0.4,
@@ -154,7 +154,7 @@ const MiniPerfil = ({ user, buttonsEdit = false, setEdit, animos }) => {
       </section>
       <section className="datos">
         <div className="content-grafico">
-          <h2>Estado de ánimo en los últimos 6 meses</h2>
+          <h2>Estado de emociones en el último mes</h2>
           <div className="grafico">
             <Chart type="line" data={data} options={options} />
           </div>

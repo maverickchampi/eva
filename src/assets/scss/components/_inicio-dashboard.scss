@@ -8,23 +8,18 @@
     border-radius: 18px;
     position: relative;
     z-index: 995;
-    display: grid;
-    grid-template-rows: 75% 25%;
 
     .calendario {
-      padding: 16px;
+      padding: 20px 20px 0;
+      height: 480px;
 
       a {
         font-size: 12px;
       }
 
       h2 {
-        font-size: 22px;
-        margin-left: 16px;
-      }
-      .fc-toolbar-chunk {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        font-size: 20px;
+        text-transform: capitalize;
       }
       .fc-header-toolbar {
         text-align: center;
@@ -35,6 +30,10 @@
         background-color: transparent;
         font-size: 20px;
       }
+      .fc .fc-toolbar.fc-header-toolbar {
+        margin-bottom: 15px;
+      }
+
       .fc .fc-scrollgrid-liquid {
         height: 275px;
 
@@ -88,6 +87,86 @@
       }
       .fc .fc-daygrid-day.fc-day-today {
         background-color: #ded6ff !important;
+      }
+    }
+
+    .recomendaciones {
+      padding: 0 20px;
+      overflow: auto;
+      height: calc(100vh - 520px);
+      &::-webkit-scrollbar{
+        display: none;
+      }
+
+      h3{
+        padding: 10px 0;
+        position: sticky;
+        top: 0;
+        z-index: 2;
+        background-color: #f7f5f5;
+      }
+      .recomendacion-content {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        .recomendacion__item {
+          width: 100%;
+          border: 1px solid #c7c7c7;
+          border-radius: 1rem;
+          padding: 10px 20px;
+          gap: 10px;
+          display: flex;
+          position: relative;
+          min-height: 100px;
+          &:nth-child(2n) {
+            flex-direction: row-reverse;
+            .recomendacion-descripcion {
+              text-align: right;
+            }
+            span {
+              right: 10px;
+              left: initial;
+            }
+          }
+          span {
+            position: absolute;
+            display: block;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            top: 10px;
+            left: 10px;
+            background-color: rgb(222 214 255);
+            color: #1e088c;
+            font-weight: 600;
+            font-size: 13px;
+          }
+          img {
+            width: 60px;
+            height: 60px;
+            align-self: center;
+            object-fit: cover;
+            object-position: center;
+          }
+          .recomendacion-descripcion {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+  
+            h5 {
+              margin-top: 10px;
+              font-weight: 500;
+              color: $color-primario;
+            }
+            p {
+              font-size: 12px;
+            }
+          }
+        }
       }
     }
 
