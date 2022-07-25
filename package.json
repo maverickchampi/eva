@@ -2,7 +2,6 @@
   "name": "eva-frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://maverickchampi.github.io/eva",
   "dependencies": {
     "@fullcalendar/core": "^5.10.1",
     "@fullcalendar/daygrid": "^5.10.1",
