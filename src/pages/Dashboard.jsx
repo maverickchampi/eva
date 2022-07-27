@@ -19,45 +19,6 @@ const Dashboard = () => {
   });
   const [emociones, setEmociones] = useState([]);
   const [posts, setPosts] = useState([]);
-  const [recompensas, setRecompensas] = useState([
-    {
-      id: 1,
-      class: "rappi",
-      title: "Come rico en Rappi",
-      description:
-        "Completa el regisro de tus emociones por 7 días y gana un cupón del 25%.",
-      valor_entregado: 0,
-      valor_total: 7,
-    },
-    {
-      id: 2,
-      class: "manzana",
-      title: "Disfruta saludablemente",
-      description:
-        "Publica 10 posts y gana un descuento del 10% en Manzana Verde",
-
-      valor_entregado: 10,
-      valor_total: 10,
-    },
-    {
-      id: 3,
-      class: "felipe",
-      title: "Consultas en Clínica San Felipe",
-      description:
-        "Da 100 likes y gana 50% de descuento en consultas en la clínica",
-      valor_entregado: 0,
-      valor_total: 100,
-    },
-    {
-      id: 4,
-      class: "pichincha",
-      title: "Pensando en ti",
-      description:
-        "Descuento del 2% en tasa de cambio a dólares con Pichincha al hacer 25 aportes",
-      valor_entregado: 0,
-      valor_total: 25,
-    },
-  ]);
   const [busqueda, setBusqueda] = useState("");
   const [newpost, setNewPost] = useState({});
 
@@ -179,11 +140,11 @@ const Dashboard = () => {
       // console.log(_mylikes);
       // console.log(_myposts);
       // console.log(posts);
-      let rec = [...recompensas];
-      rec[1].valor_entregado = _myposts;
-      rec[2].valor_entregado = _mylikes;
-      rec[3].valor_entregado = _mycomments;
-      setRecompensas(rec);
+      // let rec = [...recompensas];
+      // rec[1].valor_entregado = _myposts;
+      // rec[2].valor_entregado = _mylikes;
+      // rec[3].valor_entregado = _mycomments;
+      // setRecompensas(rec);
       setUser({ ...user, likes: _mylikes, posts: _myposts });
     });
   };
@@ -197,9 +158,9 @@ const Dashboard = () => {
       response.emociones.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
       response.emociones.reverse();
       setEmociones(response.emociones);
-      let rec = [...recompensas];
-      rec[0].valor_entregado = response.emociones.length;
-      setRecompensas(rec);
+      // let rec = [...recompensas];
+      // rec[0].valor_entregado = response.emociones.length;
+      // setRecompensas(rec);
     });
   };
 
@@ -223,7 +184,6 @@ const Dashboard = () => {
               setNewPost={setNewPost}
               posts={posts}
               setPosts={setPosts}
-              recompensas={recompensas}
               cargarPosts={cargarPosts}
               emociones={emociones}
               setEmociones={setEmociones}

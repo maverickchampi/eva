@@ -1,7 +1,6 @@
 .detalle-perfil {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 3fr;
   gap: 1rem;
   padding: 1rem;
   overflow-x: hidden;
@@ -38,104 +37,138 @@
     background: #d4d4d4;
   }
 
-  h3 {
-    color: $color-primario;
-    width: 90%;
-    margin: auto;
-    height: 50px;
+  .recompensas {
     display: flex;
-    font-size: 1rem;
-    font-weight: 600;
-    justify-content: center;
-    align-items: center;
-  }
-  .pregunta {
-    .pregunta-content {
-      width: 90%;
-      // height: calc(100% - 70px);
-      height: 100%;
-      margin: auto;
-      border-radius: 10px;
-      border: $border;
-      box-shadow: $box-shadow;
-      text-align: center;
-      h5 {
-        margin: 1rem 0;
+    align-items: flex-end;
+    padding: 10px 0;
+
+    .loading-recompensa {
+      margin-left: 8px;
+      margin-top: 8px;
+    }
+    .rappi {
+      border: 1px solid #ff7f32;
+      h3 {
+        background-color: #ff7f32;
+        color: $color-cuarto;
+        font-size: 18px;
+      }
+
+      button {
+        background-color: #ff7f32;
+        color: #fff;
+
+        &:hover {
+          background-color: #f36912;
+        }
+      }
+    }
+    .manzana {
+      border: 1px solid #1b703d;
+      h3 {
+        background-color: #1b703d;
+        color: $color-cuarto;
+      }
+
+      button {
+        background-color: #1b703d;
+        color: #fff;
+
+        &:hover {
+          background-color: #11572d;
+        }
+      }
+    }
+    .felipe {
+      border: 1px solid #1ea7ac;
+      h3 {
+        background-color: #1ea7ac;
+        color: $color-cuarto;
+      }
+
+      button {
+        background-color: #1ea7ac;
+        color: #fff;
+
+        &:hover {
+          background-color: #199094;
+        }
+      }
+    }
+    .pichincha {
+      border: 1px solid #f3ce00;
+      h3 {
+        background-color: #f3ce00;
+        color: $color-cuarto;
+      }
+
+      button {
+        background-color: #f3ce00;
+        color: #fff;
+
+        &:hover {
+          background-color: #c5ac1d;
+        }
+      }
+    }
+    .recompensa {
+      // background-color: rgb(255, 131, 30);
+      border-radius: 15px;
+
+      h3 {
+        padding: 8px;
+        width: 100%;
+        border-radius: 15px 15px 0 0;
+      }
+
+      p {
+        padding: 10px;
         font-size: 14px;
-        font-weight: 500;
-        color: $color-primario;
       }
-      textarea {
-        width: 90%;
-        margin: auto;
-        height: 50px;
-        resize: none;
-        padding: 5px 10px;
-        border-radius: 10px;
-        margin-bottom: 10px;
-        border: 1px solid rgb(219, 219, 219);
-        &::-webkit-scrollbar {
-          width: 8px;
-        }
 
-        /* Estilos barra (thumb) de scroll */
-        &::-webkit-scrollbar-thumb {
-          background: #ccc;
-          border-radius: 4px;
-        }
-
-        &::-webkit-scrollbar-thumb:active {
-          background-color: #999999;
-        }
-
-        &::-webkit-scrollbar-thumb:hover {
-          background: #b3b3b3;
-          box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Estilos track de scroll */
-        &::-webkit-scrollbar-track {
-          background: #e1e1e1;
-          border-radius: 4px;
-        }
-
-        &::-webkit-scrollbar-track:hover,
-        &::-webkit-scrollbar-track:active {
-          background: #d4d4d4;
-        }
+      button {
+        padding: 4px 8px;
+        border-radius: 7px;
+        cursor: pointer;
       }
-      .animo-content {
-        display: flex;
-        justify-content: space-evenly;
-        margin-bottom: 1rem;
-        li {
-          background-color: #c8bcfd;
-          padding: 5px 13px;
-          border-radius: 10px;
-          font-size: 0.8rem;
-          cursor: pointer;
-          &:hover {
-            background-color: #d2c8fc;
-          }
-          &.on {
-            background-color: #8eb0f0;
-          }
-        }
-      }
+
       .botones {
-        width: 90%;
-        margin: auto;
         display: flex;
-        justify-content: flex-end;
-        button {
-          padding: 5px 1rem;
-          border-radius: 10px;
-          background-color: $color-tercer;
-          color: $color-cuarto;
-          cursor: pointer;
+        justify-content: space-between;
+        padding: 0 10px 10px;
+
+        div {
+          display: flex;
+
+          button {
+            margin: 0 5px;
+
+            i {
+              pointer-events: none;
+            }
+          }
         }
       }
     }
   }
 
+  .objetivos{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    position: relative;
+    overflow: auto;
+    &::-webkit-scrollbar{
+      display: none;
+    }
+  }
+
+  .title{
+    padding: 10px 0;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background-color: #faf8f8;
+  }
 }

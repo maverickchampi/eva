@@ -1,0 +1,33 @@
+.objetivo{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 15px;
+  box-shadow: $box-shadow;
+  border: 1px solid #e9e9e9;
+  border-radius: 10px;
+  cursor: pointer;
+  &:hover{
+    background: #e8e2ff;
+  }
+
+  h4{
+    font-size: 15px;
+  }
+
+  p{
+    font-size: 13px;
+  }
+
+  .objetivo-result{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+  }
+
+  .objetivo-fecha{
+    font-size: 13px;
+    color: #898989;
+  }
+}

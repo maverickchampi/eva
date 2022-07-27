@@ -18,7 +18,7 @@
       }
 
       h2 {
-        font-size: 20px;
+        font-size: 18px;
         text-transform: capitalize;
       }
       .fc-header-toolbar {
@@ -163,121 +163,7 @@
               color: $color-primario;
             }
             p {
-              font-size: 12px;
-            }
-          }
-        }
-      }
-    }
-
-    .recompensas {
-      padding: 24px 16px;
-      display: flex;
-      align-items: flex-end;
-
-      .loading-recompensa {
-        margin-left: 8px;
-        margin-top: 8px;
-      }
-      .rappi {
-        border: 1px solid #ff7f32;
-        h3 {
-          background-color: #ff7f32;
-          color: $color-cuarto;
-        }
-
-        button {
-          background-color: #ff7f32;
-          color: #fff;
-
-          &:hover {
-            background-color: #f36912;
-          }
-        }
-      }
-      .manzana {
-        border: 1px solid #1b703d;
-        h3 {
-          background-color: #1b703d;
-          color: $color-cuarto;
-        }
-
-        button {
-          background-color: #1b703d;
-          color: #fff;
-
-          &:hover {
-            background-color: #11572d;
-          }
-        }
-      }
-      .felipe {
-        border: 1px solid #1ea7ac;
-        h3 {
-          background-color: #1ea7ac;
-          color: $color-cuarto;
-        }
-
-        button {
-          background-color: #1ea7ac;
-          color: #fff;
-
-          &:hover {
-            background-color: #199094;
-          }
-        }
-      }
-      .pichincha {
-        border: 1px solid #f3ce00;
-        h3 {
-          background-color: #f3ce00;
-          color: $color-cuarto;
-        }
-
-        button {
-          background-color: #f3ce00;
-          color: #fff;
-
-          &:hover {
-            background-color: #c5ac1d;
-          }
-        }
-      }
-      .recompensa {
-        // background-color: rgb(255, 131, 30);
-        border-radius: 15px;
-
-        h3 {
-          padding: 8px;
-          border-radius: 15px 15px 0 0;
-        }
-
-        p {
-          padding: 4px 8px;
-          font-size: 14px;
-        }
-
-        button {
-          margin: 8px;
-          margin-top: 4px;
-          padding: 4px 8px;
-          border-radius: 7px;
-          cursor: pointer;
-        }
-
-        .botones {
-          display: flex;
-          justify-content: space-between;
-
-          div {
-            display: flex;
-
-            button {
-              margin: 8px 4px;
-
-              i {
-                pointer-events: none;
-              }
+              font-size: 15px;
             }
           }
         }

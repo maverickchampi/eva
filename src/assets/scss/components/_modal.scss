@@ -1,0 +1,35 @@
+.modal{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  overflow-y: auto;
+  background-color: rgba(0,0,0,.4);
+  z-index: 10000;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .3s;
+  .modal-content{
+    width: 100%;
+    min-width: 350px;
+    max-width: 500px;
+    min-height: 400px;
+    background-color: #fff;
+    text-align: center;
+    border-radius: 15px;
+    position: static;
+    margin: 20px auto;
+    padding: 45px 40px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+.modal-open{
+  opacity: 1;
+  pointer-events: auto;
+}

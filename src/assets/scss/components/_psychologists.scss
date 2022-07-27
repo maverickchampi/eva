@@ -1,0 +1,27 @@
+.psychologists{
+  width: 100vw;
+  margin: auto;
+  height: 100vh;
+  background-color: $color-primario;
+  overflow: hidden;
+
+  .container {
+    max-width: 1800px;
+    margin: auto;
+    align-items: center;
+    height: 100vh;
+    display: flex;
+
+    .content {
+      max-height: 1024px;
+      width: calc(100vw - 80px);
+      max-width: 1800px;
+      height: calc(100vh - 25px);
+      background-color: $color-cuarto;
+      border-radius: 15px;
+      top: 2px;
+      position: relative;
+      margin-left: 70px;
+    }
+  }
+}

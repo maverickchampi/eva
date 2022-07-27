@@ -155,7 +155,7 @@ const ActualizarPerfil = ({ edit, setEdit, user, setUser }) => {
           </div>
         </div>
         <form ref={myForm}>
-          <div className="form-group">
+          <div className="form-input">
             <label htmlFor="nombre">Nombre</label>
             <input
               type="text"
@@ -168,7 +168,7 @@ const ActualizarPerfil = ({ edit, setEdit, user, setUser }) => {
               }
             />
           </div>
-          <div className="form-group">
+          <div className="form-input">
             <label htmlFor="apellido_pat">Apellido Paterno</label>
             <input
               type="text"
@@ -181,7 +181,7 @@ const ActualizarPerfil = ({ edit, setEdit, user, setUser }) => {
               }
             />
           </div>
-          <div className="form-group">
+          <div className="form-input">
             <label htmlFor="apellido_mat">Apellido Materno</label>
             <input
               type="text"
@@ -194,7 +194,7 @@ const ActualizarPerfil = ({ edit, setEdit, user, setUser }) => {
               }
             />
           </div>
-          <div className="form-group">
+          <div className="form-input">
             <label htmlFor="fecha_nac">Fecha de nacimiento</label>
             <input
               type="date"
@@ -207,7 +207,7 @@ const ActualizarPerfil = ({ edit, setEdit, user, setUser }) => {
               }
             />
           </div>
-          <div className="form-group">
+          <div className="form-input">
             <label htmlFor="sexo">Sexo</label>
             <select
               name="sexo"
@@ -222,7 +222,7 @@ const ActualizarPerfil = ({ edit, setEdit, user, setUser }) => {
               <option value="F">Femenino</option>
             </select>
           </div>
-          <div className="form-group">
+          <div className="form-input">
             <label htmlFor="celular">Celular</label>
             <input
               type="number"
@@ -234,7 +234,7 @@ const ActualizarPerfil = ({ edit, setEdit, user, setUser }) => {
               }
             />
           </div>
-          <div className="form-group">
+          <div className="form-input">
             <label htmlFor="correo">Correo</label>
             <input
               type="text"
@@ -243,7 +243,7 @@ const ActualizarPerfil = ({ edit, setEdit, user, setUser }) => {
               defaultValue={userEdit.correo}
             />
           </div>
-          <div className="form-group">
+          <div className="form-input">
             <label htmlFor="contrasenia">Contraseña</label>
             <input
               type="password"

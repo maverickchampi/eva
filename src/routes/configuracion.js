@@ -8,6 +8,7 @@ import Registro from "../pages/Registro";
 import { user } from "../constants/methods";
 
 import { Redirect } from "react-router-dom";
+import Psicologos from "../pages/Psicologos";
 
 export const routes = [
   {
@@ -34,6 +35,11 @@ export const routes = [
     path: "/eva/perfil",
     exact: true,
     render: () => (user() ? <Perfil /> : <Redirect to="/eva/login" />),
+  },
+  {
+    path: "/eva/psicologos",
+    exact: true,
+    render: () => (user() ? <Psicologos /> : <Redirect to="/eva/login" />),
   },
   {
     path: "/eva/plus",

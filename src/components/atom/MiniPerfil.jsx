@@ -8,22 +8,28 @@ const MiniPerfil = ({ user, buttonsEdit = false, setEdit, emociones }) => {
   let history = useHistory();
   const data = {
     labels: [
-      "Feliz",
-      "Triste",
-      "Enojado",
+      "Alegria",
+      "Tristeza",
+      "Miedo",
+      "Ira",
+      "Desagrado"
     ],
     datasets: [
       {
-        data: [300, 50, 100],
+        data: [10, 20, 30, 10, 0],
         backgroundColor: [
-          "#42A5F5",
-          "#66BB6A",
-          "#FFA726"
+          "#f9ef31",
+          "#427df5",
+          "#666666",
+          "#f33576",
+          "#4cd7a7",
         ],
         hoverBackgroundColor: [
-          "#64B5F6",
-          "#81C784",
-          "#FFB74D"
+          "#f9ef31",
+          "#427df5",
+          "#666666",
+          "#f33576",
+          "#4cd7a7",
         ]
       }
   ]
@@ -140,30 +146,16 @@ const MiniPerfil = ({ user, buttonsEdit = false, setEdit, emociones }) => {
         <div className="content-grafico">
           <h2>Gráfico de emociones en: 
             <select>
-              <option value="">Últimos mes</option>
+              <option value="">Último mes</option>
               <option value="">Últimos 3 meses</option>
               <option value="">Últimos 6 meses</option>
-              <option value="">Últimos año</option>
+              <option value="">Último año</option>
             </select>
           </h2>
           <div className="grafico">
             <Chart type="pie" data={data} options={options} />
           </div>
         </div>
-        {/* <div className="leyenda">
-          <label className="label">
-            <span>3</span> - Bien
-          </label>
-          <label>
-            <span>2</span> - Regular
-          </label>
-          <label className="label">
-            <span>1</span> - Mal
-          </label>
-          <label>
-            <span>0</span> - Desconocido
-          </label>
-        </div> */}
       </section>
     </div>
   );

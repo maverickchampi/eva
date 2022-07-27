@@ -98,3 +98,100 @@
   display: none !important;
   opacity: 0 !important;
 }
+select{
+  padding: 0 10px;
+  height: 45px;
+  border-radius: 10px;
+  background: #ececec;
+}
+
+.flag{
+  padding: 2px 15px;
+  border-radius: 15px;
+  color: #fff;
+  text-transform: capitalize;
+}
+
+.btn_float{
+  display: grid;
+  place-items: center;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #7651de;
+  color: #fff;
+  font-size: 12px;
+  cursor: pointer;
+  &:hover{
+    background: #7751debe;
+  }
+}
+
+.form-input {
+  width: 100%;
+  margin: auto;
+  margin-top: 1rem;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0 0 10px;
+  align-items: baseline;
+  font-size: 14px;
+  input,
+  textarea,
+  select {
+    width: 230px;
+    padding: 10px;
+    height: 45px;
+    border-radius: 10px;
+    background: #ececec;
+  }
+  textarea{
+    resize: none;
+    height: 100px;
+  }
+}
+.botones {
+  display: flex;
+  align-self: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  button {
+    padding: 0.4rem 1rem;
+    color: $color-cuarto;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .btn{
+    padding: 8px 10px;
+    min-width: 100px;
+    font-size: 14px;
+  }
+  .btn-save {
+    background-color: #532cf1;
+    &:hover {
+      background-color: rgb(108, 80, 223);
+    }
+  }
+  .btn-cancelar {
+    background-color: #666565;
+    &:hover {
+      background-color: #797878;
+    }
+  }
+  .btn-delete {
+    background-color: #f33540;
+    &:hover {
+      background-color: #f74d56;
+    }
+  }
+}
+
+.botones-center{
+  justify-content: center;
+}
