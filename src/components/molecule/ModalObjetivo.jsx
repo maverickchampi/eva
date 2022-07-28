@@ -1,31 +1,96 @@
-import { useState } from 'preact/hooks'
-import React from 'react'
+import React, { useState } from 'react'
+import swal from "sweetalert";
+import { postObjetivos } from '../../services/Objetivo';
 
-const ModalObjetivo = ({titulo, objetivo, isEdit, isDelete, isAdd, setOpenModal}) => {
-  // const [objetivo, setObjetivo] = useState({});
+const ModalObjetivo = ({
+  titulo, objetivo, isEdit, isDelete, isAdd, setOpenModal, cargarObjetivos, user,
+}) => {
+  const [objetivoOwn, setObjetivoOwn] = useState({
+    id: objetivo?.id || null,
+    titulo: objetivo?.titulo || '',
+    descripcion: objetivo?.descripcion || '',
+    fecha_inicio: objetivo?.fecha_inicio || '',
+    fecha_fin: objetivo?.fecha_fin || '',
+    nivel_esfuerzo: objetivo?.nivel_esfuerzo || '-1',
+  });
 
   const returnEdit = () =>{
+    const handleEditar = () => {
+      console.log(objetivoOwn)
+    }
+    
     if(isEdit){
-      return <button type='button' className='btn btn-save'>Editar</button>
+      return <button type='button' onClick={handleEditar} className='btn btn-save'>Editar</button>
     }
     return <></>
   }
 
   const returnDelete = () =>{
+    const handleDelete = () => {
+      console.log(objetivoOwn)
+    }
+
     if(isDelete){
-      return <button type='button' className='btn btn-delete'>Eliminar</button>
+      return <button type='button' onClick={handleDelete} className='btn btn-delete'>Eliminar</button>
     }
     return <></>
   }
 
   const returnAdd = () =>{
+    const handleAdd = () => {
+      if(
+        !titulo ||
+        !objetivoOwn.descripcion ||
+        !objetivoOwn.fecha_inicio ||
+        !objetivoOwn.fecha_fin ||
+        objetivoOwn.nivel_esfuerzo === '-1'
+      ){
+        swal("Opps!", "Debes completar todos los campos", "error");
+        return
+      }
+
+      const json = {
+        objetivo: {
+          id: objetivoOwn.id,
+          titulo: objetivoOwn.titulo,
+          descripcion: objetivoOwn.descripcion,
+          inicio: objetivoOwn.fecha_inicio,
+          fin: objetivoOwn.fecha_fin,
+          esfuerzo: objetivoOwn.nivel_esfuerzo,
+          usuario: { id: user.id },
+        },
+        login: { correo: user.correo, contrasenia: user.contrasenia },
+      };
+
+      postObjetivos(JSON.stringify(json))
+        .then((resp) => {
+          if (resp?.mensaje){
+            swal("Guardado!", "Tu objetivo se guardo", "success");
+            cargarObjetivos()
+            handleCancelar()
+          }else{
+            swal("Opps!", "No se pudo guardar", "error");
+          }
+        })
+        .catch((err) => {
+          swal("Opps!", "No se pudo guardar", "error");
+        });
+    }
+
     if(isAdd){
-      return <button type='button' className='btn btn-save'>Agregar</button>
+      return <button type='button' onClick={handleAdd} className='btn btn-save'>Agregar</button>
     }
     return <></>
   }
 
   const handleCancelar = () =>{
+    setObjetivoOwn({
+      titulo: '',
+      descripcion: '',
+      fecha_inicio: '',
+      fecha_fin: '',
+      nivel_esfuerzo: '-1',
+    })
     setOpenModal(false)
   }
 
@@ -40,7 +105,8 @@ const ModalObjetivo = ({titulo, objetivo, isEdit, isDelete, isAdd, setOpenModal}
             id="titulo"
             name="titulo"
             placeholder="Personal..."
-            defaultValue={objetivo?.titulo || ''}
+            value={objetivoOwn.titulo}
+            onChange={(e) => setObjetivoOwn({...objetivoOwn, titulo: e.target.value})}
             required
           />
         </div>
@@ -50,7 +116,8 @@ const ModalObjetivo = ({titulo, objetivo, isEdit, isDelete, isAdd, setOpenModal}
             id="descripcion"
             name="descripcion"
             placeholder="Descripcion..."
-            defaultValue={objetivo?.descripcion || ''}
+            value={objetivoOwn.descripcion}
+            onChange={(e) => setObjetivoOwn({...objetivoOwn, descripcion: e.target.value})}
             required
           />
         </div>
@@ -59,7 +126,8 @@ const ModalObjetivo = ({titulo, objetivo, isEdit, isDelete, isAdd, setOpenModal}
           <input
             type="date"
             name="fecha_inicio"
-            defaultValue={objetivo?.fecha_inicio || ''}
+            value={objetivoOwn.fecha_inicio}
+            onChange={(e) => setObjetivoOwn({...objetivoOwn, fecha_inicio: e.target.value})}
           />
         </div>
         <div className="form-input">
@@ -67,14 +135,16 @@ const ModalObjetivo = ({titulo, objetivo, isEdit, isDelete, isAdd, setOpenModal}
           <input
             type="date"
             name="fecha_fin"
-            defaultValue={objetivo?.fecha_fin || ''}
+            value={objetivoOwn.fecha_fin}
+            onChange={(e) => setObjetivoOwn({...objetivoOwn, fecha_fin: e.target.value})}
           />
         </div>
         <div className="form-input">
           <label htmlFor="nivel_esfuerzo">Nivel de esfuerzo</label>
           <select
             name="nivel_esfuerzo"
-            defaultValue={objetivo?.nivel_esfuerzo || '-1'}
+            value={objetivoOwn.nivel_esfuerzo}
+            onChange={(e) => setObjetivoOwn({...objetivoOwn, nivel_esfuerzo: e.target.value})}
           >
             <option value="0">Bajo</option>
             <option value="1">Medio</option>

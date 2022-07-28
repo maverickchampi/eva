@@ -6,7 +6,7 @@ import DetallePerfil from "../components/molecule/DetallePerfil";
 import ModalObjetivo from "../components/molecule/ModalObjetivo";
 import Modal from "../components/organism/Modal";
 import { user as usuario } from "../constants/methods";
-import { getAnimo } from "../services/Animo";
+import { getObjetivos } from "../services/Objetivo";
 
 const Perfil = () => {
   const [user, setUser] = useState({
@@ -17,21 +17,7 @@ const Perfil = () => {
   const [ModalContent, setModalContent] = useState();
   const [edit, setEdit] = useState(true);
   const [objetivos, setObjetivos] = useState([]);
-  const [objetivo, setObjetivo] = useState({
-    id: 1,
-    titulo: 'Personal',
-    descripcion: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. ',
-    fecha_inicio: "2022-01-11",
-    fecha_fin: "2022-02-11",
-    nivel_esfuerzo: 2,
-  });
-  const [fechaHoy, setFechaHoy] = useState({
-    id: null,
-    valor: 0,
-    usuario: { id: user.id },
-    texto: "",
-    fecha: null,
-  });
+
   const [recompensas, setRecompensas] = useState([
     {
       id: 1,
@@ -72,62 +58,20 @@ const Perfil = () => {
     },
   ]);
   
-  useEffect(() => {
-    const data = [
-      {
-        id: 1,
-        titulo: 'Personal',
-        descripcion: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. ',
-        fecha_inicio: "2022-01-11",
-        fecha_fin: "2022-02-11",
-        nivel_esfuerzo: 2,
-      },
-      {
-        id: 1,
-        titulo: 'Personal',
-        descripcion: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. ',
-        fecha_inicio: "2022-01-11",
-        fecha_fin: "2022-02-11",
-        nivel_esfuerzo: 1,
-      },
-      {
-        id: 1,
-        titulo: 'Personal',
-        descripcion: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. ',
-        fecha_inicio: "2022-01-11",
-        fecha_fin: "2022-02-11",
-        nivel_esfuerzo: 2,
-      },
-      {
-        id: 1,
-        titulo: 'Personal',
-        descripcion: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. ',
-        fecha_inicio: "2022-01-11",
-        fecha_fin: "2022-02-11",
-        nivel_esfuerzo: 0,
-      },
-      {
-        id: 1,
-        titulo: 'Personal',
-        descripcion: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. ',
-        fecha_inicio: "2022-01-11",
-        fecha_fin: "2022-02-11",
-        nivel_esfuerzo: 1,
-      }
-    ]
-    setObjetivos(data)
-  }, []);
-
-  const fechaHoyString = () => {
-    let fecha = new Date();
-    let dia = fecha.getDate() < 10 ? "0" + fecha.getDate() : fecha.getDate();
-    let mes =
-      fecha.getMonth() + 1 < 10
-        ? "0" + (fecha.getMonth() + 1)
-        : fecha.getMonth() + 1;
-    let anio = fecha.getFullYear();
-    return anio + "-" + mes + "-" + dia;
+  const cargarObjetivos = () => {
+    const json = {
+      correo: usuario().correo,
+      contrasenia: usuario().contrasenia,
+    };
+    getObjetivos(JSON.stringify(json)).then((response) => {
+      const objs = response.objetivos
+      setObjetivos(objs)
+    });
   };
+
+  useEffect(() => {
+    cargarObjetivos()
+  }, []);
 
   const mouseDownModal = (e) =>{
     const divPadre = e.target.closest('.modal-content');
@@ -141,6 +85,8 @@ const Perfil = () => {
         titulo={'Agregar objetivo'} 
         isAdd={true} 
         setOpenModal={setOpenModal}
+        cargarObjetivos={cargarObjetivos}
+        user={user}
       />
     )
    
@@ -155,6 +101,8 @@ const Perfil = () => {
         isDelete={true} 
         setOpenModal={setOpenModal}
         objetivo={objetivo}
+        cargarObjetivos={cargarObjetivos}
+        user={user}
       />
     )
   }
