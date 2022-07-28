@@ -9,6 +9,7 @@ import { postRecompensa } from "../../services/Recompensa";
 import { user } from "../../constants/methods";
 
 const DetalleDashboard = ({ emociones }) => {
+  console.log(emociones);
   const [events, setEvents] = useState([
     // { id: 1, start: "2021-11-18", title: "😀" },
     // { id: 2, start: "2021-11-17", title: "😡" },
@@ -40,37 +41,38 @@ const DetalleDashboard = ({ emociones }) => {
   };
 
   const verificarRecomendaciones = (emociones) => {
-    // let cantidad = 0;
-    // let suma = 0;
-    // if (emociones[4] > 0) {
-    //   cantidad++;
-    //   suma += emociones[4];
-    // }
+    let cantidad = 0;
+    let suma = 0;
+    if (emociones[4] > 0) {
+      cantidad++;
+      suma += emociones[4];
+    }
 
-    // if (emociones[5] > 0) {
-    //   cantidad++;
-    //   suma += emociones[5];
-    // }
+    if (emociones[5] > 0) {
+      cantidad++;
+      suma += emociones[5];
+    }
 
-    // if (cantidad > 0) {
-    //   let estadoAnimo = suma / cantidad;
+    if (cantidad > 0) {
+      let estadoAnimo = suma / cantidad;
 
-    //   if (estadoAnimo === 3 || estadoAnimo === 2) {
-    //     let positions = numerosAleatorios(PRUEBAS.length - 1);
-    //     let recomendaciones = [];
-    //     recomendaciones.push(PRUEBAS[positions[0]]);
-    //     recomendaciones.push(PRUEBAS[positions[1]]);
-    //     recomendaciones.push(PRUEBAS[positions[2]]);
-    //     setRecomendaciones([...recomendaciones]);
-    //   } else if (estadoAnimo === 1) {
-    //     let positions = numerosAleatorios(PRUEBAS_SAD.length - 1);
-    //     let recomendaciones = [];
-    //     recomendaciones.push(PRUEBAS_SAD[positions[0]]);
-    //     recomendaciones.push(PRUEBAS_SAD[positions[1]]);
-    //     recomendaciones.push(PRUEBAS_SAD[positions[2]]);
-    //     setRecomendaciones([...recomendaciones]);
-    //   }
-    // } else {
+      if (estadoAnimo === 3 || estadoAnimo === 2) {
+        let positions = numerosAleatorios(PRUEBAS.length - 1);
+        let recomendaciones = [];
+        recomendaciones.push(PRUEBAS[positions[0]]);
+        recomendaciones.push(PRUEBAS[positions[1]]);
+        recomendaciones.push(PRUEBAS[positions[2]]);
+        setRecomendaciones([...recomendaciones]);
+      } else if (estadoAnimo === 1) {
+        let positions = numerosAleatorios(PRUEBAS_SAD.length - 1);
+        let recomendaciones = [];
+        recomendaciones.push(PRUEBAS_SAD[positions[0]]);
+        recomendaciones.push(PRUEBAS_SAD[positions[1]]);
+        recomendaciones.push(PRUEBAS_SAD[positions[2]]);
+        setRecomendaciones([...recomendaciones]);
+      }
+    } 
+    // else {
       setRecomendaciones([
         {
           imagen: "https://i.ibb.co/thgt5kb/motivated.png",

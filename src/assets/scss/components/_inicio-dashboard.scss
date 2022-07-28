@@ -226,7 +226,8 @@
           }
 
           .active {
-            border: 2px solid $color-quinto;
+            border: 2px solid #959595;
+            background: #95959559;
             border-radius: 50%;
             cursor: pointer;
 
@@ -338,6 +339,9 @@
       background-color: #f0f2f5;
       border-radius: 15px;
       .post {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
         margin: 14px 28px;
         padding: 10px 12px;
         border-radius: 10px;
@@ -355,8 +359,8 @@
             width: 100%;
             justify-content: start;
             img {
-              width: 50px;
-              height: 50px;
+              width: 45px;
+              height: 45px;
               object-fit: cover;
               border-radius: 50%;
             }
@@ -366,6 +370,7 @@
               font-size: 11px;
               display: flex;
               align-items: center;
+              color: #979797;
             }
           }
           .header-comentario {
@@ -381,7 +386,8 @@
 
           h3 {
             color: $color-primario;
-            font-size: 16px;
+            font-size: 15px;
+            text-transform: capitalize;
           }
 
           button {
@@ -408,8 +414,7 @@
         }
 
         p {
-          font-size: 16px;
-          margin: 16px 0 25px;
+          font-size: 15px;
         }
         .contenido-c {
           margin: 15px 0;
@@ -421,6 +426,7 @@
           width: 100%;
           display: flex;
           justify-content: space-between;
+          margin: 0;
 
           button {
             cursor: pointer;

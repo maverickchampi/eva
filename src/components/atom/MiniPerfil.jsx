@@ -9,11 +9,11 @@ const MiniPerfil = ({ user, buttonsEdit = false, isReserva = false, setEdit, emo
   const [citas, setCitas] = useState([]);
   const data = {
     labels: [
-      "Alegria",
-      "Tristeza",
-      "Miedo",
-      "Ira",
-      "Desagrado"
+      "😊Alegria",
+      "🥺Tristeza",
+      "😧Miedo",
+      "😡Ira",
+      "😒Desagrado"
     ],
     datasets: [
       {

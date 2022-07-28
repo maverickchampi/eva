@@ -4,7 +4,6 @@ export const user = () => {
     : null;
 };
 
-
 export const convertirMoneda = (number) =>{
   const formatter = new Intl.NumberFormat('es-PE', {
     style: 'currency',
