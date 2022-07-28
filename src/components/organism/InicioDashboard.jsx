@@ -16,6 +16,7 @@ const InicioDashboard = ({
   emociones,
   setEmociones,
   cargarEmociones,
+  promedio_emociones
 }) => {
   return (
     <div className="inicio-dashboard">

@@ -4,7 +4,6 @@ export const user = () => {
     : null;
 };
 
-
 export const convertirMoneda = (number) =>{
   const formatter = new Intl.NumberFormat('es-PE', {
     style: 'currency',
@@ -34,4 +33,10 @@ export const fechaMesDia = (fecha) =>{
   const dia =  fechaGeneral.getDate();
 
   return {mes, dia}
+}
+
+export const subtraerDias = (fecha, dias) =>{
+  const date = new Date(fecha)
+  const fecha_subtraida= new Date(date.setDate(date.getDate() - dias))
+  return fecha_subtraida
 }

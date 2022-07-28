@@ -14,14 +14,12 @@ const Dashboard = () => {
     foto: usuario()?.foto || "https://i.ibb.co/JBcGfKj/imagen.png",
     posts: 0,
     likes: 0,
-    // calendarioAnimos: [0, 1, 3, 2, 2, 3],
     // semanaEmociones: [2, 5, 2, 1, 3, 4, 0],
   });
   const [emociones, setEmociones] = useState([]);
   const [posts, setPosts] = useState([]);
   const [busqueda, setBusqueda] = useState("");
   const [newpost, setNewPost] = useState({});
-
 
   const cargarPosts = () => {
     getPosts().then((response) => {
@@ -189,7 +187,7 @@ const Dashboard = () => {
               setEmociones={setEmociones}
               cargarEmociones={cargarEmociones}
             />
-            <MiniPerfil user={user} emociones={[]} />
+            <MiniPerfil user={user} emociones={emociones} />
           </div>
         </div>
       </div>

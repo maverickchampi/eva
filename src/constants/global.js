@@ -89,110 +89,131 @@ export const url = "http://localhost:8090/eva";
 // export const url = "https://emotionalvirtualassistant.herokuapp.com/eva";
 // export const url = "https://eva-repuesto.herokuapp.com/eva";
 
-export const PRUEBAS = [
+export const RECOMENDACIONES_DATA = [
   {
     imagen: "https://i.ibb.co/P5SrwBF/motivation.png",
     descripcion: "La felicidad es la finalidad última de la existencia humana",
+    id_emocion : 1
   },
   {
-    imagen: "https://i.ibb.co/thgt5kb/motivated.png",
+    imagen: "https://i.ibb.co/JpFhVSB/esfuerzo.png",
     descripcion:
       "La alegría reside en la alegría del logro y en la emoción del esfuerzo creativo",
+    id_emocion : 1
   },
   {
     imagen: "https://i.ibb.co/n67ND0b/award.png",
     descripcion: "El tiempo que disfrutas perdiéndolo no es tiempo perdido",
+    id_emocion : 3
   },
   {
     imagen: "https://i.ibb.co/DWX2Sgx/motivation2.png",
     descripcion: "Hoy es el primer día del resto de tu vida",
+    id_emocion : 3
   },
   {
     imagen: "https://i.ibb.co/P5SrwBF/motivation.png",
     descripcion: "Lo que es bello nunca muere",
+    id_emocion : 3
   },
   {
-    imagen: "https://i.ibb.co/2gQFJK1/reward.png",
+    imagen: "https://i.ibb.co/yd1vk2K/alegria.png",
     descripcion: "Si puedes imaginarlo, puedes hacerlo",
+    id_emocion : 3
   },
   {
     imagen: "https://i.ibb.co/qCnxCvG/motivation3.png",
     descripcion: "La felicidad es la finalidad última de la existencia humana",
+    id_emocion : 3
   },
   {
-    imagen: "https://i.ibb.co/thgt5kb/motivated.png",
+    imagen: "https://i.ibb.co/vQWYHr9/motivacion.png",
     descripcion:
       "La felicidad no es algo prefabricado. Viene de tus propias acciones",
+    id_emocion : 3
   },
   {
     imagen: "https://i.ibb.co/qCnxCvG/motivation3.png",
     descripcion: "Viste que si valio la pena",
+    id_emocion : 1
   },
   {
-    imagen: "https://i.ibb.co/2gQFJK1/reward.png",
+    imagen: "https://i.ibb.co/yd1vk2K/alegria.png",
     descripcion: "El único modo de hacer un gran trabajo es amar lo que haces",
+    id_emocion : 1
   },
   {
     imagen: "https://i.ibb.co/DWX2Sgx/motivation2.png",
     descripcion: "Tomate un momento de descanso, te lo mereces",
+    id_emocion : 1
   },
   {
     imagen: "https://i.ibb.co/qCnxCvG/motivation3.png",
     descripcion:
       "Sé valiente. Toma riesgos. Nada puede sustituir la experiencia",
+    id_emocion : 3
   },
   {
-    imagen: "https://i.ibb.co/thgt5kb/motivated.png",
+    imagen: "https://i.ibb.co/JpFhVSB/esfuerzo.png",
     descripcion:
       "El éxito es la suma de pequeños esfuerzos, que se repiten día tras día",
+    id_emocion : 3
   },
-];
-
-export const PRUEBAS_SAD = [
   {
-    imagen: "https://i.ibb.co/thgt5kb/motivated.png",
+    imagen: "https://i.ibb.co/vQWYHr9/motivacion.png",
     descripcion: "El secreto para salir adelante es comenzar ",
+    id_emocion : 2
   },
   {
-    imagen: "https://i.ibb.co/thgt5kb/motivated.png",
+    imagen: "https://i.ibb.co/jyJ1PKn/felicidad.png",
     descripcion: "Sonríe, es una terapia gratuita",
+    id_emocion : 4
   },
   {
-    imagen: "https://i.ibb.co/thgt5kb/motivated.png",
+    imagen: "https://i.ibb.co/vQWYHr9/motivacion.png",
     descripcion: "No llores porque se terminó, sonríe porque llegó a pasar",
+    id_emocion : 5
   },
   {
-    imagen: "https://i.ibb.co/thgt5kb/motivated.png",
+    imagen: "https://i.ibb.co/vQWYHr9/motivacion.png",
     descripcion: "Una crisis es algo que sabe mal de desperdiciar",
+    id_emocion : 2
   },
   {
-    imagen: "https://i.ibb.co/thgt5kb/motivated.png",
+    imagen: "https://i.ibb.co/jyJ1PKn/felicidad.png",
     descripcion:
       "Si uno no sabe a qué puerto navega, ningún tipo de viento le es favorable",
+    id_emocion : 4
   },
   {
-    imagen: "https://i.ibb.co/thgt5kb/motivated.png",
+    imagen: "https://i.ibb.co/vQWYHr9/motivacion.png",
     descripcion: "Las flores crecen a partir de los momentos más oscuros",
+    id_emocion : 4
   },
   {
-    imagen: "https://i.ibb.co/thgt5kb/motivated.png",
+    imagen: "https://i.ibb.co/jyJ1PKn/felicidad.png",
     descripcion: "Piensa, sueña, cree y atrévete",
+    id_emocion : 5
   },
   {
-    imagen: "https://i.ibb.co/thgt5kb/motivated.png",
+    imagen: "https://i.ibb.co/vQWYHr9/motivacion.png",
     descripcion:
       "Asegúrate de que colocas tus pies en el lugar correcto, y luego mantente firme",
+    id_emocion : 2
   },
   {
-    imagen: "https://i.ibb.co/thgt5kb/motivated.png",
+    imagen: "https://i.ibb.co/jyJ1PKn/felicidad.png",
     descripcion: "Si te caes siete veces, levántate ocho",
+    id_emocion : 2
   },
   {
-    imagen: "https://i.ibb.co/thgt5kb/motivated.png",
+    imagen: "https://i.ibb.co/vQWYHr9/motivacion.png",
     descripcion: "Lo que no te mata, te hace más fuerte",
+    id_emocion : 4
   },
   {
-    imagen: "https://i.ibb.co/thgt5kb/motivated.png",
+    imagen: "https://i.ibb.co/vQWYHr9/motivacion.png",
     descripcion: "Sólo se vive una vez. Pero si lo haces bien, una vez basta  ",
+    id_emocion : 5
   },
-];
+]
