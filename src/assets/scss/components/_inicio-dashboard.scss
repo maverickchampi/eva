@@ -5,7 +5,7 @@
 
   .detalle-dashboard {
     box-shadow: 1px 0px 2px 1px rgb(0 0 0 / 25%);
-    border-radius: 18px;
+    // border-radius: 18px;
     position: relative;
     z-index: 995;
 
@@ -201,8 +201,10 @@
           filter: none;
         }
         .ul {
+          position: relative;
           display: flex;
           justify-content: center;
+          gap: 10px;
           width: 100%;
 
           .li {
@@ -210,10 +212,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 4px;
 
-            img {
-              width: 50px;
+            span {
+              display: grid;
+              place-content: center;
+              width: 52px;
+              user-select: none;
+              line-height: 52px;
+              font-size: 50px;
+              font-family: -webkit-body;
               border-radius: 50%;
             }
           }
@@ -237,52 +244,6 @@
         gap: 8px;
         margin: 16px 0;
 
-        .content__search {
-          background-color: #eeeff0;
-          border-radius: 15px;
-          display: flex;
-          height: 40px;
-          align-items: center;
-          justify-content: space-between;
-          padding: 0 16px;
-
-          input {
-            width: 100%;
-            margin: 0 8px;
-            outline: none;
-            border: none;
-            background-color: transparent;
-            font-size: 16px;
-            color: #000;
-
-            &::placeholder {
-              color: #b3b3b3;
-            }
-          }
-          i {
-            color: #cacaca;
-          }
-
-          button {
-            background-color: transparent;
-            border: none;
-            cursor: pointer;
-            outline: none;
-
-            &:hover {
-              i {
-                color: $color-primario !important;
-              }
-            }
-
-            i {
-              color: $color-secundario !important;
-              font-size: 18px;
-              cursor: pointer;
-              pointer-events: none;
-            }
-          }
-        }
         .new-post {
           background-color: $color-tercer;
           color: #fff;
@@ -376,38 +337,6 @@
       width: 100%;
       background-color: #f0f2f5;
       border-radius: 15px;
-
-      /* Tamaño del scroll */
-      &::-webkit-scrollbar {
-        width: 8px;
-      }
-
-      /* Estilos barra (thumb) de scroll */
-      &::-webkit-scrollbar-thumb {
-        background: #ccc;
-        border-radius: 4px;
-      }
-
-      &::-webkit-scrollbar-thumb:active {
-        background-color: #999999;
-      }
-
-      &::-webkit-scrollbar-thumb:hover {
-        background: #b3b3b3;
-        box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
-      }
-
-      /* Estilos track de scroll */
-      &::-webkit-scrollbar-track {
-        background: #e1e1e1;
-        border-radius: 4px;
-      }
-
-      &::-webkit-scrollbar-track:hover,
-      &::-webkit-scrollbar-track:active {
-        background: #d4d4d4;
-      }
-
       .post {
         margin: 14px 28px;
         padding: 10px 12px;

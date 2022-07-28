@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Chart } from "primereact/chart";
 import swal from "sweetalert";
 import { putData } from "../../services/Usuario";
 
-const MiniPerfil = ({ user, buttonsEdit = false, setEdit, emociones }) => {
+const MiniPerfil = ({ user, buttonsEdit = false, isReserva = false, setEdit, emociones }) => {
   let history = useHistory();
+  const [citas, setCitas] = useState([]);
   const data = {
     labels: [
       "Alegria",
@@ -34,6 +35,12 @@ const MiniPerfil = ({ user, buttonsEdit = false, setEdit, emociones }) => {
       }
   ]
   };
+  const dataCitas= [
+    {
+      id: '1',
+
+    }
+  ]
 
   // change position legend
   const options = {
@@ -92,6 +99,10 @@ const MiniPerfil = ({ user, buttonsEdit = false, setEdit, emociones }) => {
     });
   };
 
+  // useEffect(() => {
+  //   setCitas(data)
+  // }, []);
+
   return (
     <div className="miniperfil">
       <section className="informacion">
@@ -122,7 +133,20 @@ const MiniPerfil = ({ user, buttonsEdit = false, setEdit, emociones }) => {
                 <label className="sub">Eliminar</label>
               </div>
             </>
-          ) : (
+          ) : isReserva ? 
+          (
+            <>
+              <div>
+                <label className="top">{user.posts || 0}</label>
+                <label className="sub">Citas registradas</label>
+              </div>
+              <div>
+                <label className="top">{user.likes || 0}</label>
+                <label className="sub">Costo promedio</label>
+              </div>
+            </>
+          )
+          :(
             <>
               <div>
                 <label className="top">{user.posts}</label>
@@ -142,21 +166,32 @@ const MiniPerfil = ({ user, buttonsEdit = false, setEdit, emociones }) => {
           </div>
         </div>
       </section>
-      <section className="datos">
-        <div className="content-grafico">
-          <h2>Gráfico de emociones en: 
-            <select>
-              <option value="">Último mes</option>
-              <option value="">Últimos 3 meses</option>
-              <option value="">Últimos 6 meses</option>
-              <option value="">Último año</option>
-            </select>
-          </h2>
-          <div className="grafico">
-            <Chart type="pie" data={data} options={options} />
-          </div>
-        </div>
-      </section>
+      {
+        isReserva? 
+        (
+          <>
+            <section className="datos">
+            </section>
+          </>
+        ):
+        (
+          <section className="datos">
+            <div className="content-grafico">
+              <h2>Gráfico de emociones en: 
+                <select>
+                  <option value="">Último mes</option>
+                  <option value="">Últimos 3 meses</option>
+                  <option value="">Últimos 6 meses</option>
+                  <option value="">Último año</option>
+                </select>
+              </h2>
+              <div className="grafico">
+                <Chart type="pie" data={data} options={options} />
+              </div>
+            </div>
+          </section>
+        )
+      }
     </div>
   );
 };

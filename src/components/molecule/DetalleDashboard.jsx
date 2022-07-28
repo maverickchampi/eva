@@ -104,15 +104,15 @@ const DetalleDashboard = ({ emociones }) => {
     const returnEmoji = (valor) => {
       switch (valor) {
         case 1:
-          return "😡";
+          return "😊";
         case 2:
-          return "😢";
+          return "🥺";
         case 3:
-          return "😲";
+          return "😧";
         case 4:
-          return "😀";
+          return "😡";
         case 5:
-          return "🥰";
+          return "😒";
       }
     };
 
@@ -146,18 +146,23 @@ const DetalleDashboard = ({ emociones }) => {
       <div className="recomendaciones">
         <h3>Recomendaciones</h3>
         <div className="recomendacion-content">
-          {recomendaciones.map((item, index) => {
-            return (
-              <div className="recomendacion__item" key={index}>
-                <span>{index + 1}</span>
-                <img src={item?.imagen} alt={item?.descripcion} />
-                <div className="recomendacion-descripcion">
-                  {/* <h5>{item.titulo}</h5> */}
-                  <p>{item?.descripcion}</p>
+          {recomendaciones?.length> 0 ? 
+            recomendaciones.map((item, index) => {
+              return (
+                <div className="recomendacion__item" key={index}>
+                  <span>{index + 1}</span>
+                  <img src={item?.imagen} alt={item?.descripcion} />
+                  <div className="recomendacion-descripcion">
+                    {/* <h5>{item.titulo}</h5> */}
+                    <p>{item?.descripcion}</p>
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            }) : 
+            (
+              <div>No se encontro nada</div>
+            )
+          }
         </div>
       </div>
     </div>

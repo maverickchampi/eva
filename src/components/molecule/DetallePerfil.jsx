@@ -60,9 +60,11 @@ const DetallePerfil = ({ user, setUser, objetivos, recompensas, openAgregarObjet
           </button>
         </div>
         {
+          objetivos?.length > 0 ? 
           objetivos?.map((objetivo, key) =>{
             return <Objetivo key={key} objetivo={objetivo} handleClick={() => openEditarObjetivo(objetivo)}/>
-          })
+          }):
+          (<div>No se encontro nada</div>)
         }
       </div>
       <div className="recompensas">

@@ -1,7 +1,7 @@
 .popupEmocion {
   position: absolute;
-  margin-top: 60px;
-  margin-left: 345px;
+  top: 60px;
+  margin-left: 370px;
   transition: 0.5s;
   display: none;
 
@@ -17,9 +17,10 @@
       }
 
       .img {
-        width: 50px;
-        border-radius: 50%;
         position: relative;
+        font-size: 50px;
+        font-family: -webkit-body;
+        border-radius: 50%;
         z-index: 999;
       }
     }

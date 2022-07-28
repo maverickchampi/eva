@@ -88,20 +88,18 @@ const RedSocial = ({
     }
   }, []);
 
-  const urlEmocion = (emocion) => {
+  const returnEmocion = (emocion) => {
     switch (emocion) {
       case 1:
-        return "https://i.ibb.co/LPNbLCx/angry-128x128-1991061.png";
-      case 2:
-        return "https://i.ibb.co/2MzMS6d/sad-128x128-1991063.png";
-      case 3:
-        return "https://i.ibb.co/HTQDtYZ/wow-128x128-1991062.png";
-      case 4:
-        return "https://i.ibb.co/R00NP2K/haha-128x128-1991060.png";
-      case 5:
-        return "https://i.ibb.co/KwqDmdB/care-128x128-1991058.png";
-      case 0:
-        return "https://i.pinimg.com/originals/2a/74/0f/2a740fea4967adb34b738012ecf37ccb.png";
+          return "😊";
+        case 2:
+          return "🥺";
+        case 3:
+          return "😧";
+        case 4:
+          return "😡";
+        case 5:
+          return "😒";
     }
   };
 
@@ -278,7 +276,7 @@ const RedSocial = ({
                 className={key === 6 ? "active on li" : "no-today li"}
                 onClick={() => (key === 6 ? eligeEmocion() : "")}
               >
-                <img src={urlEmocion(emocion.valor)} alt="emocion" />
+                <span>{returnEmocion(emocion.valor)}</span>
               </li>
             ))}
             <PopupEmocion

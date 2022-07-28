@@ -45,7 +45,7 @@ const MenuLateral = ({ link = 0 }) => {
           <Link to="/eva/plus" className={`link ${link === 2 ? "active" : ""}`}>
             <i className="fas fa-box"></i>
           </Link>
-          <Link to="/eva/psicologos" className={`link ${link === 3 ? "active" : ""}`}>
+          <Link to="/eva/reserva" className={`link ${link === 3 ? "active" : ""}`}>
             <i className="fas fa-brain"/>
           </Link>
         </nav>

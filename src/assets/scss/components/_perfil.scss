@@ -20,7 +20,7 @@
     height: calc(100vh - 24px);
     max-height: 1024px;
     background-color: $color-primario;
-    border-radius: 25px 13px 13px 13px;
+    // border-radius: 25px 13px 13px 13px;
     display: grid;
     grid-template-rows: 40% 60%;
 
@@ -262,7 +262,7 @@
 }
 .detalle-perfil {
   box-shadow: 1px 0px 2px 1px rgb(0 0 0 / 25%);
-  border-radius: 18px;
+  // border-radius: 18px;
 }
 .perfil-button {
   display: flex;
