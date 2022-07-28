@@ -34,3 +34,9 @@ export const fechaMesDia = (fecha) =>{
 
   return {mes, dia}
 }
+
+export const subtraerDias = (fecha, dias) =>{
+  const date = new Date(fecha)
+  const fecha_subtraida= new Date(date.setDate(date.getDate() - dias))
+  return fecha_subtraida
+}

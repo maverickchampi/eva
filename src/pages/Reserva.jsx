@@ -301,7 +301,6 @@ const Reserva = () => {
           <MiniPerfil
             user={user}
             isReserva= {true}
-            emociones={[]}
           />
         </div>
       </div>

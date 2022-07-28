@@ -189,7 +189,7 @@ const Dashboard = () => {
               setEmociones={setEmociones}
               cargarEmociones={cargarEmociones}
             />
-            <MiniPerfil user={user} emociones={[]} />
+            <MiniPerfil user={user} emociones={emociones} />
           </div>
         </div>
       </div>

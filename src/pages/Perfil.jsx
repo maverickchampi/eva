@@ -7,12 +7,14 @@ import ModalObjetivo from "../components/molecule/ModalObjetivo";
 import Modal from "../components/organism/Modal";
 import { user as usuario } from "../constants/methods";
 import { getAnimo } from "../services/Animo";
+import { getEmocion } from "../services/Emocion";
 
 const Perfil = () => {
   const [user, setUser] = useState({
     ...usuario(),
     foto: usuario()?.foto || "https://i.ibb.co/JBcGfKj/imagen.png",
   });
+  const [emociones, setEmociones] = useState([]);
   const [openModal, setOpenModal] = useState(false);
   const [ModalContent, setModalContent] = useState();
   const [edit, setEdit] = useState(true);
@@ -72,6 +74,22 @@ const Perfil = () => {
     },
   ]);
   
+  const cargarEmociones = () => {
+    const json = {
+      correo: usuario().correo,
+      contrasenia: usuario().contrasenia,
+    };
+    getEmocion(JSON.stringify(json)).then((response) => {
+      response.emociones.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
+      response.emociones.reverse();
+      setEmociones(response.emociones);
+    });
+  };
+
+  useEffect(() => {
+    cargarEmociones();
+  }, []);
+
   useEffect(() => {
     const data = [
       {
@@ -143,7 +161,6 @@ const Perfil = () => {
         setOpenModal={setOpenModal}
       />
     )
-   
   }
 
   const modalEditarObjetivo =(objetivo) =>{
@@ -187,7 +204,7 @@ const Perfil = () => {
               buttonsEdit={true}
               edit={edit}
               setEdit={setEdit}
-              emociones={[]}
+              emociones={emociones}
             />
           </div>
         </div>
