@@ -26,7 +26,7 @@ const DetalleDashboard = ({ emociones }) => {
     return array_aleatorios;
   };
 
-  const verificarRecomendaciones = (emociones) => {
+  const verificarRecomendaciones = () => {
     const cantidades = emociones?.map((emocion) => (emocion.valor))
     if(cantidades.length === 0) {
       setRecomendaciones([
@@ -45,6 +45,7 @@ const DetalleDashboard = ({ emociones }) => {
       ]);
       return 
     }
+
     const sum_cantidades = cantidades.reduce((previous, current) => current += previous);
     const promedio = sum_cantidades / cantidades.length;
 
@@ -54,7 +55,7 @@ const DetalleDashboard = ({ emociones }) => {
   };
 
   useEffect(() => {
-    verificarRecomendaciones(emociones);
+    verificarRecomendaciones();
   }, [emociones]);
 
   useEffect(() => {

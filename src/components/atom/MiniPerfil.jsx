@@ -15,7 +15,7 @@ const MiniPerfil = ({
 }) => {
   let history = useHistory()
   //Filtro estadistico gráfico
-  const [estadistica, setEstadistica] = useState([0, 0, 0, 0, 0])
+  const [estadistica, setEstadistica] = useState([])
   const [filtroEstadistica, setFiltroEstadistica] = useState(30)
   const data = {
     labels: [
@@ -48,7 +48,10 @@ const MiniPerfil = ({
 
   const fechaHoy = new Date();
   const estadistica_emociones = (cantidad = 30) => {
-    if(emociones?.length === 0) return
+    if(emociones?.length === 0) {
+      setEstadistica([])
+      return
+    }
     const fecha_inicio = subtraerDias(fechaHoy, parseInt(cantidad))
     const fecha_fin = new Date();;
     const emociones_parametro = emociones.filter((emocion) =>{
@@ -68,7 +71,6 @@ const MiniPerfil = ({
       emociones_valor.filter((valor) => valor === 5)?.length,
     ]
     setEstadistica(estadisticas_data)
-    console.log(estadistica);
   }
 
   // change position legend
@@ -125,6 +127,50 @@ const MiniPerfil = ({
       }
     });
   };
+
+  const returnEstadoEmocion = () =>{
+    let emocion = '', tiempo = '';
+    const promedio = (estadistica.findIndex((estad) => estad === Math.max(...estadistica)) + 1)
+
+    switch (promedio) {
+      case 1:
+        emocion= "😊 alegría"
+        break;
+      case 2:
+        emocion= "🥺 tristeza"
+        break;
+      case 3:
+        emocion= "😧 miedo"
+        break;
+      case 4:
+        emocion= "😡 ira"
+        break;
+      case 5:
+        emocion= "😒 desagrado"
+        break;
+    }
+
+    switch (parseInt(filtroEstadistica)) {
+      case 30:
+        tiempo= "En el útlimo mes"
+        break;
+      case 90:
+        tiempo= "Desde hace 3 meses"
+        break;
+      case 180:
+        tiempo= "Desde hace 6 meses"
+        break;
+      case 365:
+        tiempo= "Desde hace 1 año"
+        break;
+      default : 
+        tiempo=  "En el útlimo mes"
+        break;
+    }
+
+    const value = `${tiempo} has estado con ${emocion}`;
+    return (<p style={{fontSize: ' 14px', color: '#4e4e4e'}}>{value}</p>)
+  }
 
   useEffect(() => {
    estadistica_emociones(filtroEstadistica)
@@ -204,21 +250,27 @@ const MiniPerfil = ({
         (
           <section className="datos">
             <div className="content-grafico">
-              <h2>Gráfico de emociones en: 
-                <select
-                defaultValue={filtroEstadistica}
-                onChange={(e) =>
-                  setFiltroEstadistica(e.target.value)
-                }>
-                  <option value="30" >Último mes</option>
-                  <option value="90">Últimos 3 meses</option>
-                  <option value="180">Últimos 6 meses</option>
-                  <option value="365">Último año</option>
-                </select>
-              </h2>
-              <div className="grafico">
-                <Chart type="pie" data={data} options={options} />
-              </div>
+              {
+                estadistica.length > 0 ? 
+                  <>
+                    <h2>Gráfico de emociones en: 
+                      <select
+                      value={filtroEstadistica}
+                      onChange={(e) =>
+                        setFiltroEstadistica(e.target.value)
+                      }>
+                        <option value="30" >Último mes</option>
+                        <option value="90">Últimos 3 meses</option>
+                        <option value="180">Últimos 6 meses</option>
+                        <option value="365">Último año</option>
+                      </select>
+                    </h2>
+                    <div className="grafico">
+                      <Chart type="pie" data={data} options={options} />
+                    </div>
+                    {returnEstadoEmocion()}
+                  </> : <div>Registra una nueva emoción</div>
+              }
             </div>
           </section>
         )
