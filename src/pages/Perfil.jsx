@@ -64,7 +64,7 @@ const Perfil = () => {
       contrasenia: usuario().contrasenia,
     };
     getObjetivos(JSON.stringify(json)).then((response) => {
-      const objs = response.objetivos
+      const objs = response.objetivos.filter((obj) => obj.estado === true);
       setObjetivos(objs)
     });
   };
@@ -95,7 +95,7 @@ const Perfil = () => {
   const modalEditarObjetivo =(objetivo) =>{
     setOpenModal(true)
     setModalContent(
-      <ModalObjetivo 
+      <ModalObjetivo
         titulo={'Detalle de objetivo'} 
         isEdit={true} 
         isDelete={true} 

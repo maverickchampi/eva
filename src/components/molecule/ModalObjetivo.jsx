@@ -1,22 +1,59 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import swal from "sweetalert";
-import { postObjetivos } from '../../services/Objetivo';
+import { deleteObjetivos, postObjetivos } from '../../services/Objetivo';
 
 const ModalObjetivo = ({
-  titulo, objetivo, isEdit, isDelete, isAdd, setOpenModal, cargarObjetivos, user,
+ titulo, objetivo, isEdit, isDelete, isAdd, setOpenModal, cargarObjetivos, user,
 }) => {
   const [objetivoOwn, setObjetivoOwn] = useState({
     id: objetivo?.id || null,
     titulo: objetivo?.titulo || '',
     descripcion: objetivo?.descripcion || '',
-    fecha_inicio: objetivo?.fecha_inicio || '',
-    fecha_fin: objetivo?.fecha_fin || '',
-    nivel_esfuerzo: objetivo?.nivel_esfuerzo || '-1',
+    inicio: objetivo?.inicio || '',
+    fin: objetivo?.fin || '',
+    nivel_esfuerzo: objetivo?.esfuerzo || '-1',
   });
 
   const returnEdit = () =>{
     const handleEditar = () => {
-      console.log(objetivoOwn)
+      if(
+        !titulo ||
+        !objetivoOwn.descripcion ||
+        !objetivoOwn.inicio ||
+        !objetivoOwn.fin ||
+        objetivoOwn.esfuerzo === '-1'
+      ){
+        swal("Opps!", "Debes completar todos los campos", "error");
+        return
+      }
+
+      const json = {
+        objetivo: {
+          id: objetivoOwn.id,
+          titulo: objetivoOwn.titulo,
+          descripcion: objetivoOwn.descripcion,
+          inicio: objetivoOwn.inicio,
+          fin: objetivoOwn.fin,
+          esfuerzo: objetivoOwn.esfuerzo,
+          usuario: { id: user.id },
+          estado: true,
+        },
+        login: { correo: user.correo, contrasenia: user.contrasenia },
+      };
+
+      postObjetivos(JSON.stringify(json))
+        .then((resp) => {
+          if (resp?.mensaje){
+            swal("Guardado!", "Tu objetivo se actualizo", "success");
+            cargarObjetivos()
+            handleCancelar()
+          }else{
+            swal("Opps!", "No se pudo actualizar", "error");
+          }
+        })
+        .catch((err) => {
+          swal("Opps!", "No se pudo actualizar", "error");
+        });
     }
     
     if(isEdit){
@@ -27,7 +64,42 @@ const ModalObjetivo = ({
 
   const returnDelete = () =>{
     const handleDelete = () => {
-      console.log(objetivoOwn)
+      swal({
+        title: "¿Desea eliminar objetivo?",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      }).then((willDelete) => {
+        if (willDelete) {
+          const json = {
+            objetivo: {
+              id: objetivoOwn.id,
+              titulo: objetivoOwn.titulo,
+              descripcion: objetivoOwn.descripcion,
+              inicio: objetivoOwn.inicio,
+              fin: objetivoOwn.fin,
+              esfuerzo: objetivoOwn.esfuerzo,
+              usuario: { id: user.id },
+              estado: false,
+            },
+            login: { correo: user.correo, contrasenia: user.contrasenia },
+          };
+    
+          deleteObjetivos(JSON.stringify(json))
+            .then((resp) => {
+              if (resp?.mensaje){
+                swal("Guardado!", "Tu objetivo se elimino", "success");
+                cargarObjetivos()
+                handleCancelar()
+              }else{
+                swal("Opps!", "No se pudo eliminar", "error");
+              }
+            })
+            .catch((err) => {
+              swal("Opps!", "No se pudo eliminar", "error");
+            });
+        }
+      });
     }
 
     if(isDelete){
@@ -41,9 +113,9 @@ const ModalObjetivo = ({
       if(
         !titulo ||
         !objetivoOwn.descripcion ||
-        !objetivoOwn.fecha_inicio ||
-        !objetivoOwn.fecha_fin ||
-        objetivoOwn.nivel_esfuerzo === '-1'
+        !objetivoOwn.inicio ||
+        !objetivoOwn.fin ||
+        objetivoOwn.esfuerzo === '-1'
       ){
         swal("Opps!", "Debes completar todos los campos", "error");
         return
@@ -54,10 +126,11 @@ const ModalObjetivo = ({
           id: objetivoOwn.id,
           titulo: objetivoOwn.titulo,
           descripcion: objetivoOwn.descripcion,
-          inicio: objetivoOwn.fecha_inicio,
-          fin: objetivoOwn.fecha_fin,
-          esfuerzo: objetivoOwn.nivel_esfuerzo,
+          inicio: objetivoOwn.inicio,
+          fin: objetivoOwn.fin,
+          esfuerzo: objetivoOwn.esfuerzo,
           usuario: { id: user.id },
+          estado: true,
         },
         login: { correo: user.correo, contrasenia: user.contrasenia },
       };
@@ -84,15 +157,20 @@ const ModalObjetivo = ({
   }
 
   const handleCancelar = () =>{
-    setObjetivoOwn({
-      titulo: '',
-      descripcion: '',
-      fecha_inicio: '',
-      fecha_fin: '',
-      nivel_esfuerzo: '-1',
-    })
     setOpenModal(false)
   }
+  
+  useEffect(() => {
+    setObjetivoOwn({
+      id: objetivo?.id || null,
+      titulo: objetivo?.titulo || '',
+      descripcion: objetivo?.descripcion || '',
+      inicio: objetivo?.inicio || '',
+      fin: objetivo?.fin || '',
+      esfuerzo: objetivo?.esfuerzo || '-1',
+    })
+  }, [objetivo])
+  
 
   return (
     <div>
@@ -126,8 +204,8 @@ const ModalObjetivo = ({
           <input
             type="date"
             name="fecha_inicio"
-            value={objetivoOwn.fecha_inicio}
-            onChange={(e) => setObjetivoOwn({...objetivoOwn, fecha_inicio: e.target.value})}
+            value={objetivoOwn.inicio}
+            onChange={(e) => setObjetivoOwn({...objetivoOwn, inicio: e.target.value})}
           />
         </div>
         <div className="form-input">
@@ -135,16 +213,16 @@ const ModalObjetivo = ({
           <input
             type="date"
             name="fecha_fin"
-            value={objetivoOwn.fecha_fin}
-            onChange={(e) => setObjetivoOwn({...objetivoOwn, fecha_fin: e.target.value})}
+            value={objetivoOwn.fin}
+            onChange={(e) => setObjetivoOwn({...objetivoOwn, fin: e.target.value})}
           />
         </div>
         <div className="form-input">
           <label htmlFor="nivel_esfuerzo">Nivel de esfuerzo</label>
           <select
             name="nivel_esfuerzo"
-            value={objetivoOwn.nivel_esfuerzo}
-            onChange={(e) => setObjetivoOwn({...objetivoOwn, nivel_esfuerzo: e.target.value})}
+            value={objetivoOwn.esfuerzo}
+            onChange={(e) => setObjetivoOwn({...objetivoOwn, esfuerzo: e.target.value})}
           >
             <option value="0">Bajo</option>
             <option value="1">Medio</option>
