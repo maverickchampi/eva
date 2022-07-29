@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import MenuLateral from '../components/atom/MenuLateral'
 import MiniPerfil from '../components/atom/MiniPerfil'
 import Psicologo from '../components/molecule/Psicologo';
+import Modal from '../components/organism/Modal';
 import { user as usuario } from "../constants/methods";
 import UseSearch from '../hooks/UseSearch';
 
@@ -12,6 +13,8 @@ const Reserva = () => {
   });
   const [busqueda, setBusqueda] = useState("");
   const [psicologos , setPsicologos] = useState([]);
+  const [openModal, setOpenModal] = useState(false);
+  const [ModalContent, setModalContent] = useState();
   const { filteredResults } = UseSearch(psicologos, busqueda, "nombre", "apellido_paterno");
   const dataPsicologos = [
     {
@@ -267,44 +270,60 @@ const Reserva = () => {
     }
   ]
  
+  const mouseDownModal = (e) =>{
+    const divPadre = e.target.closest('.modal-content');
+    if(!divPadre) setOpenModal(false)
+  }
+
   useEffect(() => {
     setPsicologos(dataPsicologos)
   }, []);
 
   return (
-    <div className="reserva">
-      <div className="container">
-        <MenuLateral link= {3} />
-        <div className="content dashboard-reserva">
-          <div className="reserva__item">
-            <div className="reserva-header">
-              <h3 className="title">Lista de psicólogos</h3>
-              <div className="content__search">
-                <i className="fas fa-search"></i>
-                <input 
-                  type="search" 
-                  id="buscar_psicologo" 
-                  placeholder="Buscar por nombre o apellido..." 
-                  onChange={(e) => setBusqueda(e.target.value)}
-                  value={busqueda}
-                />
+    <>
+      <Modal isOpen={openModal} onMouseDown= {mouseDownModal} children={ModalContent}/>   
+      <div className="reserva">
+        <div className="container">
+          <MenuLateral link= {3} />
+          <div className="content dashboard-reserva">
+            <div className="reserva__item">
+              <div className="reserva-header">
+                <h3 className="title">Lista de psicólogos</h3>
+                <div className="content__search">
+                  <i className="fas fa-search"></i>
+                  <input 
+                    type="search" 
+                    id="buscar_psicologo" 
+                    placeholder="Buscar por nombre o apellido..." 
+                    onChange={(e) => setBusqueda(e.target.value)}
+                    value={busqueda}
+                  />
+                </div>
+              </div>
+              <div className="reserva-psicologo">
+                {
+                  filteredResults?.length > 0 ? 
+                  filteredResults?.map((psicologo, key) => (
+                    <Psicologo 
+                      key={key} 
+                      psicologo={psicologo} 
+                      setModalContent={setModalContent}
+                      setOpenModal={setOpenModal}
+                    />
+                  ))
+                  : <div>No se encontro nada</div>
+                }
               </div>
             </div>
-            <div className="reserva-psicologo">
-              {
-                filteredResults?.length > 0 ? 
-                filteredResults?.map((psicologo, key) => <Psicologo key={key} psicologo={psicologo}/>)
-                : <div>No se encontro nada</div>
-              }
-            </div>
+            <MiniPerfil
+              user={user}
+              isReserva= {true}
+              emociones = {[]}
+            />
           </div>
-          <MiniPerfil
-            user={user}
-            isReserva= {true}
-          />
         </div>
       </div>
-    </div>
+    </>
   )
 }
 

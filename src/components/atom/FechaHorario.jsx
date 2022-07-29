@@ -19,9 +19,7 @@ const Horario = ({hora, isSelect, handleClick}) =>{
   )
 }
 
-const FechaHorario = ({fechas}) => {
-  const [fechaSeleccionada, setFechaSeleccionada] = useState({});
-  const [horaSeleccionada, setHoraSeleccionada] = useState({});
+const FechaHorario = ({fechas, fechaSeleccionada, setFechaSeleccionada, horaSeleccionada, setHoraSeleccionada}) => {
 
   useEffect(() => {
     const fecha = fechas.length > 0 ? fechas[0] : {};

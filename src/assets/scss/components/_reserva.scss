@@ -235,6 +235,13 @@
       }
     }
   }
+  .psicologo-horarios{
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+    justify-content: space-between;
+  }
+
   .psicologo-precio{
     display: flex;
     gap: 5px;
@@ -333,5 +340,44 @@
         color: #fff;
       }
     }
+  }
+}
+
+.reserva-cita{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  .reserva-resumen{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 10px;
+
+    .reserva-resumen__item{
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      h4{
+        font-size: 15px;
+      }
+      p{
+        font-size: 14px;
+      }
+      span{
+        font-size: 12px;
+        color: #7c7c7c;
+      }
+      h5{
+        font-weight: 500;
+        margin-top: 5px;
+      }
+    }
+  }
+
+  textarea{
+    height: 150px;
+  }
+  .botones{
+    margin: 10px 0 0 ;
   }
 }
