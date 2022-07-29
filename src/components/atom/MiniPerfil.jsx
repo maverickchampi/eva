@@ -4,7 +4,6 @@ import { Chart } from "primereact/chart";
 import swal from "sweetalert";
 import { putData } from "../../services/Usuario";
 import { subtraerDias } from "../../constants/methods";
-import { info } from "sass";
 
 const MiniPerfil = ({ 
   user, 
@@ -54,21 +53,21 @@ const MiniPerfil = ({
     }
     const fecha_inicio = subtraerDias(fechaHoy, parseInt(cantidad))
     const fecha_fin = new Date();;
-    const emociones_parametro = emociones.filter((emocion) =>{
+    const emociones_parametro = emociones?.filter((emocion) =>{
         const fecha = emocion?.fecha.replace('-', '/')
         const fecha_emocion = new Date(fecha)
         if(fecha_emocion >= fecha_inicio && fecha_emocion <= fecha_fin){
           return emocion
         }
     })
-    const emociones_valor = emociones_parametro.map((emocion) => (emocion?.valor))
+    const emociones_valor = emociones_parametro?.map((emocion) => (emocion?.valor))
 
     const estadisticas_data = [
-      emociones_valor.filter((valor) => valor === 1)?.length,
-      emociones_valor.filter((valor) => valor === 2)?.length,
-      emociones_valor.filter((valor) => valor === 3)?.length,
-      emociones_valor.filter((valor) => valor === 4)?.length,
-      emociones_valor.filter((valor) => valor === 5)?.length,
+      emociones_valor?.filter((valor) => valor === 1)?.length,
+      emociones_valor?.filter((valor) => valor === 2)?.length,
+      emociones_valor?.filter((valor) => valor === 3)?.length,
+      emociones_valor?.filter((valor) => valor === 4)?.length,
+      emociones_valor?.filter((valor) => valor === 5)?.length,
     ]
     setEstadistica(estadisticas_data)
   }

@@ -6,7 +6,6 @@ import InicioDashboard from "../components/organism/InicioDashboard";
 import { user as usuario } from "../constants/methods";
 import { getPosts } from "../services/Posts";
 import { getEmocion } from "../services/Emocion";
-import { getAnimo } from "../services/Animo";
 
 const Dashboard = () => {
   const [user, setUser] = useState({

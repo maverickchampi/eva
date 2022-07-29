@@ -4,6 +4,7 @@ import MiniPerfil from '../components/atom/MiniPerfil'
 import Psicologo from '../components/molecule/Psicologo';
 import { user as usuario } from "../constants/methods";
 import UseSearch from '../hooks/UseSearch';
+import { postListPsicologos } from '../services/Usuario';
 
 const Reserva = () => {
   const [user, setUser] = useState({
@@ -267,8 +268,21 @@ const Reserva = () => {
     }
   ]
  
+  
+  const cargarPsicologos = () => {
+    const json = {
+      correo: usuario().correo,
+      contrasenia: usuario().contrasenia,
+    };
+    postListPsicologos(JSON.stringify(json)).then((response) => {
+      console.log(response.psicologos)
+      // setPsicologos(response.psicologos);
+      setPsicologos(dataPsicologos)
+    });
+  };
+
   useEffect(() => {
-    setPsicologos(dataPsicologos)
+    cargarPsicologos()
   }, []);
 
   return (
