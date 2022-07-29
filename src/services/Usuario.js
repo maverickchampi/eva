@@ -55,6 +55,20 @@ export const getUsuarios = async () => {
   return info;
 };
 
+export const postListPsicologos = async (data) => {
+  const respuesta = await fetch(`${url}/usuario/psicologos`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Methods": "*",
+    },
+    body: data,
+  });
+
+  const info = respuesta.json();
+  return info;
+}
+
 export const getUsuario = async (id) => {
   const respuesta = await fetch(`${url}/usuario/${id}`, {
     method: "GET",

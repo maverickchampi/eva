@@ -5,6 +5,7 @@ import Psicologo from '../components/molecule/Psicologo';
 import Modal from '../components/organism/Modal';
 import { user as usuario } from "../constants/methods";
 import UseSearch from '../hooks/UseSearch';
+import { postListPsicologos } from '../services/Usuario';
 
 const Reserva = () => {
   const [user, setUser] = useState({
@@ -274,9 +275,21 @@ const Reserva = () => {
     const divPadre = e.target.closest('.modal-content');
     if(!divPadre) setOpenModal(false)
   }
+  
+  const cargarPsicologos = () => {
+    const json = {
+      correo: usuario().correo,
+      contrasenia: usuario().contrasenia,
+    };
+    postListPsicologos(JSON.stringify(json)).then((response) => {
+      console.log(response.psicologos)
+      // setPsicologos(response.psicologos);
+      setPsicologos(dataPsicologos)
+    });
+  };
 
   useEffect(() => {
-    setPsicologos(dataPsicologos)
+    cargarPsicologos()
   }, []);
 
   return (
