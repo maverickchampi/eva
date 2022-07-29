@@ -33,17 +33,17 @@ const Reserva = () => {
           horarios: [
             {
               id: 1,
-              horario_inicio: '10: 00',
+              horario_inicio: '10:00',
               horario_fin: '11:00'
             },
             {
               id: 2,
-              horario_inicio: '11: 00',
+              horario_inicio: '11:00',
               horario_fin: '12:00'
             },
             {
               id: 3,
-              horario_inicio: '12: 00',
+              horario_inicio: '12:00',
               horario_fin: '13:00'
             }
           ]
@@ -54,12 +54,12 @@ const Reserva = () => {
           horarios: [
             {
               id: 1,
-              horario_inicio: '10: 00',
+              horario_inicio: '10:00',
               horario_fin: '11:00'
             },
             {
               id: 2,
-              horario_inicio: '11: 00',
+              horario_inicio: '11:00',
               horario_fin: '12:00'
             },
           ]
@@ -70,22 +70,22 @@ const Reserva = () => {
           horarios: [
             {
               id: 1,
-              horario_inicio: '10: 00',
+              horario_inicio: '10:00',
               horario_fin: '11:00'
             },
             {
               id: 2,
-              horario_inicio: '11: 00',
+              horario_inicio: '11:00',
               horario_fin: '12:00'
             },
             {
               id: 3,
-              horario_inicio: '12: 00',
+              horario_inicio: '12:00',
               horario_fin: '13:00'
             },
             {
               id: 4,
-              horario_inicio: '13: 00',
+              horario_inicio: '13:00',
               horario_fin: '14:00'
             }
           ]
@@ -96,17 +96,17 @@ const Reserva = () => {
           horarios: [
             {
               id: 1,
-              horario_inicio: '10: 00',
+              horario_inicio: '10:00',
               horario_fin: '11:00'
             },
             {
               id: 2,
-              horario_inicio: '11: 00',
+              horario_inicio: '11:00',
               horario_fin: '12:00'
             },
             {
               id: 3,
-              horario_inicio: '12: 00',
+              horario_inicio: '12:00',
               horario_fin: '13:00'
             }
           ]
@@ -117,17 +117,17 @@ const Reserva = () => {
           horarios: [
             {
               id: 1,
-              horario_inicio: '10: 00',
+              horario_inicio: '10:00',
               horario_fin: '11:00'
             },
             {
               id: 2,
-              horario_inicio: '11: 00',
+              horario_inicio: '11:00',
               horario_fin: '12:00'
             },
             {
               id: 3,
-              horario_inicio: '12: 00',
+              horario_inicio: '12:00',
               horario_fin: '13:00'
             }
           ]
@@ -138,17 +138,17 @@ const Reserva = () => {
           horarios: [
             {
               id: 1,
-              horario_inicio: '10: 00',
+              horario_inicio: '10:00',
               horario_fin: '11:00'
             },
             {
               id: 2,
-              horario_inicio: '11: 00',
+              horario_inicio: '11:00',
               horario_fin: '12:00'
             },
             {
               id: 3,
-              horario_inicio: '12: 00',
+              horario_inicio: '12:00',
               horario_fin: '13:00'
             }
           ]
@@ -159,17 +159,17 @@ const Reserva = () => {
           horarios: [
             {
               id: 1,
-              horario_inicio: '10: 00',
+              horario_inicio: '10:00',
               horario_fin: '11:00'
             },
             {
               id: 2,
-              horario_inicio: '11: 00',
+              horario_inicio: '11:00',
               horario_fin: '12:00'
             },
             {
               id: 3,
-              horario_inicio: '12: 00',
+              horario_inicio: '12:00',
               horario_fin: '13:00'
             }
           ]
@@ -180,17 +180,17 @@ const Reserva = () => {
           horarios: [
             {
               id: 1,
-              horario_inicio: '10: 00',
+              horario_inicio: '10:00',
               horario_fin: '11:00'
             },
             {
               id: 2,
-              horario_inicio: '11: 00',
+              horario_inicio: '11:00',
               horario_fin: '12:00'
             },
             {
               id: 3,
-              horario_inicio: '12: 00',
+              horario_inicio: '12:00',
               horario_fin: '13:00'
             }
           ]
@@ -201,17 +201,17 @@ const Reserva = () => {
           horarios: [
             {
               id: 1,
-              horario_inicio: '10: 00',
+              horario_inicio: '10:00',
               horario_fin: '11:00'
             },
             {
               id: 2,
-              horario_inicio: '11: 00',
+              horario_inicio: '11:00',
               horario_fin: '12:00'
             },
             {
               id: 3,
-              horario_inicio: '12: 00',
+              horario_inicio: '12:00',
               horario_fin: '13:00'
             }
           ]
@@ -222,17 +222,17 @@ const Reserva = () => {
           horarios: [
             {
               id: 1,
-              horario_inicio: '10: 00',
+              horario_inicio: '10:00',
               horario_fin: '11:00'
             },
             {
               id: 2,
-              horario_inicio: '11: 00',
+              horario_inicio: '11:00',
               horario_fin: '12:00'
             },
             {
               id: 3,
-              horario_inicio: '12: 00',
+              horario_inicio: '12:00',
               horario_fin: '13:00'
             }
           ]

@@ -2,10 +2,15 @@ import React, { useState } from 'react'
 import { convertirMoneda, horarioAmPm } from '../../constants/methods'
 import FechaHorario from '../atom/FechaHorario'
 
-const ReservarCita = ({reserva, setReserva}) =>{
+const ReservarCita = ({reserva, setReserva, setOpenModal}) =>{
   const fecha = new Date(reserva?.fecha).toLocaleString("es-PE", { dateStyle: 'long' });
   const hora_inicio = horarioAmPm(reserva?.horario?.horario_inicio || '00:00')
   const hora_fin = horarioAmPm(reserva?.horario?.horario_fin || '00:00')
+
+  const handleNext = () =>{
+    console.log(reserva);
+  }
+
   return (
     <div className='reserva-cita'>
       <h3 className='title'>Reservar cita</h3>
@@ -30,8 +35,8 @@ const ReservarCita = ({reserva, setReserva}) =>{
             required
           />
           <div className='botones botones-center'>
-            <button type="button" className='btn btn-cancelar'>Cancelar</button>
-            <button type="button" className='btn btn-save'>Siguiente</button>
+            <button type="button" onClick={() => setOpenModal(false)} className='btn btn-cancelar'>Cancelar</button>
+            <button type="button" onClick={handleNext} className='btn btn-save'>Siguiente</button>
           </div>       
       </form>
     </div>
@@ -73,7 +78,7 @@ const Psicologo = ({psicologo, setModalContent, setOpenModal}) => {
 
     setReserva(data);
     setOpenModal(true);
-    setModalContent(<ReservarCita reserva={data} setReserva={setReserva}/>)
+    setModalContent(<ReservarCita reserva={data} setOpenModal={setOpenModal} setReserva={setReserva}/>)
   }
 
   const buttonReservarCita = () =>{
