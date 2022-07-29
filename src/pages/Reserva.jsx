@@ -5,6 +5,7 @@ import Psicologo from '../components/molecule/Psicologo';
 import Modal from '../components/organism/Modal';
 import { user as usuario } from "../constants/methods";
 import UseSearch from '../hooks/UseSearch';
+import { getCitas } from '../services/Cita';
 import { postListPsicologos } from '../services/Usuario';
 
 const Reserva = () => {
@@ -64,8 +65,20 @@ const Reserva = () => {
     });
   };
 
+  const cargarCitas = async () => {
+    const json = {
+      correo: usuario().correo,
+      contrasenia: usuario().contrasenia,
+    };
+    await getCitas(JSON.stringify(json)).then((response) => {
+      const citas = response.citas;
+      console.log(citas)
+    });
+  };
+
   useEffect(() => {
     cargarPsicologos()
+    cargarCitas()
   }, []);
 
   return (
@@ -98,6 +111,8 @@ const Reserva = () => {
                       psicologo={psicologo} 
                       setModalContent={setModalContent}
                       setOpenModal={setOpenModal}
+                      user={user}
+                      cargarCitas={cargarCitas}
                     />
                   ))
                   : <div>No se encontro nada</div>

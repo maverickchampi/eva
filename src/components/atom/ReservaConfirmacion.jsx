@@ -1,16 +1,47 @@
 import React from 'react'
 import swal from "sweetalert";
 import { convertirMoneda, horarioAmPm } from '../../constants/methods';
+import { postCita } from '../../services/Cita';
 
-const ReservaConfirmacion = ({reserva, setReserva, setOpenModal}) =>{
+const ReservaConfirmacion = ({reserva, setReserva, setOpenModal, cargarCitas}) =>{
   const fecha = new Date(reserva?.fecha).toLocaleString("es-PE", { dateStyle: 'long' });
   const hora_inicio = horarioAmPm(reserva?.horario?.horario_inicio || '00:00')
   const hora_fin = horarioAmPm(reserva?.horario?.horario_fin || '00:00')
 
   const handleReservarCita = () =>{
-    setOpenModal(false)
+    let fecha = new Date(reserva.fecha);
+
+    const returnMonth = (month) => month < 10 ? `0${month}` : month;
+    fecha = fecha.getFullYear() + '-' + (returnMonth(fecha.getMonth() + 1)) + '-' + fecha.getDate();
+
+    const json = {
+      cita: {
+        usuario: { id: reserva.user.id },
+        psicologo: { id: reserva.psicologo.id },
+        descripcion: reserva.descripcion,
+        fecha: fecha,
+        inicio: reserva.horario.horario_inicio,
+        fin: reserva.horario.horario_fin,
+        ispago: true,
+        estado: 0,
+      },
+      login: { correo: reserva.user.correo, contrasenia: reserva.user.contrasenia },
+    };
+
+    postCita(JSON.stringify(json))
+    .then((resp) => {
+      if(resp?.mensaje){
+        swal("Publicado!", "Tu cita se reservo", "success");
+        setOpenModal(false)
+        cargarCitas();
+      }else{
+        swal("Error!", "No se pudo reservar la cita", "error");
+      }
+    })
+    .catch((err) => {
+      swal("Opps!", "No se pudo reservar la cita", "error");
+    });
   }
-  console.log(reserva);
 
   const handleClose = () =>{
     setOpenModal(false)

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import ReservaConfirmacion from './ReservaConfirmacion';
 import swal from "sweetalert";
 
-const ReservarPago = ({reserva, setReserva, setModalContent, setOpenModal}) =>{
+const ReservarPago = ({reserva, setReserva, setModalContent, setOpenModal,cargarCitas}) =>{
   const [pago, setPago] = useState({
     numero_tarjeta: '',
     mes_vencimiento: '-1',
@@ -30,6 +30,7 @@ const ReservarPago = ({reserva, setReserva, setModalContent, setOpenModal}) =>{
       reserva={data} 
       setReserva={setReserva} 
       setOpenModal={setOpenModal}
+      cargarCitas={cargarCitas}
     />)
   }
 

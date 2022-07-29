@@ -4,7 +4,7 @@ import FechaHorario from '../atom/FechaHorario'
 import swal from "sweetalert";
 import ReservarCita from '../atom/ReservarCita';
 
-const Psicologo = ({psicologo, setModalContent, setOpenModal}) => {
+const Psicologo = ({psicologo, setModalContent, setOpenModal, user,cargarCitas}) => {
   const [fechaSeleccionada, setFechaSeleccionada] = useState({});
   const [horaSeleccionada, setHoraSeleccionada] = useState({});
   const [reserva, setReserva] = useState({});
@@ -14,6 +14,7 @@ const Psicologo = ({psicologo, setModalContent, setOpenModal}) => {
       psicologo: {...psicologo},
       fecha: fechaSeleccionada?.fecha,
       horario: {...horaSeleccionada},
+      user: {...user}
     }
 
     setReserva(data);
@@ -24,6 +25,7 @@ const Psicologo = ({psicologo, setModalContent, setOpenModal}) => {
       setReserva={setReserva} 
       setOpenModal={setOpenModal} 
       setModalContent={setModalContent}
+      cargarCitas={cargarCitas}	
     />)
   }
 

@@ -3,7 +3,7 @@ import ReservarPago from './ReservarPago';
 import swal from "sweetalert";
 import { convertirMoneda, horarioAmPm } from '../../constants/methods';
 
-const ReservarCita = ({reserva, setReserva, setOpenModal, setModalContent}) =>{
+const ReservarCita = ({reserva, setReserva, setOpenModal, setModalContent,cargarCitas}) =>{
   const fecha = new Date(reserva?.fecha).toLocaleString("es-PE", { dateStyle: 'long' });
   const hora_inicio = horarioAmPm(reserva?.horario?.horario_inicio || '00:00')
   const hora_fin = horarioAmPm(reserva?.horario?.horario_fin || '00:00')
@@ -23,6 +23,7 @@ const ReservarCita = ({reserva, setReserva, setOpenModal, setModalContent}) =>{
       setReserva={setReserva} 
       setOpenModal={setOpenModal}
       setModalContent={setModalContent}
+      cargarCitas={cargarCitas}
     />)
   }
 
