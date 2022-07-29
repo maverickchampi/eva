@@ -3,7 +3,7 @@ import React from 'react'
 const Objetivo = ({objetivo, handleClick}) => {
   const returnNivelEsfuerzo = () =>{
     let esfuerzo = '', color= '';
-    switch (objetivo?.nivel_esfuerzo) {
+    switch (objetivo?.esfuerzo) {
       case 0:
         esfuerzo= 'bajo';
         color= '#f54851';
@@ -26,7 +26,7 @@ const Objetivo = ({objetivo, handleClick}) => {
       <h4>{objetivo?.titulo}</h4>
       <p>{objetivo?.descripcion}</p>
       <div className='objetivo-result'>
-        <p className='objetivo-fecha'>{objetivo?.fecha_inicio}</p>
+        <p className='objetivo-fecha'>{objetivo?.inicio}</p>
         {returnNivelEsfuerzo()}
       </div>
     </div>
