@@ -3,7 +3,8 @@ import { useHistory } from "react-router-dom";
 import { Chart } from "primereact/chart";
 import swal from "sweetalert";
 import { putData } from "../../services/Usuario";
-import { subtraerDias } from "../../constants/methods";
+import { convertirMoneda, horarioAmPm, subtraerDias } from '../../constants/methods';
+import Cita from "./Cita";
 
 const MiniPerfil = ({ 
   user, 
@@ -11,6 +12,7 @@ const MiniPerfil = ({
   isReserva = false, 
   setEdit, 
   emociones,
+  citas,
 }) => {
   let history = useHistory()
   //Filtro estadistico gráfico
@@ -171,6 +173,14 @@ const MiniPerfil = ({
     return (<p style={{fontSize: ' 14px', color: '#4e4e4e'}}>{value}</p>)
   }
 
+  const returnPrecio = () =>{
+    let suma = 0;
+    citas?.map((cita) => suma+= cita?.psicologo?.monto || 0)
+    const promedio = suma / citas.length;
+    const monto = convertirMoneda(Math.round(promedio)); 
+    return monto
+  }
+
   useEffect(() => {
    estadistica_emociones(filtroEstadistica)
   }, [filtroEstadistica, emociones]);
@@ -209,11 +219,11 @@ const MiniPerfil = ({
           (
             <>
               <div>
-                <label className="top">{user.posts || 0}</label>
+                <label className="top">{citas?.length || 0}</label>
                 <label className="sub">Citas registradas</label>
               </div>
               <div>
-                <label className="top">{user.likes || 0}</label>
+                <label className="top">{returnPrecio()}</label>
                 <label className="sub">Costo promedio</label>
               </div>
             </>
@@ -242,7 +252,12 @@ const MiniPerfil = ({
         isReserva? 
         (
           <>
-            <section className="datos">
+            <section className="datos citas">
+                {
+                  citas?.length > 0 ? 
+                  citas?.map((cita, key) => <Cita key={key} cita={cita}/>)
+                  : <div>No tienes citas</div>
+                }
             </section>
           </>
         ):

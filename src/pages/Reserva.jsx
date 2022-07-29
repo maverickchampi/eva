@@ -18,6 +18,7 @@ const Reserva = () => {
   const [openModal, setOpenModal] = useState(false);
   const [ModalContent, setModalContent] = useState();
   const { filteredResults } = UseSearch(psicologos, busqueda, "nombre", "apellidoPa");
+  const [citas, setCitas] = useState([]);
  
   const mouseDownModal = (e) =>{
     const divPadre = e.target.closest('.modal-content');
@@ -71,8 +72,8 @@ const Reserva = () => {
       contrasenia: usuario().contrasenia,
     };
     await getCitas(JSON.stringify(json)).then((response) => {
-      const citas = response.citas;
-      console.log(citas)
+      const data = response.citas;
+      setCitas(data)
     });
   };
 
@@ -123,6 +124,7 @@ const Reserva = () => {
               user={user}
               isReserva= {true}
               emociones = {[]}
+              citas= {citas}
             />
           </div>
         </div>

@@ -62,6 +62,7 @@
         // border-radius: 25px 13px 13px 13px;
         display: grid;
         grid-template-rows: 40% 60%;
+        height: calc(100vh - 25px);
 
         .informacion {
           display: flex;
@@ -398,6 +399,69 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+    }
+  }
+}
+.citas{
+  justify-content: flex-start !important;
+  gap: 10px !important;
+  padding: 10px;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  .cita{
+    position: relative;
+    padding: 16px;
+    box-shadow: $box-shadow;
+    border: 1px solid #cbcbcb;
+    border-radius: 10px;
+
+    .cita-psicologo{
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 5px;
+      img{
+        width: 60px;
+        height: 60px;
+        font-size: 13px;
+      }
+      p{
+        font-size: 13px;
+      }
+      .cita-psicologo_content{
+        text-align: left;
+        h5{
+          font-size: 15px;
+        }
+        p{
+          color: #727272;
+        }
+      }
+    }
+    .cita-descripcion{
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      h5{
+        font-size: 14px;
+        font-weight: 500;
+      }
+      p{
+        font-size: 14px;
+        color: #464646;
+      }
+    }
+
+    .flag{
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      font-size: 13px;
+    }
+
+    .horario{
+      font-size: 13px;
     }
   }
 }
