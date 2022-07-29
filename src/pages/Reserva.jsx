@@ -49,7 +49,6 @@ const Reserva = () => {
     const fecha_fin = new Date(new Date().setDate(new Date().getDate() + 10))
     const fechas = rangoFecha(hoy, fecha_fin);
     const data_nueva = data.map((psicologo) => ({...psicologo, fechas: fechas}))
-    console.log(data_nueva);
     return data_nueva;
   }
   
