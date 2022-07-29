@@ -183,7 +183,7 @@
       border-radius: 0 0 20px 20px;
       transition: 0.2s;
       box-shadow: 1px 0px 2px 1px rgb(0 0 0 / 15%);
-      height: 340px;
+      height: 350px;
       border: 1px solid #e0e0e0;
 
       @media screen and (min-width: 1440px) {
@@ -291,6 +291,7 @@
             width: 100%;
             display: flex;
             justify-content: space-between;
+            margin: 0;
 
             .audio {
               display: flex;
