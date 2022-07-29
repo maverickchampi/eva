@@ -26,13 +26,15 @@ const FechaHorario = ({fechas, fechaSeleccionada, setFechaSeleccionada, horaSele
     setFechaSeleccionada(fecha)
   }, []);
 
-  const handleFlechaIzquierda = () =>{
-    const fila = document.querySelector('.carousel-content');
+  const handleFlechaIzquierda = (e) =>{
+    const divPadre = e.target.closest('.carousel-fechas');
+    const fila = divPadre.querySelector('.carousel-content');
     fila.scrollLeft -= fila.offsetWidth;
   }
 
-  const handleFlechaDerecha = () =>{
-    const fila = document.querySelector('.carousel-content');
+  const handleFlechaDerecha = (e) =>{
+    const divPadre = e.target.closest('.carousel-fechas');
+    const fila = divPadre.querySelector('.carousel-content');
     fila.scrollLeft += fila.offsetWidth;
   }
 
