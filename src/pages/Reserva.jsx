@@ -16,275 +16,52 @@ const Reserva = () => {
   const [psicologos , setPsicologos] = useState([]);
   const [openModal, setOpenModal] = useState(false);
   const [ModalContent, setModalContent] = useState();
-  const { filteredResults } = UseSearch(psicologos, busqueda, "nombre", "apellido_paterno");
-  const dataPsicologos = [
-    {
-      foto: 'https://static.generated.photos/vue-static/face-generator/landing/wall/21.jpg',
-      nombre: 'Maria',
-      apellido_paterno: 'Fernandez',
-      apellido_materno: 'Guzman',
-      profesion: 'Psicologa',
-      descripcion: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerit non proident, sunt in culpa qui offic',
-      precio: '100',
-      fechas: [
-        {
-          id: 1,
-          fecha: '2022/07/10',
-          horarios: [
-            {
-              id: 1,
-              horario_inicio: '10: 00',
-              horario_fin: '11:00'
-            },
-            {
-              id: 2,
-              horario_inicio: '11: 00',
-              horario_fin: '12:00'
-            },
-            {
-              id: 3,
-              horario_inicio: '12: 00',
-              horario_fin: '13:00'
-            }
-          ]
-        },
-        {
-          id: 2,
-          fecha: '2022/07/11',
-          horarios: [
-            {
-              id: 1,
-              horario_inicio: '10: 00',
-              horario_fin: '11:00'
-            },
-            {
-              id: 2,
-              horario_inicio: '11: 00',
-              horario_fin: '12:00'
-            },
-          ]
-        },
-        {
-          id: 3,
-          fecha: '2022/07/12',
-          horarios: [
-            {
-              id: 1,
-              horario_inicio: '10: 00',
-              horario_fin: '11:00'
-            },
-            {
-              id: 2,
-              horario_inicio: '11: 00',
-              horario_fin: '12:00'
-            },
-            {
-              id: 3,
-              horario_inicio: '12: 00',
-              horario_fin: '13:00'
-            },
-            {
-              id: 4,
-              horario_inicio: '13: 00',
-              horario_fin: '14:00'
-            }
-          ]
-        },
-        {
-          id: 4,
-          fecha: '2022/07/14',
-          horarios: [
-            {
-              id: 1,
-              horario_inicio: '10: 00',
-              horario_fin: '11:00'
-            },
-            {
-              id: 2,
-              horario_inicio: '11: 00',
-              horario_fin: '12:00'
-            },
-            {
-              id: 3,
-              horario_inicio: '12: 00',
-              horario_fin: '13:00'
-            }
-          ]
-        },
-        {
-          id: 5,
-          fecha: '2022/07/15',
-          horarios: [
-            {
-              id: 1,
-              horario_inicio: '10: 00',
-              horario_fin: '11:00'
-            },
-            {
-              id: 2,
-              horario_inicio: '11: 00',
-              horario_fin: '12:00'
-            },
-            {
-              id: 3,
-              horario_inicio: '12: 00',
-              horario_fin: '13:00'
-            }
-          ]
-        },
-        {
-          id: 6,
-          fecha: '2022/07/16',
-          horarios: [
-            {
-              id: 1,
-              horario_inicio: '10: 00',
-              horario_fin: '11:00'
-            },
-            {
-              id: 2,
-              horario_inicio: '11: 00',
-              horario_fin: '12:00'
-            },
-            {
-              id: 3,
-              horario_inicio: '12: 00',
-              horario_fin: '13:00'
-            }
-          ]
-        },
-        {
-          id: 7,
-          fecha: '2022/07/17',
-          horarios: [
-            {
-              id: 1,
-              horario_inicio: '10: 00',
-              horario_fin: '11:00'
-            },
-            {
-              id: 2,
-              horario_inicio: '11: 00',
-              horario_fin: '12:00'
-            },
-            {
-              id: 3,
-              horario_inicio: '12: 00',
-              horario_fin: '13:00'
-            }
-          ]
-        },
-        {
-          id: 8,
-          fecha: '2022/07/18',
-          horarios: [
-            {
-              id: 1,
-              horario_inicio: '10: 00',
-              horario_fin: '11:00'
-            },
-            {
-              id: 2,
-              horario_inicio: '11: 00',
-              horario_fin: '12:00'
-            },
-            {
-              id: 3,
-              horario_inicio: '12: 00',
-              horario_fin: '13:00'
-            }
-          ]
-        },
-        {
-          id: 9,
-          fecha: '2022/07/19',
-          horarios: [
-            {
-              id: 1,
-              horario_inicio: '10: 00',
-              horario_fin: '11:00'
-            },
-            {
-              id: 2,
-              horario_inicio: '11: 00',
-              horario_fin: '12:00'
-            },
-            {
-              id: 3,
-              horario_inicio: '12: 00',
-              horario_fin: '13:00'
-            }
-          ]
-        },
-        {
-          id: 10,
-          fecha: '2022/07/20',
-          horarios: [
-            {
-              id: 1,
-              horario_inicio: '10: 00',
-              horario_fin: '11:00'
-            },
-            {
-              id: 2,
-              horario_inicio: '11: 00',
-              horario_fin: '12:00'
-            },
-            {
-              id: 3,
-              horario_inicio: '12: 00',
-              horario_fin: '13:00'
-            }
-          ]
-        }
-      ]
-    },
-    {
-      foto: 'https://static.generated.photos/vue-static/face-generator/landing/wall/2.jpg',
-      nombre: 'Camila',
-      apellido_paterno: 'Fernandez',
-      apellido_materno: 'Guzman',
-      profesion: 'Psicologa',
-      descripcion: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt',
-      precio: '100',
-      fechas: []
-    },
-    {
-      foto: 'https://static.generated.photos/vue-static/face-generator/landing/wall/8.jpg',
-      nombre: 'Alejandra',
-      apellido_paterno: 'Fernandez',
-      apellido_materno: 'Guzman',
-      profesion: 'Psicologa',
-      descripcion: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt',
-      precio: '100',
-      fechas: []
-    },
-    {
-      foto: 'https://static.generated.photos/vue-static/face-generator/landing/wall/4.jpg',
-      nombre: 'Maria',
-      apellido_paterno: 'Fernandez',
-      apellido_materno: 'Guzman',
-      profesion: 'Psicologa',
-      descripcion: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt',
-      precio: '100',
-      fechas: []
-    }
-  ]
+  const { filteredResults } = UseSearch(psicologos, busqueda, "nombre", "apellidoPa");
  
   const mouseDownModal = (e) =>{
     const divPadre = e.target.closest('.modal-content');
     if(!divPadre) setOpenModal(false)
   }
+
+  const rangoHoras = () =>{
+    const hora_inicio = 9 , hora_fin = 17;
+    let horarios = [];
+    for(let i= hora_inicio; i<= hora_fin ; i++){
+      horarios.push({id: (horarios.length + 1), horario_inicio: `${i}:00`, horario_fin: `${(i+1)}:00`})
+    }
+    return horarios;
+  }
+
+  const rangoFecha = (fechaInicio, fechaFin) =>{
+    let fechas = [];
+    while(fechaFin.getTime() >= fechaInicio.getTime()){
+        fechaInicio.setDate(fechaInicio.getDate() + 1);
+
+        const fecha_nueva = fechaInicio.getFullYear() + '/' + (fechaInicio.getMonth() + 1) + '/' + fechaInicio.getDate();
+        
+        fechas.push({id: (fechas.length + 1), fecha : fecha_nueva, horarios : rangoHoras()});
+    }
+    return fechas
+  }
+
+  const obtenerFechas = (data) =>{
+    const hoy = new Date();
+    const fecha_fin = new Date(new Date().setDate(new Date().getDate() + 10))
+    const fechas = rangoFecha(hoy, fecha_fin);
+    const data_nueva = data.map((psicologo) => ({...psicologo, fechas: fechas}))
+    console.log(data_nueva);
+    return data_nueva;
+  }
   
-  const cargarPsicologos = () => {
+  const cargarPsicologos = async () => {
     const json = {
       correo: usuario().correo,
       contrasenia: usuario().contrasenia,
     };
-    postListPsicologos(JSON.stringify(json)).then((response) => {
-      console.log(response.psicologos)
-      // setPsicologos(response.psicologos);
-      setPsicologos(dataPsicologos)
+    await  postListPsicologos(JSON.stringify(json)).then((response) => {
+      const data = response.psicologos;
+      const data_fechas = obtenerFechas(data)
+      setPsicologos(data_fechas)
     });
   };
 
