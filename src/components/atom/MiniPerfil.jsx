@@ -223,7 +223,7 @@ const MiniPerfil = ({
                 <label className="sub">Citas registradas</label>
               </div>
               <div>
-                <label className="top">{returnPrecio()}</label>
+                <label className="top">{returnPrecio() || 0}</label>
                 <label className="sub">Costo promedio</label>
               </div>
             </>
