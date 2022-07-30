@@ -18,6 +18,7 @@ const MiniPerfil = ({
   //Filtro estadistico gráfico
   const [estadistica, setEstadistica] = useState([])
   const [filtroEstadistica, setFiltroEstadistica] = useState(30)
+  const [montoPromedio, setMontoPromedio] = useState('');
   const data = {
     labels: [
       "😊Alegria",
@@ -174,15 +175,20 @@ const MiniPerfil = ({
   }
 
   const returnPrecio = () =>{
-    if(citas.length === 0) {
-      return convertirMoneda(0)
+    if(!citas || citas?.length === 0) {
+      setMontoPromedio(convertirMoneda(0))
+      return
     }
     let suma = 0;
     citas?.map((cita) => suma+= cita?.psicologo?.monto || 0)
     const promedio = suma / citas.length;
     const monto = convertirMoneda(Math.round(promedio)); 
-    return monto
+    setMontoPromedio(monto)
   }
+
+  useEffect(() => {
+    returnPrecio()
+   }, [citas]);
 
   useEffect(() => {
    estadistica_emociones(filtroEstadistica)
@@ -226,7 +232,7 @@ const MiniPerfil = ({
                 <label className="sub">Citas registradas</label>
               </div>
               <div>
-                <label className="top">{returnPrecio() || 0}</label>
+                <label className="top">{montoPromedio || 0}</label>
                 <label className="sub">Costo promedio</label>
               </div>
             </>
