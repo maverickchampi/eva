@@ -174,6 +174,9 @@ const MiniPerfil = ({
   }
 
   const returnPrecio = () =>{
+    if(citas.length === 0) {
+      return convertirMoneda(0)
+    }
     let suma = 0;
     citas?.map((cita) => suma+= cita?.psicologo?.monto || 0)
     const promedio = suma / citas.length;
