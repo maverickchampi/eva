@@ -60,36 +60,12 @@ const Reserva = () => {
       correo: usuario().correo,
       contrasenia: usuario().contrasenia,
     };
-    await  postListPsicologos(JSON.stringify(json)).then((response) => {
+    const psicologos = await postListPsicologos(JSON.stringify(json)).then((response) => {
       const data = response.psicologos;
-      let data_fechas = obtenerFechas(data)
-
-      if(citas?.length > 0){
-        data_fechas = data_fechas.map((psicologo) => {
-          const cita_fecha = citas?.filter((cita) => cita?.psicologo?.id === psicologo?.id);
-          if(cita_fecha?.length > 0){
-            console.log(cita_fecha);
-            psicologo.fechas = psicologo?.fechas?.map((fecha) => {
-              const fecha_formato = fecha?.fecha.replaceAll('/', '-');
-              console.log(fecha_formato);
-              const fecha_existente = cita_fecha.find((cita) => cita?.fecha === fecha_formato)
-              if(fecha_existente){
-                // console.log(fecha_existente?.inicio);
-                fecha.horarios = fecha?.horarios?.filter((horario)=> horario?.horario_inicio !== fecha_existente?.inicio)
-                const fecha_actual = {...fecha};
-                console.log(fecha_actual);
-                return fecha_actual;
-              }
-              return fecha;
-            })
-            return psicologo;
-          }
-          return psicologo;
-        })
-      }
-      setPsicologos(data_fechas)
-      console.log(data_fechas);
+      const data_fechas = obtenerFechas(data)
+      return data_fechas
     });
+    return psicologos;
   };
 
   const cargarCitas = async () => {
@@ -97,15 +73,53 @@ const Reserva = () => {
       correo: usuario().correo,
       contrasenia: usuario().contrasenia,
     };
-    await getCitas(JSON.stringify(json)).then((response) => {
+    const citas = await getCitas(JSON.stringify(json)).then((response) => {
       const data = response.citas;
-      setCitas(data)
+      return data
     });
+    return citas;
   };
 
+  const cargarData = async() => {
+    const citas = await cargarCitas()
+    let psicologos = await cargarPsicologos()
+
+    for(let i = 0; i < psicologos.length; i++){
+
+      for(let j = 0; j < citas.length; j++){
+        if(psicologos[i].id === citas[j].psicologo.id){
+
+          for(let k = 0; k < psicologos[i].fechas.length; k++){
+            const fecha_cita = citas[j]?.fecha?.replaceAll("-", "/");
+            const fecha_psico = psicologos[i].fechas[k].fecha
+        
+            if(!fecha_cita || !fecha_psico) return
+
+            if(
+              (new Date(fecha_cita).getTime() === new Date(fecha_psico).getTime()) 
+            ){
+              for(let l = 0; l < psicologos[i].fechas[k].horarios.length; l++){
+                if(
+                  (citas[j].inicio === psicologos[i].fechas[k].horarios[l].horario_inicio) &&
+                  (citas[j].fin === psicologos[i].fechas[k].horarios[l].horario_fin)
+                ){
+                  const array = psicologos[i].fechas[k].horarios.filter(horario => horario.horario_inicio !== psicologos[i].fechas[k].horarios[l].horario_inicio)
+                  psicologos[i].fechas[k].horarios = array
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    setCitas(citas)
+    setPsicologos([])
+    setPsicologos([...psicologos])
+  }
+
   useEffect(() => {
-    cargarPsicologos()
-    cargarCitas()
+    cargarData()
   }, []);
 
   useEffect(() => {
@@ -143,7 +157,7 @@ const Reserva = () => {
                       setModalContent={setModalContent}
                       setOpenModal={setOpenModal}
                       user={user}
-                      cargarCitas={cargarCitas}
+                      cargarCitas={cargarData}
                     />
                   ))
                   : <div>No se encontro nada</div>
