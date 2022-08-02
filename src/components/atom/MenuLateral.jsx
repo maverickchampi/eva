@@ -32,20 +32,17 @@ const MenuLateral = ({ link = 0 }) => {
           <Link
             to="/eva/dashboard"
             className={`link ${link === 0 ? "active" : ""}`}
-          >
+            title='Dashboard' >
             <i className="fas fa-home"></i>
           </Link>
 
-          <Link
-            to="/eva/perfil"
-            className={`link ${link === 1 ? "active" : ""}`}
-          >
+          <Link to="/eva/perfil" className={`link ${link === 1 ? "active" : ""}`} title= 'Perfil' >
             <i className="fas fa-user"></i>
           </Link>
-          <Link to="/eva/plus" className={`link ${link === 2 ? "active" : ""}`}>
+          <Link to="/eva/plus" className={`link ${link === 2 ? "active" : ""}`} title='Galería'>
             <i className="fas fa-box"></i>
           </Link>
-          <Link to="/eva/reserva" className={`link ${link === 3 ? "active" : ""}`}>
+          <Link to="/eva/reserva" className={`link ${link === 3 ? "active" : ""}`} title='Reservas'>
             <i className="fas fa-brain"/>
           </Link>
         </nav>

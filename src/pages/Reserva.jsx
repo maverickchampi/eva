@@ -38,8 +38,9 @@ const Reserva = () => {
     let fechas = [];
     while(fechaFin.getTime() >= fechaInicio.getTime()){
         fechaInicio.setDate(fechaInicio.getDate() + 1);
-
-        const fecha_nueva = fechaInicio.getFullYear() + '/' + (fechaInicio.getMonth() + 1) + '/' + fechaInicio.getDate();
+        const mes = (fechaInicio.getMonth() + 1);
+        const dia = fechaInicio.getDate();
+        const fecha_nueva = fechaInicio.getFullYear() + '/' + (mes < 10 ? `0${mes}`: mes) + '/' + (dia < 10 ? `0${dia}`: dia);
         
         fechas.push({id: (fechas.length + 1), fecha : fecha_nueva, horarios : rangoHoras()});
     }
@@ -61,8 +62,33 @@ const Reserva = () => {
     };
     await  postListPsicologos(JSON.stringify(json)).then((response) => {
       const data = response.psicologos;
-      const data_fechas = obtenerFechas(data)
+      let data_fechas = obtenerFechas(data)
+
+      if(citas?.length > 0){
+        data_fechas = data_fechas.map((psicologo) => {
+          const cita_fecha = citas?.filter((cita) => cita?.psicologo?.id === psicologo?.id);
+          if(cita_fecha?.length > 0){
+            console.log(cita_fecha);
+            psicologo.fechas = psicologo?.fechas?.map((fecha) => {
+              const fecha_formato = fecha?.fecha.replaceAll('/', '-');
+              console.log(fecha_formato);
+              const fecha_existente = cita_fecha.find((cita) => cita?.fecha === fecha_formato)
+              if(fecha_existente){
+                // console.log(fecha_existente?.inicio);
+                fecha.horarios = fecha?.horarios?.filter((horario)=> horario?.horario_inicio !== fecha_existente?.inicio)
+                const fecha_actual = {...fecha};
+                console.log(fecha_actual);
+                return fecha_actual;
+              }
+              return fecha;
+            })
+            return psicologo;
+          }
+          return psicologo;
+        })
+      }
       setPsicologos(data_fechas)
+      console.log(data_fechas);
     });
   };
 
@@ -81,6 +107,10 @@ const Reserva = () => {
     cargarPsicologos()
     cargarCitas()
   }, []);
+
+  useEffect(() => {
+    cargarPsicologos()
+  }, [citas]);
 
   return (
     <>
