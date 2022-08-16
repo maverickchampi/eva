@@ -7,6 +7,7 @@ import ModalObjetivo from "../components/molecule/ModalObjetivo";
 import Modal from "../components/organism/Modal";
 import { user as usuario } from "../constants/methods";
 import { getObjetivos } from "../services/Objetivo";
+import { getPosts } from '../services/Posts'
 import { getEmocion } from "../services/Emocion";
 
 const Perfil = () => {
@@ -71,6 +72,130 @@ const Perfil = () => {
     });
   }
 
+  const cargarPosts = () => {
+    getPosts().then((response) => {
+      let _posts = [];
+      let _mylikes = 0;
+      let _myposts = 0;
+      let _mycomments = 0;
+
+      const contarLikes = (likes, id) => {
+        if (likes !== undefined) {
+          if (likes.length > 0) {
+            const __posts = likes.filter(
+              (p) => Number(p.post.id) === Number(id) && p.estado === true
+            );
+            return __posts.length;
+          } else {
+            return 0;
+          }
+        } else {
+          return 0;
+        }
+      };
+
+      const verificaLike = (likes, id) => {
+        if (likes !== undefined) {
+          if (likes.length > 0) {
+            const __posts = likes.filter(
+              (p) =>
+                Number(p.post.id) === Number(id) &&
+                Number(p.usuario.id) === Number(usuario().id) &&
+                p.estado === true
+            );
+            const resp = __posts.length > 0 ? true : false;
+            if (resp === true) _mylikes += 1;
+            return resp;
+          } else {
+            return false;
+          }
+        } else {
+          return false;
+        }
+      };
+
+      const likeId = (likes, id) => {
+        if (likes !== undefined) {
+          if (likes.length > 0) {
+            const __posts = likes.filter(
+              (p) =>
+                Number(p.post.id) === Number(id) &&
+                Number(p.usuario.id) === Number(usuario().id)
+            );
+            return __posts[0]?.id;
+          } else {
+            return -1;
+          }
+        } else {
+          return -1;
+        }
+      };
+
+      const editar = (id) => {
+        if (usuario() !== null) {
+          if (id === usuario().id) {
+            _myposts += 1;
+            return true;
+          } else {
+            return false;
+          }
+        }
+      };
+
+      const filtraComentarios = (comentarios, idpost) => {
+        // console.log(comentarios);
+        if (comentarios !== undefined) {
+          if (comentarios.length > 0) {
+            const __comentarios = comentarios.filter(
+              (c) => c.estado === true && c.post.id === idpost
+            );
+            __comentarios.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
+
+            __comentarios.map(
+              (c) => (c.edit = c.usuario.id === usuario().id ? true : false)
+            );
+            __comentarios.map((c) =>
+              c.usuario.id === usuario().id ? (_mycomments += 1) : false
+            );
+
+            return __comentarios;
+          } else {
+            return 0;
+          }
+        } else {
+          return 0;
+        }
+      };
+
+      response.posts.map(
+        (r) =>
+          r.estado === true &&
+          _posts.push({
+            id: r.id,
+            title: `${r.usuario.nombre} ${r.usuario.apellidoPa}`,
+            fecha: r.fecha,
+            edit: editar(r.usuario.id),
+            contenido: r.descripcion,
+            likes: contarLikes(response.likes, r.id),
+            like: verificaLike(response.likes, r.id),
+            like_id: likeId(response.likes, r.id),
+            comentarios: filtraComentarios(response.comentarios, r.id),
+            foto: r.usuario.foto,
+          })
+      );
+
+      // console.log(_mylikes);
+      // console.log(_myposts);
+      // console.log(posts);
+      let rec = [...recompensas];
+      rec[1].valor_entregado = _myposts;
+      rec[2].valor_entregado = _mylikes;
+      rec[3].valor_entregado = _mycomments;
+      setRecompensas(rec);
+      setUser({ ...user, likes: _mylikes, posts: _myposts });
+    });
+  };
+
   const cargarEmociones = () => {
     const json = {
       correo: usuario().correo,
@@ -80,14 +205,15 @@ const Perfil = () => {
       response.emociones.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
       response.emociones.reverse();
       setEmociones(response.emociones);
+      let rec = [...recompensas];
+      rec[0].valor_entregado = response.emociones.length;
+      setRecompensas(rec);
     });
   };
 
   useEffect(() => {
-    cargarEmociones();
-  }, []);
-
-  useEffect(() => {
+    cargarPosts()
+    cargarEmociones()
     cargarObjetivos()
   }, []);
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import swal from "sweetalert";
 import { PRUEBAS, PRUEBAS_SAD } from "../../constants/global";
+import { postRecompensa } from "../../services/Recompensa";
 import ModalObjetivo from "./ModalObjetivo";
 import Objetivo from "./Objetivo";
 
@@ -26,19 +27,18 @@ const DetallePerfil = ({ user, setUser, objetivos, recompensas, openAgregarObjet
     const json = {
       recompensa: {
         tipo: id,
-        usuario: { id: user().id },
+        usuario: { id: user.id },
       },
       login: {
-        correo: user().correo,
-        contrasenia: user().contrasenia,
+        correo: user.correo,
+        contrasenia: user.contrasenia,
       },
     };
     setLoading(true);
-    // console.log(json);
-    // postRecompensa(JSON.stringify(json)).then((resp) => {
-    //   setLoading(false);
-    //   swal("Felicidades!", "El cupón ya fue enviado a tu correo", "success");
-    // });
+    postRecompensa(JSON.stringify(json)).then((resp) => {
+      setLoading(false);
+      swal("Felicidades!", "El cupón ya fue enviado a tu correo", "success");
+    });
   };
 
   const completarCupon = (id) => {
